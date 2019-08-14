@@ -1,0 +1,4 @@
+name: platefit
+recipe: wordpress
+config:
+  webroot: app/web
