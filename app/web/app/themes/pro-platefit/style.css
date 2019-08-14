@@ -1,0 +1,987 @@
+/*
+
+Theme Name: Pro – Platefit
+Theme URI: http://theme.co/pro/
+Author: Themeco
+Author URI: http://theme.co/
+Description: Make all of your modifications to Pro in this child theme.
+Version: 1.0.0
+Template: pro
+
+*/
+
+body, input, button, select, textarea {
+	font-family: "Lato",sans-serif;
+}
+
+.container {
+	margin: 0 40px;
+	background-color: #fafafa;
+}
+
+.container__item {
+	box-sizing: border-box;
+}
+
+.container__item--trainer {
+	margin-bottom: 1em;
+}
+
+.container__item--trainer img {
+	width: 100%;
+	box-shadow: 0 20px 30px -20px rgba(0,0,0,.3);
+	transition: transform .5s ease-in-out;
+}
+
+.container__item--trainer:hover img {
+	transform: translateY(-15px);
+}
+
+.container__item--trainer h3 {
+	margin: 15px 0 0;
+	text-transform: uppercase;
+	color: #000;
+	line-height: .75;
+}
+
+.container--4col {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+}
+
+.container--4col > .container__item {
+	flex-basis: 22%;
+	max-width: 22%;
+}
+
+.container--4col > .container__item:not(:nth-child(4n)) {
+	margin-right: 4%;
+}
+
+@media (max-width: 767px) {
+	.container--4col > .container__item {
+		flex-basis: 45%;
+		max-width: 45%;
+	}
+
+	.container--4col > .container__item:not(:nth-child(4n)) {
+		margin-right: 0;
+	}
+
+	.container--4col > .container__item:not(:nth-child(2n)) {
+		margin-right: 10%;
+	}
+}
+
+@media (max-width: 470px) {
+	.container--4col > .container__item {
+		flex-basis: 100%;
+		max-width: 100%;
+	}
+
+	.container--4col > .container__item:not(:nth-child(4n)) {
+		margin-right: 0;
+	}
+
+	.container--4col > .container__item:not(:nth-child(2n)) {
+		margin-right: 0;
+	}
+}
+
+.trainer__title {
+	font-size: 3em;
+	font-style: normal;
+	font-weight: 400;
+	text-transform: uppercase;
+	color: #636363;
+}
+
+.trainer__title--upcoming {
+	text-align: center;
+}
+
+/* Custom fonts import */
+
+@font-face {
+	font-family: Knockout-HTF49-Liteweight;
+	src: url("fonts/Knockout-HTF49-Liteweight.otf");
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: Knockout-HTF28-JuniorFeatherwt;
+	src: url("fonts/Knockout-HTF28-JuniorFeatherwt.otf");
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: MaisonNeue-Bold;
+	src: url("fonts/MaisonNeue-Bold.ttf");
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: MaisonNeue-Book;
+	src: url("fonts/MaisonNeue-Book.ttf");
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: MaisonNeue-Light;
+	src: url("fonts/MaisonNeue-Light.ttf");
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: MuseoSlab-300;
+	src: url("fonts/MuseoSlab-300.otf");
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: MuseoSlab-500;
+	src: url("fonts/MuseoSlab-500.ttf");
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: NimbusSanTConBold;
+	src: url("fonts/NimbusSanTConBold.ttf");
+	font-weight: normal;
+}
+
+/* Navbar styles */
+
+@media only screen and (min-width: 975px) {
+	.x-navbar-inner {
+		position: relative;
+	}
+	.x-navbar-inner .x-container {
+		position: static;
+	}
+	.x-navbar .x-brand {
+		position: absolute;
+		top: 26.5px;
+		left: 40px;
+	}
+	.x-navbar .x-brand img {
+		padding: 10px;
+		background-color: #fff;
+	}
+
+	.x-navbar.x-navbar-transluscent {
+		background-color: rgba(255, 255, 255, 0.75) !important;
+	}
+
+	.x-navbar-transluscent .x-brand img {
+		background-color: rgba(255, 255, 255, 0);
+		background-image: linear-gradient(bottom, rgba(255, 255, 255, 0.75) 50%, rgba(255, 255, 255, 0) 50%);
+		background-image: -o-linear-gradient(bottom, rgba(255, 255, 255, 0.75) 50%, rgba(255, 255, 255, 0) 50%);
+		background-image: -moz-linear-gradient(bottom, rgba(255, 255, 255, 0.75) 50%, rgba(255, 255, 255, 0) 50%);
+		background-image: -webkit-linear-gradient(bottom, rgba(255, 255, 255, 0.75) 50%, rgba(255, 255, 255, 0) 50%);
+		background-image: -ms-linear-gradient(bottom, rgba(255, 255, 255, 0.75) 50%, rgba(255, 255, 255, 0) 50%);
+	}
+
+	.x-navbar a {
+		font-family: "MaisonNeue-Book", sans-serif !important;
+		font-weight: bold !important;
+	}
+
+	.x-navbar .desktop .x-nav > li > a:hover > span, 
+	.x-navbar .desktop .x-nav > li.x-active > a > span, 
+	.x-navbar .desktop .x-nav > li.current-menu-item > a > span {
+			box-shadow: none !important;
+	}
+
+	.x-navbar .menu-item:last-of-type {
+		margin-top: 10px;
+		border: 2px solid #fed710;
+		height: 43px;
+	}
+
+	.x-navbar .menu-item:last-of-type:hover {
+		background-color: #fed710;
+	}
+
+	.x-navbar .menu-item:last-of-type a {
+		color: #000 !important;
+		font-weight: 700 !important;
+		margin-top: -12px !important;
+		padding-right: 15px !important;
+		font-family: "MaisonNeue-Bold", sans-serif !important;
+	}
+
+	.x-navbar .menu-item:last-of-type a:active {
+		color: #fff !important;
+	}
+}
+
+.x-navbar .mobile .x-nav li>a span {
+	color: #333333 !important;
+}
+
+.x-navbar .mobile .x-nav li>a:hover span {
+	color: #fff !important
+}
+
+.x-navbar .mobile .x-nav li>a {
+	border-width: 2px;
+	color: #fed710 !important;
+}
+
+.x-navbar .mobile .x-nav li.current-menu-item > a,
+.x-navbar .mobile .x-nav li>a:hover {
+	background-color: #fed710 !important;
+}
+
+.x-btn-navbar {
+	background-color: #fff !important;
+	border: 2px solid #fed710;
+	border-radius: 0px;
+	box-shadow: none;
+}
+
+.x-btn-navbar:hover {
+	background-color: #fed710 !important;
+}
+
+i.x-icon-bars {
+	color: #333333;
+}
+
+/* X styles */
+
+header.x-header-landmark {
+	display: none !important;
+}
+
+/* Footer styles */
+
+@media only screen and (min-width: 975px) {
+	footer .x-container .x-column:last-of-type .widget:first-of-type {
+		display: none;
+	}
+	footer .x-container .x-column:last-of-type .widget:nth-of-type(2) {
+		margin-top: 0px;
+	}
+}
+
+@media only screen and (max-width: 975px) {
+	footer .x-container .x-column,
+	footer .x-container .x-column .h-widget {
+		display: none;
+	}
+	footer .x-container .x-column.last {
+		display: block !important;
+		text-align: center;
+	}
+	footer .x-container .x-column.last .menu-company-menu-container .menu li {
+		display: inline-block;
+		margin: 0 10px;
+	}
+	footer .x-container.max.width.footer-social {
+		width: 100% !important;
+	}
+}
+
+footer {
+	background-color: #fff !important;
+}
+
+footer .menu-item {
+	background-color: #fff !important;
+}
+
+footer img {
+	margin-left: -5px;
+	width: 180px;
+}
+
+footer p {
+	font-family: "MaisonNeue-Bold", sans-serif !important;
+	letter-spacing: 1px;
+}
+
+footer a {
+	color: #777777;
+	font-family: "MaisonNeue-Book", sans-serif !important;
+}
+
+.x-colophon .widget ul {
+	border-bottom: 0px;
+}
+
+.x-colophon .widget ul li {
+	border-top: 0px;
+}
+
+.footer-social br {
+	display: none;
+}
+
+.footer-social {
+	margin-left: 0px;
+	font-size: 20px;
+}
+
+.footer-social a {
+	margin-right: 15px;
+}
+
+.subscribe-form {
+	position: relative;
+}
+
+.subscribe-form input {
+	border: 0px;
+	border-radius: 0px !important
+}
+
+.subscribe-form input.wpcf7-email {
+	background-color: #f5f5f5;
+	width: 100% !important;
+	height: 40px;
+	font-family: "MaisonNeue-Book", sans-serif;
+	font-size: 12px;
+	font-style: italic;
+}
+
+.subscribe-form input.wpcf7-submit {
+	background-color: rgba(255,255,255,0);
+	position: absolute;
+	top: 0px;
+	right: 10px;
+	width: 90px;
+	line-height: 27px;
+	height: 40px;
+	font-family: "MaisonNeue-Bold", sans-serif;
+	font-weight: 100;
+	font-size: 14px;
+	color: #fdd406;
+	text-transform: none;
+}
+
+/* Element styles */
+
+h1 {
+	font-family: "Knockout-HTF49-Liteweight", sans-serif !important;
+	letter-spacing: 0.05em !important;
+}
+
+h2 {
+	font-family: "MaisonNeue-Light", sans-serif !important;
+	letter-spacing: 0.15em !important;
+}
+
+h3 {
+	font-family: "Knockout-HTF28-JuniorFeatherwt", sans-serif !important;
+	letter-spacing: 0.05em !important;
+}
+
+h4, p {
+	font-family: "MaisonNeue-Book", sans-serif !important;
+}
+
+select {
+	border-radius: 0px !important;
+  -webkit-appearance: none !important;
+  -webkit-border-radius: 0px !important;
+	background-image: url("images/dropdown-icon.png") !important;
+  background-repeat: no-repeat !important;
+  background-position: 98% 50% !important;
+}
+
+/* Button styles */
+
+.x-btn {
+	text-transform: none !important;
+	border-width: 2px !important;
+	font-size: 12px;
+	line-height: 30px !important;
+	font-family: "MaisonNeue-Bold", sans-serif;
+	color: #333333 !important;
+	padding: 0.563em 1.125em 0.563em !important;
+}
+
+.x-btn:hover {
+	background-color: #fed710 !important;
+}
+
+.x-btn:active {
+	color: #fff !important;
+}
+
+.x-btn:active .x-icon {
+	filter: brightness(100) !important;
+}
+
+.x-icon-long-arrow-right::before {
+	background:url("images/arrow.png") 0 0 no-repeat;
+	background-size: 25px 15px;
+	width:25px;
+    height:20px;
+    display:inline-block;
+	color: rgba(255,255,255,0);
+}
+
+/* Body styles */
+
+@media only screen and (max-width: 900px) {
+  .main-header {
+    font-size: 72px !important;
+	}
+	.secondary-header {
+		font-size: 42px !important;
+	}
+}
+
+@media only screen and (max-width: 500px) {
+	.main-header {
+    font-size: 48px !important;
+	}
+	.secondary-header {
+		font-size: 36px !important;
+	}
+}
+
+.main-header {
+	font-size: 148px;
+}
+
+.secondary-header {
+	font-size: 48px;
+	font-weight: 100 !important;
+}
+
+.x-section {
+	margin-bottom: 0px !important;
+	margin-top: 0px !important;
+}
+
+.mini-header {
+	font-family: "MaisonNeue-Bold", sans-serif !important;
+  font-size: 12px;
+  color: #333333;
+  font-weight: 700;
+}
+
+.section-header {
+  font-family: "Knockout-HTF28-JuniorFeatherwt", sans-serif !important;
+  font-size: 48px;
+  font-weight: 100;
+  letter-spacing: 1px !important; 
+  color: #636363;
+}
+
+@media only screen and (min-width: 500px) {
+  .margin-section {
+    margin: 0px 40px !important;
+  }
+}
+
+.main-header.over-video {
+	position: absolute !important;
+	top: 15%;
+}
+
+x-section.white-overlay {
+    position: relative;
+}
+
+.x-section.white-overlay:before {
+    content: '';
+    background: rgba(255, 255, 255, 0.75);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    display: block;
+}
+
+.x-section.white-overlay .x-container {
+    position: relative;
+    z-index: 10;
+}
+
+.cta-new-client-section:hover:before {
+  background: rgba(254,215,16,0.75) !important;
+  -webkit-transition: background .5s ease-in-out;
+  -moz-transition: background .5s ease-in-out;
+  -o-transition: background .5s ease-in-out;
+  transition: background .5s ease-in-out;
+}
+
+@media only screen and (max-width: 500px) {
+	.cta-new-client a {
+		font-size: 42px !important;
+	}
+}
+
+.cta-new-client {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.cta-new-client a {
+  font-size: 95px;
+  font-family: "NimbusSanTConBold", serif;
+  line-height: 1;
+  color: #333333 !important;
+}
+
+/* Scroll-top styles */
+
+.x-scroll-top {
+	border-radius: 0px;
+	border: none;
+	width: 70px;
+	height: 25px;
+	font-size: 12px;
+	font-family: "MaisonNeue-Bold", sans-serif;
+}
+
+.x-scroll-top:hover {
+	border-bottom: 2px solid #fed710;
+}
+
+.x-scroll-top:before {
+	content: "Back to Top";
+}
+
+.x-scroll-top:after {
+	background-image: url("images/arrow.png");
+	background-repeat: no-repeat;
+	background-size: 30%;
+	content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: -100%;
+  left: 75%;
+  -webkit-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+}
+
+.x-scroll-top.right {
+	right: 30px !important;
+	bottom: 20px;
+}
+
+.x-scroll-top i {
+	display: none;
+}
+
+/* Video player styles */
+
+@media handheld, only screen and (max-width: 767px) {
+	.x-content-band.bg-image {
+			background-size: cover;
+	 }
+}
+
+.x-frame-inner>.x-video .mejs-poster img {
+  object-fit: cover !important;
+}
+
+.mejs-video .mejs-poster {
+	background-size: cover !important;
+}
+
+.mejs-overlay.mejs-layer.mejs-overlay-play:after,
+.mejs-overlay.mejs-layer.mejs-overlay-play:hover:after,
+.mejs-overlay.mejs-layer.mejs-overlay-play:active:after {
+	content: '';
+	display: block;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-size: 85px !important;
+}
+
+.mejs-overlay.mejs-layer.mejs-overlay-play:after {
+	background: url("images/play-btn.png") no-repeat;
+}
+
+.mejs-overlay.mejs-layer.mejs-overlay-play:hover:after {
+	background: url("images/play-btn-hover.png") no-repeat;
+}
+
+.mejs-overlay.mejs-layer.mejs-overlay-play:active:after {
+	background: url("images/play-btn-active.png") no-repeat;
+}
+
+.x-frame-video-player .x-frame-inner,
+.x-video .x-video-inner {
+ 	overflow: visible !important; 
+}
+
+.x-video .x-video-inner .mejs-inner .mejs-poster img {
+	object-fit: cover !important;
+}
+
+/* Slider styles */
+
+.quote-slider .x-slides img {
+  object-fit: cover;
+}
+
+.quote-slider ol.flex-control-nav.flex-control-paging {
+ 	top: unset !important;
+  right: unset !important;
+  left: 50%;
+  bottom: -30px;
+  background-color: rgba(0,0,0,0);
+}
+
+.quote-slider ol.flex-control-nav.flex-control-paging a {
+	width: 10px;
+  height: 10px;
+  background-color: #c2c2c2;
+}
+
+.quote-slider ol.flex-control-nav.flex-control-paging a:hover,
+.quote-slider ol.flex-control-nav.flex-control-paging a.flex-active {
+	background-color: #fed710;
+}
+
+/* Block quote styles */
+
+.block-quote {
+ 	background-image: url("images/quote.png");
+	background-repeat: no-repeat;
+	background-size: 60px;
+}
+
+.block-quote h4 {
+	font-family: "MuseoSlab-300", sans-serif !important;
+	font-size: 18px;
+	color: #bababa;
+}
+
+.block-quote p {
+  font-family: "MaisonNeue-Bold", sans-serif !important;
+  font-size: 12px;
+  color: #000;
+}
+
+.block-quote img {
+  box-shadow: 0 12px 20px -10px rgba(0, 0, 0, 0.5);
+}
+
+/* Accordion styles */
+
+.x-accordion-group {
+  border: none;
+}
+
+.x-accordion-inner {
+  border-top: none;
+}
+
+.x-accordion-heading .x-accordion-toggle.collapsed {
+	background-color: rgba(255,255,255,0);
+}
+
+.x-accordion-heading .x-accordion-toggle:before {
+  content: "" !important;
+}
+
+@media only screen and (max-width: 500px) {
+	.x-accordion-heading .x-accordion-toggle:after {
+		padding: 10px 10px 5px !important;
+	}
+}
+
+.x-accordion-heading .x-accordion-toggle:after {
+  content: url("images/arrow-down.png");
+	padding: 10px;
+  display: inline-block;
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+.x-accordion-heading .x-accordion-toggle.collapsed:after {
+  content: url("images/arrow-down.png");
+  padding: 10px;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+}
+
+/* Woocommerce styles */
+
+.woocommerce-page header.x-header-landmark {
+	display: none !important;
+}
+
+.woocommerce li.product .entry-header {
+	position: unset !important;
+}
+.woocommerce li.product .entry-header .button {
+	background-color: rgba(254,215,16,0.75) !important;
+	top: 8px !important;
+	right: unset !important;
+	bottom: unset !important;
+	left: 8px !important;
+	padding: 90.5px 51.5px !important;
+}
+
+.woocommerce-ordering select.orderby {
+	height: 35px !important;
+	line-height: 20px;
+}
+
+.woocommerce div.product .woocommerce-tabs h2 {
+	display: none;
+}
+
+.woocommerce .button,
+.woocommerce input.submit {
+	text-transform: none !important;
+	border-width: 2px !important;
+	font-size: 12px;
+	line-height: 30px !important;
+	font-family: "MaisonNeue-Bold", sans-serif;
+	color: #333333 !important;
+	padding: 0.563em 1.125em 0.563em !important;
+}
+
+.woocommerce .button:hover,
+.woocommerce input.submit:hover {
+	background-color: #fed710 !important;
+}
+
+/* Modal styles */
+
+@media only screen and (max-width: 750px) {
+	.cp-modal-body h2 {
+		font-size: 30px !important;
+		line-height: 32px !important;
+	}
+	.cp-modal-body h4 {
+		font-size: 26px !important;
+		line-height: 30px !important;
+	}
+	.cp-modal-body .wpcf7 input[type='submit'],
+	.cp-modal-body #close-link {
+		font-size: 14px;
+	}
+}
+
+.cp-modal-body h2 {
+	font-size: 38px;
+	line-height: 38px;
+	color: #333333;
+}
+
+.cp-modal-body h4 {
+	font-size: 32px;
+	line-height: 46px;
+	color: #333333;
+	max-width: 475px;
+	margin: 30px auto;
+}
+
+.cp-modal-body .wpcf7 {
+	max-width: 325px;
+	margin: auto;
+	position: relative;
+}
+
+.cp-modal-body .wpcf7 input[type='email'] {
+	width: 100%;
+	height: 40px;
+	border-width: 2px !important;
+	border-radius: 0px !important;
+	border-color: #333333;
+	font-family: "MaisonNeue-Book", sans-serif !important;
+}
+
+.cp-modal-body .wpcf7 input[type='submit'] {
+	position: absolute;
+	top: 0;
+	right: 20px;
+	max-width: 110px;
+	height: 40px;
+	padding-right: 35px;
+	line-height: 22px;
+	color: #333333 !important;
+	font-family: "MaisonNeue-Bold", sans-serif !important;
+	text-transform: capitalize;
+	border: 0;
+	background-image: url('/app/themes/pro-platefit/images/arrow-yellow.png');
+	background-repeat: no-repeat;
+	background-size: 24px 14px;
+	background-position: 100% 50%;
+}
+
+.cp-modal-body #close-link {
+	font-family: "MaisonNeue-Bold";
+	color: #333333;
+	cursor: pointer;
+}
+
+/* MindBody styles */
+
+.bw-widget button {
+	border-radius: 0px !important;
+}
+
+.bw-widget {
+	background-color: rgba(0,0,0,0) !important;
+}
+
+.bw-widget__preheader {
+  text-align: center !important;
+}
+
+.bw-widget__signup-now,
+.bw-widget__signup-now:hover,
+.bw-widget__signup-now:active {
+	border: 2px solid #fed710 !important;
+	box-sizing: border-box !important;
+}
+
+.bw-header__account-link,
+.bw-header__account-link:hover,
+.bw-header__account-link:active,
+.bw-fullcal-button,
+.bw-fullcal-button:hover,
+.bw-fullcal-button:active {
+  border: 2px solid #fed710 !important;
+  padding: 10px !important;
+  margin-bottom: 20px !important;
+  text-decoration: none !important;
+}
+
+.bw-header__account-link:hover,
+.bw-header__account-link:active,
+.bw-fullcal-button:hover,
+.bw-fullcal-button:active {
+  background-color: #fed710 !important;
+}
+
+.bw-header__account-link:active,
+.bw-fullcal-button:active {
+  color: #fff !important;
+}
+
+.bw-fullcal-button,
+.bw-fullcal-button:hover {
+  color: #333333 !important;
+}
+
+.bw-widget__header {
+  padding: 16px 32px !important;
+}
+
+.bw-widget__date {
+  padding: 16px 32px !important;
+  border: 0 !important;
+  background-color: #c2c2c2;
+  color: #fff;
+}
+
+.bw-mb-powered-by-logo {
+  display: none !important;
+}
+
+/* Class & Trainer Schedule styles */
+
+.bw-session {
+  border-bottom-width: 0px;
+}
+
+.bw-session:nth-of-type(1n) {
+  background-color: transparent;
+}
+
+.bw-session:nth-of-type(2n) {
+  background-color: #fff;
+}
+
+.bw-widget__preheader {
+  border-bottom: 0px;
+}
+
+div.healcode * {
+  font-family: "MaisonNeue-Book",  sans-serif;
+}
+
+div.healcode a.action_icon {
+	display: none;
+}
+
+div.healcode .back_link a {
+  border: 2px solid #fed710;
+  font-family: "MaisonNeue-Bold", sans-serif;
+  color: #333333 !important;
+  padding: 10px;
+}
+
+div.healcode .back_link a:hover {
+  background-color: #fed710;
+}
+
+div.healcode.schedule h1 {
+	text-align: center;
+	margin: 20px;
+}
+
+div.healcode.schedule h1 .healcode-title-text,
+div.healcode.schedule h1 .hc_header_time .hc_header_month,
+div.healcode.schedule h1 .hc_header_time .hc_header_day,
+div.healcode.schedule h1 .hc_header_time .hc_header_year {
+	font-family: "MaisonNeue-Light", sans-serif !important;
+	font-weight: 100 !important;
+	font-size: 28px !important;
+	letter-spacing: 0.15em !important;
+	line-height: 32px;
+}
+
+div.healcode tr.schedule_header th {
+	background-color: #c2c2c2 !important;
+	color: #fff !important;
+	padding: 10px !important;
+	font-size: 12px !important;
+}
+
+div.healcode a.hc-button.signup_now {
+	background-color: rgba(255,255,255,0) !important;
+	font-family: "MaisonNeue-Bold", sans-serif;
+  color: #333333 !important;
+  border: 2px solid #fed710;
+  border-radius: 0px !important;
+}
+
+div.healcode a.hc-button.signup_now:hover {
+  background-color: #fed710 !important;
+}
+
+div.healcode table.schedule tr.hc_class td {
+	vertical-align: middle !important;
+	padding: 1em !important;
+}
+
+div.healcode .hc_time,
+div.healcode .classname a,
+div.healcode .trainer a,
+div.healcode .location {
+	font-family: "MaisonNeue-Book", sans-serif !important;
+  color: #333333 !important;
+}
+
+div.healcode div.hc_footer a {
+  display: none !important;
+}
