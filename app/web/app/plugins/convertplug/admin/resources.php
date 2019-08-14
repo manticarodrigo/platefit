@@ -87,6 +87,23 @@ defined( 'ABSPATH' ) || die( 'No direct script access allowed!' );
 			</a>
 		</div><!--col-sm-3-->
 	<?php endif; ?>
+				<?php
+				if (
+				( isset( $google_recaptcha ) && ( true === $google_recaptcha || 'true' === $google_recaptcha ) ) ||
+				( ! isset( $google_recaptcha ) )
+				) :
+					?>
+		<div class="col-sm-3 col-lg-3 resource-block-section">
+			<a class="resource-block-link" href="<?php echo admin_url( 'admin.php?page=bsf-google-recaptcha-manager' ); ?>">
+				<div class="resource-block-icon">
+					<span class="dashicons dashicons-edit"></span>
+				</div>
+				<div class="resource-block-content">
+					<?php echo __( 'Google Recaptcha Manager', 'bsf' ); ?>
+				</div>
+			</a>
+		</div><!--col-sm-3-->
+			<?php endif; ?>
 
 	<?php if ( class_exists( 'CP_Wp_Comment_Form' ) ) : ?>
 		<div class="col-sm-3 col-lg-3 resource-block-section">

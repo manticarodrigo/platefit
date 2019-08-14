@@ -62,7 +62,7 @@ if ( is_array( $smile_lists ) ) {
 if ( is_array( $smile_lists ) ) {
 	$total = count( $smile_lists );
 }
-require_once  CP_BASE_DIR . '/admin/contacts/views/cp-paginator.php';
+require_once  CP_BASE_DIR . '/admin/contacts/views/class-cp-paginator.php';
 
 // redirect to first page for search results.
 if ( isset( $_POST['sq'] ) ) {

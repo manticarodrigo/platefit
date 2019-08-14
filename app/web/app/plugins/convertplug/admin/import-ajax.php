@@ -32,7 +32,7 @@ if ( ! function_exists( 'cp_import_slide_in' ) ) {
 		$zip = zip_open( $file );
 
 		if ( is_resource( $zip ) ) {
-			while ( $zip_entry = zip_read( $zip ) ) {
+			while ( zip_read( $zip ) == $zip_entry ) {
 				$title = dirname( zip_entry_name( $zip_entry ) );
 			}
 			zip_close( $zip );
@@ -319,7 +319,7 @@ if ( ! function_exists( 'cp_import_info_bar' ) ) {
 		$zip = zip_open( $file );
 
 		if ( is_resource( $zip ) ) {
-			while ( $zip_entry = zip_read( $zip ) ) {
+			while ( zip_read( $zip ) == $zip_entry ) {
 				$title = dirname( zip_entry_name( $zip_entry ) );
 			}
 			zip_close( $zip );
@@ -622,9 +622,9 @@ if ( ! function_exists( 'cp_import_modal' ) ) {
 		// Get the name of the directory inside the exported zip.
 		$zip = zip_open( $file );
 
-		// Valid zip file.
+		// valid zip file.
 		if ( is_resource( $zip ) ) {
-			while ( $zip_entry = zip_read( $zip ) ) {
+			while ( zip_read( $zip ) == $zip_entry ) {
 				$title = dirname( zip_entry_name( $zip_entry ) );
 			}
 			zip_close( $zip );

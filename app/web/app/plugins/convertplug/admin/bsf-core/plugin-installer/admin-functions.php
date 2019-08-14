@@ -221,6 +221,8 @@ if ( ! function_exists( 'install_bsf_product' ) ) {
 			$download_path = rtrim( $get_path, '/' ) . '/download.php?' . $hash . '&base=ignore';
 		}
 
+		// wp_send_json_error($download_path, $status_code = null );
+
 		require_once ABSPATH . '/wp-admin/includes/file.php';
 		WP_Filesystem();
 		global $wp_filesystem;

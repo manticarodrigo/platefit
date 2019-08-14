@@ -162,6 +162,8 @@
 		    		} else {
                 		jQuery( el ).removeClass('cp-error');
 		    		}
+
+		    		
                 }
             }
         });
@@ -226,6 +228,14 @@
 
 					// remove backslashes from success message
 					obj.message = obj.message.replace(/\\/g, '');
+
+					// The Detailed message when the Google recaptcha Inavlid secret Key.
+					 if(obj.detailed_msg == 'Invalid Secret Key for Google Recaptcha'){
+						setTimeout(function(){
+							form.find('.g-recaptcha').addClass('cp-error');
+						},100);
+						form.find('.g-recaptcha').focus();
+					}
 
 					//	show message error/success
 					if( typeof obj.message != 'undefined' && obj.message != null) {

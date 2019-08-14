@@ -186,7 +186,7 @@
         jQuery(window.parent.document).find( "div [data-element='add_to_cart']" ).remove();
       }
     });
-    
+
 /*
  *function for social media style
  */

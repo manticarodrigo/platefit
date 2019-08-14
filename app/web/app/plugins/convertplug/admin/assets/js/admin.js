@@ -964,8 +964,7 @@ function smileSendMessage(e) {
 	var new_frame_url 	= frame_url+'&'+url_string;
 	var receiver 		= document.getElementById('smile_design_iframe').contentWindow;
 
-	// Send the data
-	receiver.postMessage(data, frame_url);
+	receiver.postMessage(data,frame_url );
 
 	jQuery.ajax({
 		url:ajaxurl,

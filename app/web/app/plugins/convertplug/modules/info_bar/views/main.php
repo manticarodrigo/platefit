@@ -6,7 +6,7 @@
  */
 
 // Remove All Styles.
-require_once CP_BASE_DIR . 'admin/contacts/views/cp-paginator.php';
+require_once CP_BASE_DIR . 'admin/contacts/views/class-cp-paginator.php';
 
 $remove_styles = ( isset( $_GET['remove-styles'] ) ) ? $_GET['remove-styles'] : 'false';
 if ( 'true' === $remove_styles ) {

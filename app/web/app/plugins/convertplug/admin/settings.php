@@ -192,6 +192,7 @@ if ( true !== $reg_menu_hide ) {
 							$sub_email  = isset( $data['cp-sub-email'] ) ? $data['cp-sub-email'] : get_option( 'admin_email' );
 							$email_sub  = isset( $data['cp-email-sub'] ) ? $data['cp-email-sub'] : 'Congratulations! You have a New Subscriber!';
 							$email_body = isset( $data['cp-email-body'] ) ? $data['cp-email-body'] : '<p>You’ve got a new subscriber to the Campaign: {{list_name}} </p><p>Here is the information :</p>{{content}}<p>Congratulations! Wish you many more.<br>This e-mail was sent from " . {{CP_PLUS_NAME}}. " on {{blog_name}} {{site_url}}</p>';
+
 							?>
 							<p 
 							<?php
@@ -755,6 +756,7 @@ if ( true !== $reg_menu_hide ) {
 	btn.click(function() {
 
 		var ser = jQuery("[name]").not("#cp-user-role").serialize();
+		console.log(ser);
 		var array_values = [];
 		var access_role_array = [];
 		var new_user_role_array = [];
@@ -788,9 +790,12 @@ if ( true !== $reg_menu_hide ) {
 			}				
 		});
 		var new_user_role_array = new_user_role_array.join(',');
-		ser += "&cp-new-user-role="+new_user_role_array;	
+		ser += "&cp-new-user-role="+new_user_role_array;
 
-		var data =ser;
+		/*Conflict with 404-301 plugin. - The plugin was adding two actions in the Convert Plus customizer
+		due to which the Convert Plus settings were not getting saved from the custoimizer. */var data =ser;
+		var data = data.replace('action=jj4t3_redirect_form','');
+
 		jQuery.ajax({
 			url: ajaxurl,
 			data: data,

@@ -1361,3 +1361,14 @@ i.cp-icon[class^="Defaults-"] {
 .cp-hide-contianer .cp-slidein.cp-slidein-exceed {
     display:none;
 }
+
+.cp-recaptcha.cp-recaptcha-index-1.cp-recaptcha-index-2.cp-recaptcha-index-3.cp-recaptcha-index-4.cp-recaptcha-index-5.cp-recaptcha-index-6.cp-recaptcha-index-7 + div{
+    z-index: 9999999999 !important;
+}
+
+/*The Google reCaptcha CSS for the Text area */
+textarea.cp-input.cp-googlerecaptcha{
+    width:304px!important;
+    height:74px;
+}
+

@@ -295,6 +295,27 @@
 				$.each(hidden_dependant_array_to_show,function(i,show_ele){
 					$(box).find(show_ele).parents('.multi-box-field').slideDown(300);
 				});
+			}else if( val === 'googlerecaptcha' ) {
+				var hidden_dependant_array_to_hide = [
+					'textarea[name=dropdown_options]',
+					'input[name=input_placeholder]',
+					'input[name=input_label]',
+					'input[name=row_value]',
+					'input[name=hidden_value]'
+				];
+				var hidden_dependant_array_to_show  = [
+					'input[name=input_require]',
+					'input[name=input_name]'
+				];
+
+				$.each(hidden_dependant_array_to_hide,function(i,ele){
+					$(box).find(ele).parents('.multi-box-field').slideUp(300);
+					$(box).find(ele).addClass('skip-input'); // skip input value to add to string
+				});
+
+				$.each(hidden_dependant_array_to_show,function(i,show_ele){
+					$(box).find(show_ele).parents('.multi-box-field').slideDown(300);
+				});
 			}
 			else if(val === 'dropdown') {
 				var dropdown_dependant_array_to_hide = [
@@ -354,6 +375,8 @@
 				});
 
 				//$(box).find('input[name=hidden_value]').val('');
+	
+
 			}
 		} // refresh dependancy
 

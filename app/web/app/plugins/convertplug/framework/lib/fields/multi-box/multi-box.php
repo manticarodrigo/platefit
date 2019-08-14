@@ -43,6 +43,7 @@ function available_form_input_types() {
 		'dropdown',
 		'hidden',
 		'checkbox',
+		'googlerecaptcha',
 	);
 	return $array;
 }
@@ -84,10 +85,11 @@ function render_multi_box( $uniq, $value ) {
 	$current_input_label_val = ( isset( $_value_array['input_label'] ) ) ? htmlspecialchars( $_value_array['input_label'] ) : '';
 	$accordion_label         = ( '' !== $current_input_label_val ) ? $current_input_label_val : $current_input_name_val;
 
-	$is_hidden        = false;
-	$is_dropdown      = false;
-	$need_placeholder = false;
-	$is_textarea      = false;
+	$is_hidden          = false;
+	$is_dropdown        = false;
+	$need_placeholder   = false;
+	$is_textarea        = false;
+	$is_googlerecaptcha = false;
 
 	$output           .= '<div class="multi-box">';
 	$output           .= '<div class="toggle-accordion-head">
@@ -116,6 +118,8 @@ function render_multi_box( $uniq, $value ) {
 				$need_placeholder = true;
 			} elseif ( $current_input_val === $type && ( 'checkbox' === $type ) ) {
 				$is_checkbox = true;
+			} elseif ( $current_input_val === $type && ( 'googlerecaptcha ' === $type ) ) {
+				$is_googlerecaptcha = true;
 			}
 		endforeach;
 	endif;
@@ -161,6 +165,15 @@ function render_multi_box( $uniq, $value ) {
 	$output .= '<span class="cp-tooltip-icon has-tip" data-position="right" title="Textarea height specifies the visible height of a text area, in lines." style="cursor: help;float: right;"><i class="dashicons dashicons-editor-help"></i></span>';
 	$output .= '<label>' . __( 'Textarea Height', 'smile' ) . '</label>';
 	$output .= '<input type="number" class="cp_mb_input" id="mb-row_value-' . $uniq . '" name="row_value" value="' . $current_row_value . '" min="0" />';
+	$output .= '</div>';
+
+	$googlerecaptcha_style_for_row = ( $is_googlerecaptcha ) ? 'style="display:block"' : 'style="display:none"';
+
+	$current_row_value1 = ( isset( $_value_array['row_value'] ) ) ? $_value_array['row_value'] : '';
+
+	$output .= '<div class="multi-box-field" ' . $googlerecaptcha_style_for_row . '>';
+	$output .= '<span class="cp-tooltip-icon has-tip" data-position="right" title="Textarea height specifies the visible height of a text area, in lines." style="cursor: help;float: right;"><i class="dashicons dashicons-editor-help"></i></span>';
+	// $output .= '<label>' . __( 'Textarea Height', 'smile' ) . '</label>';
 	$output .= '</div>';
 
 	$output           .= '<div class="multi-box-field" ' . $hidden_style_for_require . '>';

@@ -1997,6 +1997,26 @@ jQuery(document).on( "idle.idleTimer", function(event, elem, obj){
     });
 });
 
+/*Google Recaptcha */
+jQuery(window).on('load', function (e) {
+       if (jQuery('.g-recaptcha-response')[0]) {
+       jQuery('.cp-onload ').addClass('cp-recaptcha cp-recaptcha-index-1 cp-recaptcha-index-2 cp-recaptcha-index-3 cp-recaptcha-index-4 cp-recaptcha-index-5 cp-recaptcha-index-6 cp-recaptcha-index-7 ');
+       jQuery('.g-recaptcha-response').addClass('cp-recaptcha-required');
+       jQuery('.cp-recaptcha-required').prop('required',true);
+       jQuery('.g-recaptcha-response').parent().addClass('cp-g-recaptcha-response');
+        }
+       var element = jQuery('.cp-module'),
+        module_type   = element.data("module-type");
+        if ( module_type == 'info-bar'){
+            if ( jQuery('.g-recaptcha').parents('.cp-info-bar-container').length == 1 ) { 
+                jQuery('.cp-info-bar-body .cp-submit').addClass('cp-recaptcha-css');
+                jQuery('.ib-form-container .cp-form-container .cp-form-layout-3 .cp-submit .cp-recaptcha-css ').css('display','inline','!important');
+                jQuery('.ib-form-container .cp-form-container .cp-form-layout-3 .cp-submit-wrap').css('padding-bottom' , '40px');
+                
+            }
+        }
+});
+
 jQuery(document).ready(function(){
 
     ConvertPlus._check_responsive_font_sizes();

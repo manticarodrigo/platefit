@@ -150,7 +150,8 @@ function cp_enabled_mx_record_init() {
 function cp_is_style_visible( $settings ) {
 
 	global $post;
-	$post_id        = ( ! is_404() && ! is_search() && ! is_archive() && ! is_home() ) ? $post->ID : '';
+	$post_id = ( ! is_404() && ! is_search() && ! is_archive() && ! is_home() ) ? $post->ID : '';
+
 	$category       = get_queried_object_id();
 	$cat_ids        = wp_get_post_categories( $post_id );
 	$post_type      = get_post_type( $post );
@@ -298,7 +299,6 @@ function cp_is_style_visible( $settings ) {
 			if ( ! empty( $cat_ids ) ) {
 				foreach ( $cat_ids as $cat_id ) {
 					$term = get_term_by( 'id', $cat_id, 'category' );
-
 					if ( isset( $term->term_id ) ) {
 						$term_cat_id = $term->term_id;
 					}
@@ -356,8 +356,8 @@ function cp_is_style_visible( $settings ) {
 			}
 		} else {
 			$display = false;
-
 			if ( is_array( $exclusive_on ) && ! empty( $exclusive_on ) ) {
+
 				foreach ( $exclusive_on as $page ) {
 					if ( is_page( $page ) ) {
 						$display = true;
@@ -403,7 +403,6 @@ function cp_is_style_visible( $settings ) {
 						$term_id = wc_get_page_id( 'shop' );
 					}
 				}
-
 				if ( is_array( $exclusive_on ) && in_array( $term_id, $exclusive_on ) ) {
 					$display = true;
 				} elseif ( is_array( $exclusive_on ) && in_array( 'archive', $exclusive_on ) ) {
@@ -412,11 +411,11 @@ function cp_is_style_visible( $settings ) {
 			}
 
 			if ( $post_id ) {
+
 				if ( is_array( $exclusive_on ) && in_array( $post_id, $exclusive_on ) ) {
 					$display = true;
 				}
 			}
-
 			if ( ! empty( $cat_ids ) ) {
 				foreach ( $cat_ids as $cat_id ) {
 					$term = get_term_by( 'id', $cat_id, 'category' );
@@ -436,7 +435,9 @@ function cp_is_style_visible( $settings ) {
 					}
 				}
 			}
+
 			if ( ! empty( $exclusive_tax ) ) {
+
 				foreach ( $exclusive_tax as $taxonomy ) {
 					$taxonomy = str_replace( 'cp-', '', $taxonomy );
 
@@ -445,6 +446,7 @@ function cp_is_style_visible( $settings ) {
 					}
 
 					if ( 'category' === $taxonomy && is_category() ) {
+
 						$display = true;
 					}
 
@@ -1684,24 +1686,27 @@ if ( ! function_exists( 'cp_add_new_user_role' ) ) {
 	/**
 	 * Add subscriber as new user to site.
 	 *
-	 * @param  array  $param array of form parameters.
-	 * @param  string $roles  role assigne for user.
+	 * @param  array $param array of form parameters.
 	 */
-
 	function cp_add_new_user_role( $param ) {
 
 		$user_role = '';
-		
+
 		if ( 'modal' === $param['style_name'] ) {
-			$module_data = get_option( 'smile_modal_styles' );
+			$module_data         = get_option( 'smile_modal_styles' );
+			$module_variant_data = get_option( 'modal_variant_tests' );
+
 		}
 
 		if ( 'infobar' === $param['style_name'] ) {
-			$module_data = get_option( 'smile_info_bar_styles' );
+			$module_data         = get_option( 'smile_info_bar_styles' );
+			$module_variant_data = get_option( 'info_bar_variant_tests' );
 		}
 
 		if ( 'slidein' === $param['style_name'] ) {
-			$module_data = get_option( 'smile_slide_in_styles' );
+			$module_data         = get_option( 'smile_slide_in_styles' );
+			$module_variant_data = get_option( 'slide_in_variant_tests' );
+
 		}
 
 		$user_email = isset( $param['email'] ) ? $param['email'] : '';
@@ -1712,12 +1717,25 @@ if ( ! function_exists( 'cp_add_new_user_role' ) ) {
 			if ( '' != $module_data[ $key ]['style_settings'] ) {
 				if ( '' != $module_data[ $key ]['style_id'] && $param['style_id'] == $module_data[ $key ]['style_id'] ) {
 					$prev_styles_array = unserialize( $module_data[ $key ]['style_settings'] );
-					$user_role     = $prev_styles_array['cp_new_user_role'];
+					$user_role         = $prev_styles_array['cp_new_user_role'];
+				}
+			}
+		}
+		if ( $module_variant_data ) {
+			foreach ( $module_variant_data as $key => $value ) {
+				foreach ( $value as $key_data => $data_value ) {
+					if ( '' != $data_value['style_settings'] ) {
+						$data_variant = unserialize( $data_value['style_settings'] );
+						if ( '' != $data_variant['variant_style_id'] && $param['style_id'] == $data_variant['variant_style_id'] ) {
+							$user_role = $data_variant['cp_new_user_role'];
+
+						}
+					}
 				}
 			}
 		}
 
-		if ( 'none' !== $user_role && 'None' !== $user_role && ! $id and email_exists( $user_email ) == false ) {
+		if ( '' !== $user_role && 'none' !== $user_role && 'None' !== $user_role && ! $id and email_exists( $user_email ) == false ) {
 
 			$random_password = wp_generate_password( 12, false );
 
@@ -2341,31 +2359,53 @@ if ( ! function_exists( 'cp_get_setting' ) ) {
 	 *
 	 * @param  string $style_id style ID.
 	 * @param  string $style_type  style type.
+	 * @param string $setting_key settings key to fetch.
 	 * @return string $setting_key settings key to fetch.
 	 */
 	function cp_get_setting( $style_id, $style_type, $setting_key ) {
-
 		if ( 'modal' === $style_type ) {
-			$module_data = get_option( 'smile_modal_styles' );
-		}
+			$module_data         = get_option( 'smile_modal_styles' );
+			$module_variant_data = get_option( 'modal_variant_tests' );
 
+		}
 		if ( 'infobar' === $style_type ) {
-			$module_data = get_option( 'smile_info_bar_styles' );
-		}
+			$module_data         = get_option( 'smile_info_bar_styles' );
+			$module_variant_data = get_option( 'info_bar_variant_tests' );
 
+		}
 		if ( 'slidein' === $style_type ) {
-			$module_data = get_option( 'smile_slide_in_styles' );
+			$module_data         = get_option( 'smile_slide_in_styles' );
+			$module_variant_data = get_option( 'slide_in_variant_tests' );
+
 		}
+		if ( isset( $module_data ) ) {
+			foreach ( $module_data  as $key => $value ) {
+				if ( '' != $module_data[ $key ]['style_settings'] ) {
+					if ( '' != $module_data[ $key ]['style_id'] && $style_id == $module_data[ $key ]['style_id'] ) {
+						$prev_styles_array = unserialize( $module_data[ $key ]['style_settings'] );
+							$setting_key   = $prev_styles_array['mailer'];
+							return $setting_key;
 
-		if ( isset( $module_data[0] ) ) {
-			$style_settings = unserialize( $module_data[0]['style_settings'] );
-
-			if ( isset( $style_settings[ $setting_key ] ) ) {
-				return $style_settings[ $setting_key ];
+					}
+				}
 			}
 		}
 
-		return '';
-
+		if ( isset( $module_variant_data ) ) {
+			foreach ( $module_variant_data as $key => $value ) {
+				foreach ( $value as $key_data => $data_value ) {
+					if ( '' != $data_value['style_settings'] ) {
+						$data_variant = unserialize( $data_value['style_settings'] );
+						if ( '' != $data_variant['variant_style_id'] && $style_id == $data_variant['variant_style_id'] ) {
+							$setting_key = $data_variant['mailer'];
+							return $setting_key;
+						}
+					}
+				}
+			}
+		}
+			return '';
 	}
 }
+
+

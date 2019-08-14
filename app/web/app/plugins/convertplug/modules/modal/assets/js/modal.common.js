@@ -1000,3 +1000,6 @@ function cp_social_responsive(){
         }
      });
 }
+function cp_googel_recaptcha_badge(){
+    jQuery('.g-recaptcha-bubble-arrow').parent().parent();
+}
