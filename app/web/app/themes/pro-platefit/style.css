@@ -10,9 +10,13 @@ Template: pro
 
 */
 
+/* Base */
+
 body, input, button, select, textarea {
 	font-family: "Lato",sans-serif;
 }
+
+/* Custom */
 
 .container {
 	margin: 0 40px;
@@ -102,7 +106,7 @@ body, input, button, select, textarea {
 	text-align: center;
 }
 
-/* Custom fonts import */
+/* Fonts */
 
 @font-face {
 	font-family: Knockout-HTF49-Liteweight;
@@ -152,7 +156,7 @@ body, input, button, select, textarea {
 	font-weight: normal;
 }
 
-/* Navbar styles */
+/* Navbar */
 
 @media only screen and (min-width: 975px) {
 	.x-navbar-inner {
@@ -251,13 +255,13 @@ i.x-icon-bars {
 	color: #333333;
 }
 
-/* X styles */
+/* X */
 
 header.x-header-landmark {
 	display: none !important;
 }
 
-/* Footer styles */
+/* Footer */
 
 @media only screen and (min-width: 975px) {
 	footer .x-container .x-column:last-of-type .widget:first-of-type {
@@ -363,7 +367,7 @@ footer a {
 	text-transform: none;
 }
 
-/* Element styles */
+/* Elements */
 
 h1 {
 	font-family: "Knockout-HTF49-Liteweight", sans-serif !important;
@@ -426,7 +430,7 @@ select {
 	color: rgba(255,255,255,0);
 }
 
-/* Body styles */
+/* Body */
 
 @media only screen and (max-width: 900px) {
   .main-header {
@@ -533,7 +537,7 @@ x-section.white-overlay {
   color: #333333 !important;
 }
 
-/* Scroll-top styles */
+/* Scroll-top */
 
 .x-scroll-top {
 	border-radius: 0px;
@@ -575,7 +579,7 @@ x-section.white-overlay {
 	display: none;
 }
 
-/* Video player styles */
+/* Video player */
 
 @media handheld, only screen and (max-width: 767px) {
 	.x-content-band.bg-image {
@@ -625,7 +629,7 @@ x-section.white-overlay {
 	object-fit: cover !important;
 }
 
-/* Slider styles */
+/* Slider */
 
 .quote-slider .x-slides img {
   object-fit: cover;
@@ -650,7 +654,7 @@ x-section.white-overlay {
 	background-color: #fed710;
 }
 
-/* Block quote styles */
+/* Block quote */
 
 .block-quote {
  	background-image: url("images/quote.png");
@@ -719,7 +723,7 @@ x-section.white-overlay {
   transform: rotate(0deg);
 }
 
-/* Woocommerce styles */
+/* Woocommerce */
 
 .woocommerce-page header.x-header-landmark {
 	display: none !important;
@@ -762,7 +766,16 @@ x-section.white-overlay {
 	background-color: #fed710 !important;
 }
 
-/* Modal styles */
+/* Convert Plug */
+
+.cp-overlay-close {
+	border-radius: 50%;
+	background-color: #000;
+}
+
+.cp-overlay-close img {
+	padding: 8px !important;
+}
 
 @media only screen and (max-width: 750px) {
 	.cp-modal-body h2 {
@@ -832,7 +845,7 @@ x-section.white-overlay {
 	cursor: pointer;
 }
 
-/* MindBody styles */
+/* MindBody */
 
 .bw-widget button {
 	border-radius: 0px !important;
@@ -897,7 +910,7 @@ x-section.white-overlay {
   display: none !important;
 }
 
-/* Class & Trainer Schedule styles */
+/* Class & Trainer Schedule */
 
 .bw-session {
   border-bottom-width: 0px;
