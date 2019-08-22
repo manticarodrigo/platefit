@@ -341,8 +341,6 @@ if ( ! class_exists( 'Smile_Slide_Ins' ) ) {
 
 				wp_enqueue_style( 'smile-slide_in', CP_PLUGIN_URL . 'modules/slide_in/assets/css/slide_in.min.css' );
 
-			    $handel = 'jquery';
-
 				wp_localize_script( 'jquery', 'slide_in', array( 'demo_dir' => CP_PLUGIN_URL . 'modules/slide_in/assets/demos' ) );
 
 				wp_register_script( 'smile-slide_in-common', CP_PLUGIN_URL . 'modules/slide_in/assets/js/slide_in.common.js', array( 'jquery' ), null, true );
@@ -395,7 +393,6 @@ if ( ! class_exists( 'Smile_Slide_Ins' ) ) {
 					// Register scripts.
 					wp_enqueue_style( 'cp-frosty-style', CP_PLUGIN_URL . 'admin/assets/css/frosty.css', array(), CP_VERSION );
 					wp_register_script( 'smile-slide-in-common', CP_PLUGIN_URL . 'modules/slide_in/assets/js/slide_in.common.js', array(), CP_VERSION, true );
-
 					wp_register_script( 'smile-cp-common-script', CP_PLUGIN_URL . 'modules/assets/js/convertplug-common.js', array( 'jquery' ), CP_VERSION, true );
 					wp_register_script( 'smile-slide-in-script', CP_PLUGIN_URL . 'modules/slide_in/assets/js/slide_in.js', array( 'jquery', 'smile-cp-common-script' ), CP_VERSION, true );
 
@@ -520,7 +517,7 @@ if ( ! function_exists( 'cp_slide_in_custom' ) ) {
 				$settings_encoded = base64_encode( $encode_settings );
 
 				echo '<span class="cp-trigger-shortcode cp-trigger-' . $style_id . ' cp-' . $style_id . '">' . do_shortcode( $content ) . '</span>';
-
+				
 				if ( $display ) {
 
 					// Individual Style Path.

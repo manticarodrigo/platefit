@@ -7,7 +7,7 @@
 
 defined( 'ABSPATH' ) || die( 'No direct script access allowed!' );
 
-require_once CP_BASE_DIR . 'admin/contacts/views/class-cp-paginator.php';
+require_once CP_BASE_DIR . 'admin/contacts/views/cp-paginator.php';
 
 	// Remove All Styles.
 $remove_styles = ( isset( $_GET['remove-styles'] ) ) ? esc_attr( $_GET['remove-styles'] ) : 'false';

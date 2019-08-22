@@ -37,7 +37,7 @@ if ( $contacts ) {
 	$total_contacts = count( $contacts );
 }
 
-require_once CP_BASE_DIR . '/admin/contacts/views/class-cp-paginator.php';
+require_once CP_BASE_DIR . '/admin/contacts/views/cp-paginator.php';
 
 $limit         = ( isset( $_GET['limit'] ) ) ? intval( $_GET['limit'] ) : 10;
 $page          = ( isset( $_GET['cont-page'] ) ) ? intval( $_GET['cont-page'] ) : 1;

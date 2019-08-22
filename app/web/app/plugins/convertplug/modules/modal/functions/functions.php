@@ -724,12 +724,10 @@ if ( ! function_exists( 'cp_modal_global_after_init' ) ) {
 			$css_code1 .= generate_border_css( $a['border'] );
 		}
 
-		$msg_bg_image_opts = isset( $a['succes_bg_img_src'] ) ? $a['succes_bg_img_src'] : '';
 		$form_process_css  = '';
 		$form_process_css  = $css_code1 . ';';
 		$form_process_css .= 'border-width: 0px;';
-		// $form_process_css .= 'box-shadow: 0 0 3px 1px ' . $a['modal_overlay_bg_color'] . ' inset;';
-		$form_process_css .= 'background-image:url(' . $msg_bg_image_opts . ')';
+		$form_process_css .= 'box-shadow: 0 0 3px 1px ' . $a['modal_overlay_bg_color'] . ' inset;';
 
 		// check if inline display is set.
 		$is_inline = ( isset( $a['display'] ) && 'inline' === $a['display'] ) ? true : false;
@@ -755,8 +753,9 @@ if ( ! function_exists( 'cp_modal_global_after_init' ) ) {
 			echo "<div class='cp_edit_link'><a target='_blank' href=" . $edit_link . " rel ='noopener'>" . $edit_link_txt . '</a></div>';
 		}
 
-			$msg_color = isset( $a['message_color'] ) ? $a['message_color'] : '';
+		$msg_color = isset( $a['message_color'] ) ? $a['message_color'] : '';
 		?>
+
 </div><!-- .cp-modal-content -->
 
 		<?php if ( isset( $a['form_layout'] ) && 'cp-form-layout-4' !== $a['form_layout'] ) { ?>
@@ -768,7 +767,7 @@ if ( ! function_exists( 'cp_modal_global_after_init' ) ) {
 			echo cp_get_form_process_html( $form_css );
 			?>
 		</div>
-			<div class ="cp-msg-on-submit" style="color:<?php echo esc_attr( $msg_color ); ?>"></div>
+		<div class ="cp-msg-on-submit" style="color:<?php echo esc_attr( $msg_color ); ?>"></div>
 	</div>
 </div>
 		<?php } ?>

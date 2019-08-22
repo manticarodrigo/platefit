@@ -473,8 +473,6 @@
                 }
             }
 
-            
-
             if( type !== 'hidden' ) {
                 p++;
             }
@@ -546,10 +544,6 @@
                     case 'textarea':        //  Textarea
                                             HTML    += '<textarea class="cp-input cp-' + type + '"' + require
                                                 + ' name="' + name + '" placeholder="' + placeholder + '" '+row_value+'></textarea>';
-                        break;
-                    case 'googlerecaptcha':        //  Google Recaptcha
-                                            HTML    += '<textarea class="cp-input cp-' + type + '"' + require
-                                                + ' name="' + name + '" placeholder="' + placeholder + '" '+row_value+'> This is a recaptcha field.This will appear at frontend.</textarea>';
                         break;
                     case 'number':
                                             HTML += '<input type="number" min="" max="" step="" value="" class="cp-' + type + '"'

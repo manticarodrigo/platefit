@@ -1,6 +1,5 @@
 <?php
 /**
- * Prohibit direct script loading.
  *
  * @package Convert_Plus.
  */
@@ -386,7 +385,6 @@ if ( ! class_exists( 'Smile_Info_Bars' ) ) {
 
 					// Register scripts.
 					wp_register_script( 'smile-cp-common-script', CP_PLUGIN_URL . 'modules/assets/js/convertplug-common.js', array( 'jquery' ), CP_VERSION, true );
-
 					wp_register_script( 'smile-info-bar-script', CP_PLUGIN_URL . 'modules/info_bar/assets/js/info_bar.js', array( 'jquery', 'smile-cp-common-script' ), CP_VERSION );
 
 					wp_register_script(
@@ -400,7 +398,6 @@ if ( ! class_exists( 'Smile_Info_Bars' ) ) {
 				} else {
 					wp_enqueue_style( 'smile-info-bar-style', CP_PLUGIN_URL . 'modules/info_bar/assets/css/info_bar.min.css', array(), CP_VERSION );
 					wp_register_script( 'smile-info-bar-script', CP_PLUGIN_URL . 'modules/info_bar/assets/js/info_bar.min.js', array( 'jquery' ), CP_VERSION );
-
 				}
 			}
 

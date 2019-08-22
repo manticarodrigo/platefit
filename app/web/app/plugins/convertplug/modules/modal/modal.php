@@ -414,7 +414,6 @@ if ( ! class_exists( 'Smile_Modals' ) ) {
 					// Register scripts.
 					wp_register_script( 'smile-modal-common', CP_PLUGIN_URL . 'modules/modal/assets/js/modal.common.js', array( 'jquery' ), CP_VERSION, true );
 					wp_register_script( 'smile-cp-common-script', CP_PLUGIN_URL . 'modules/assets/js/convertplug-common.js', array( 'jquery' ), CP_VERSION, true );
-
 					wp_register_script( 'smile-modal-script', CP_PLUGIN_URL . 'modules/modal/assets/js/modal.js', array( 'jquery', 'smile-cp-common-script' ), CP_VERSION, true );
 					wp_register_script(
 						'cp-modal-mailer-script',
@@ -429,7 +428,6 @@ if ( ! class_exists( 'Smile_Modals' ) ) {
 					wp_register_script( 'smile-modal-script', CP_PLUGIN_URL . 'modules/modal/assets/js/modal.min.js', array( 'jquery' ), CP_VERSION, true );
 					wp_enqueue_style( 'cp-module-main-style' );
 					wp_enqueue_style( 'smile-modal-style', CP_PLUGIN_URL . 'modules/modal/assets/css/modal.min.css', array(), CP_VERSION );
-
 				}
 
 				wp_localize_script( 'smile-modal-script', 'smile_ajax', array( 'url' => admin_url( 'admin-ajax.php' ) ) );
@@ -516,7 +514,6 @@ if ( ! function_exists( 'cp_modal_custom' ) ) {
 				$live_array     = $modal_array;
 				$settings       = unserialize( $modal_array['style_settings'] );
 				$settings_array = unserialize( $modal_array['style_settings'] );
-
 				foreach ( $settings_array as $key => $setting ) {
 					$style_settings[ $key ] = $setting;
 				}

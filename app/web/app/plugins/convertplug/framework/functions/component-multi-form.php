@@ -1165,19 +1165,6 @@ if ( ! function_exists( 'cp_get_form_init' ) ) {
 															echo '<textarea class="cp-input cp-' . $type . '"' . $require
 															. ' name="param[' . $name . ']" placeholder="' . $placeholder . '" ' . $rows . '></textarea>';
 															break;
-														case 'googlerecaptcha':        // Google Recaptcha.
-															if ( ! wp_script_is( 'cp-google-recaptcha', 'enqueued' ) ) {
-																wp_register_script( 'cp-google-recaptcha', 'https://www.google.com/recaptcha/api.js', array( 'jquery' ), null, true );
-
-																wp_enqueue_script( 'cp-google-recaptcha' );
-															}
-
-															$google_recaptcha_site_key = esc_attr( get_option( 'cp_recaptcha_site_key' ) );
-
-															echo '<input type = "hidden" name = "cp_verify_google_recaptcha" class = "cp_verify_google_recaptcha" />';
-															echo '<div id="id-g-recaptcha" class="g-recaptcha" data-sitekey="' . $google_recaptcha_site_key . ' ">
-														</div>';
-															break;
 														case 'number':          // Number.
 															echo '<input type="number" min="" max="" step="" value="" class="cp-input cp-' . $type . '"'
 															. ' name="param[' . $name . ']"'

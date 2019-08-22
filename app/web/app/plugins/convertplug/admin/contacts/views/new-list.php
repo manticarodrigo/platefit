@@ -86,7 +86,7 @@ $cp_addon_list = Smile_Framework::$addon_list;?>
 										<?php } ?>
 										<div class="bsf-cnlist-form-row short-description" >
 											<p class="description">
-												<?php esc_html_e( 'Your connects can be synced to CRM & Mailer softwares like HubSpot, MailChimp, etc.<br><br><strong>Important Note</strong> - If you need to integrate with third party CRM & Mailer software like MailChimp, Infusionsoft, etc. please install the respective addon from <a href="' . bsf_exension_installer_url( '14058953' ) . '">here</a>.', 'smile' ); ?>
+												<?php _e( 'Your connects can be synced to CRM & Mailer softwares like HubSpot, MailChimp, etc.<br><br><strong>Important Note</strong> - If you need to integrate with third party CRM & Mailer software like MailChimp, Infusionsoft, etc. please install the respective addon from <a href="' . bsf_exension_installer_url( '14058953' ) . '">here</a>.', 'smile' ); ?>
 											</p>
 										</div>
 									</div><!-- .steps-section -->

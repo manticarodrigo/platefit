@@ -4,7 +4,7 @@
 	Plugin URI: https://www.convertplug.com/plus
 	Author: Brainstorm Force
 	Author URI: https://www.brainstormforce.com
-	Version: 3.5.1
+	Version: 3.4.4
 	Description: Welcome to Convert Plus - the easiest WordPress plugin to convert website traffic into leads. Convert Plus will help you build email lists, drive traffic, promote videos, offer coupons and much more!
 	Text Domain: smile
 	License: GPL version 2 or later - http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
@@ -16,7 +16,7 @@
 defined( 'ABSPATH' ) || die( 'No direct script access allowed!' );
 
 if ( ! defined( 'CP_VERSION' ) ) {
-	define( 'CP_VERSION', '3.5.1' );
+	define( 'CP_VERSION', '3.4.4' );
 }
 
 if ( ! defined( 'CP_BASE_DIR' ) ) {
@@ -225,9 +225,7 @@ if ( ! class_exists( 'Convert_Plug' ) ) {
 			// change registration page URL.
 			add_action( 'bsf_registration_page_url_14058953', array( $this, 'cp_get_registration_page_url' ) );
 
-
-			// Css Asynchronous Loading
-
+			// Css Asynchronous Loading.
 			$data = get_option( 'convert_plug_settings' );
 
 			if ( isset( $data['cp-load-syn'] ) && '1' === $data['cp-load-syn'] ) {
@@ -315,7 +313,9 @@ if ( ! class_exists( 'Convert_Plug' ) ) {
 		 * @since 2.3.2
 		 */
 		function cp_set_options() {
+
 			update_option( 'cp_is_displayed_debug_info', false );
+
 		}
 
 		/**
@@ -379,7 +379,9 @@ if ( ! class_exists( 'Convert_Plug' ) ) {
 		 * @since 1.0.0
 		 */
 		function cp_load_textdomain() {
+
 			load_plugin_textdomain( 'smile', false, CP_DIR_NAME . '/lang' );
+
 		}
 
 		/**
@@ -445,7 +447,7 @@ if ( ! class_exists( 'Convert_Plug' ) ) {
 
 			wp_enqueue_script( 'wp-color-picker' );
 			wp_enqueue_style( 'wp-color-picker' );
-			
+
 			$data = get_option( 'convert_plug_debug' );
 
 			if ( false !== strpos( $hook, CP_PLUS_SLUG ) ) {
@@ -585,7 +587,6 @@ if ( ! class_exists( 'Convert_Plug' ) ) {
 				wp_register_script( 'cp-module-main-js', CP_PLUGIN_URL . 'modules/assets/js/cp-module-main.js', array( 'jquery' ), CP_VERSION );
 				wp_register_style( 'cp-module-main-style', CP_PLUGIN_URL . 'modules/assets/css/cp-module-main.css', array(), CP_VERSION );
 			}
-	
 		}
 
 		/**
@@ -594,6 +595,7 @@ if ( ! class_exists( 'Convert_Plug' ) ) {
 		 * @since 1.0
 		 */
 		function add_admin_menu() {
+
 			$page = add_menu_page( CP_PLUS_NAME . ' Dashboard', CP_PLUS_NAME, 'access_cp', CP_PLUS_SLUG, array( $this, 'admin_dashboard' ), 'div' );
 
 			add_action( 'admin_print_scripts-' . $page, array( $this, 'convert_admin_scripts' ) );
@@ -670,17 +672,6 @@ if ( ! class_exists( 'Convert_Plug' ) ) {
 				array( $this, 'cp_font_manager' )
 			);
 
-
-			$google_recaptcha_manager = add_submenu_page(
-				CP_PLUS_SLUG,
-				__( 'Google Recaptcha Manager', 'smile' ),
-				__( 'Google reCaptcha', 'smile' ),
-				'access_cp',
-				'bsf-google-recaptcha-manager',
-				array( $this, 'cp_recaptcha_manager' )
-			);
-			add_action( 'admin_footer-' . $google_recaptcha_manager, array( $this, 'cp_admin_footer' ) );
-
 			add_submenu_page(
 				CP_PLUS_SLUG,
 				__( 'Knowledge Base', 'smile' ),
@@ -693,8 +684,6 @@ if ( ! class_exists( 'Convert_Plug' ) ) {
 			$ultimate_google_font_manager = new Ultimate_Google_Font_Manager;
 			add_action( 'admin_print_scripts-' . $google_manager, array( $ultimate_google_font_manager, 'admin_google_font_scripts' ) );
 			add_action( 'admin_footer-' . $google_manager, array( $this, 'cp_admin_footer' ) );
-
-
 		}
 
 		/**
@@ -723,15 +712,6 @@ if ( ! class_exists( 'Convert_Plug' ) ) {
 		}
 
 		/**
-		 * Function Name: cp_recaptcha_manager.
-		 */
-		function cp_recaptcha_manager() {
-
-			require_once( CP_BASE_DIR . 'framework/google-recaptcha-manager.php' );
-		}
-
-
-		/**
 		 * Function Name: cp_resources.
 		 */
 		function cp_resources() {
@@ -752,15 +732,12 @@ if ( ! class_exists( 'Convert_Plug' ) ) {
 				return false;
 			}
 
-
-			$temp_resource                 = array();
-			$temp_connect                  = array();
-			$temp_google_font_manager      = array();
-			$temp_google_recaptcha_manager = array();
-			$temp_font_icon_manager        = array();
-			$temp_in_sync                  = array();
-			$temp_knowledge_base           = array();
-
+			$temp_resource            = array();
+			$temp_connect             = array();
+			$temp_google_font_manager = array();
+			$temp_font_icon_manager   = array();
+			$temp_in_sync             = array();
+			$temp_knowledge_base      = array();
 
 			foreach ( $submenu[ CP_PLUS_SLUG ] as $key => $cp_submenu ) {
 				if ( 'cp-resources' === $cp_submenu[2] ) {
@@ -783,12 +760,6 @@ if ( ! class_exists( 'Convert_Plug' ) ) {
 					$temp_google_font_manager = $submenu[ CP_PLUS_SLUG ][ $key ];
 					unset( $submenu[ CP_PLUS_SLUG ][ $key ] );
 				}
-
-				if ( 'bsf-google-recaptcha-manager' === $cp_submenu[2] ) {
-					$temp_google_recaptcha_manager = $submenu[ CP_PLUS_SLUG ][ $key ];
-					unset( $submenu[ CP_PLUS_SLUG ][ $key ] );
-				}
-
 				if ( 'knowledge-base' === $cp_submenu[2] ) {
 					$temp_knowledge_base = $submenu[ CP_PLUS_SLUG ][ $key ];
 					unset( $submenu[ CP_PLUS_SLUG ][ $key ] );
@@ -825,11 +796,6 @@ if ( ! class_exists( 'Convert_Plug' ) ) {
 			if ( ! empty( $temp_google_font_manager ) ) {
 				array_push( $submenu[ CP_PLUS_SLUG ], $temp_google_font_manager );
 			}
-
-			if ( ! empty( $temp_google_recaptcha_manager ) ) {
-				array_push( $submenu[ CP_PLUS_SLUG ], $temp_google_recaptcha_manager );
-			}
-
 			if ( ! empty( $temp_knowledge_base ) ) {
 				array_push( $submenu[ CP_PLUS_SLUG ], $temp_knowledge_base );
 			}
@@ -913,7 +879,6 @@ if ( ! class_exists( 'Convert_Plug' ) ) {
 		 */
 		function cp_admin_footer() {
 			echo'<div id="wpfooter" role="contentinfo" class="cp_admin_footer">
-
             <p id="footer-left" class="alignleft">
             <span id="footer-thankyou">Thank you for using <a href="https://www.convertplug.com/plus" target="_blank" rel="noopener" >' . CP_PLUS_NAME . '</a>.</span>   </p>
             <p id="footer-upgrade" class="alignright">';
@@ -921,7 +886,7 @@ if ( ! class_exists( 'Convert_Plug' ) ) {
 			echo ' ' . CP_VERSION;echo  '</p>
             <div class="clear"></div>
             </div>';
-        }
+		}
 
 		/**
 		 * Load convertPlug dashboard.
@@ -1026,8 +991,6 @@ if ( ! class_exists( 'Convert_Plug' ) ) {
 
 				$data[] = $list;
 				update_option( 'smile_lists', $data );
-
-
 			}
 
 			$data_settings = get_option( 'convert_plug_settings' );
@@ -1064,7 +1027,6 @@ if ( ! class_exists( 'Convert_Plug' ) ) {
 				);
 				update_option( 'convert_plug_settings', $module_setings );
 			}
-
 		}
 
 		/**
@@ -1078,7 +1040,9 @@ if ( ! class_exists( 'Convert_Plug' ) ) {
 				$this->create_default_campaign();
 				if ( ! is_multisite() ) :
 					wp_redirect( admin_url( 'admin.php?page=' . CP_PLUS_SLUG ) );
+
 				endif;
+
 			}
 		}
 
@@ -1109,15 +1073,13 @@ if ( ! class_exists( 'Convert_Plug' ) ) {
             }
             </style>';
 
-           		// Remove WooCommerce's annoying update message.
-
+				// Remove WooCommerce's annoying update message.
 				remove_action( 'admin_notices', 'woothemes_updater_notice' );
 
 				// Remove admin notices.
 				remove_action( 'admin_notices', 'update_nag', 3 );
 			}
 		}
-
 
 		/**
 		 * Deregister scripts on customizer page
@@ -1214,9 +1176,7 @@ if ( ! class_exists( 'Convert_Plug' ) ) {
 					wp_dequeue_script( 'ocdi-main-js' );
 					// conflict with Easy Pricing Table.
 					wp_dequeue_script( 'jscolor' );
-
-					// conflict with the woocommerce_order_attchment_pro
-
+					// conflict with the woocommerce_order_attchment_pro.
 					if ( function_exists( 'phoen_attchment_plugin_header_scripts' ) ) {
 						remove_action( 'admin_head', 'phoen_attchment_plugin_header_scripts' );
 					}
@@ -1486,7 +1446,9 @@ if ( ! function_exists( 'bsf_core_load' ) ) {
 	function bsf_core_load() {
 		global $bsf_core_version, $bsf_core_path;
 		if ( is_file( realpath( $bsf_core_path . '/index.php' ) ) ) {
-			include_once realpath( $bsf_core_path . '/index.php' );
+			if ( is_admin() ) {
+				include_once realpath( $bsf_core_path . '/index.php' );
+			}
 		}
 	}
 }
@@ -1508,33 +1470,36 @@ function cp_bsf_core_style_hooks( $hooks ) {
 if ( ! function_exists( 'cp_bsf_extensions_menu' ) ) {
 	/**
 	 * Function Name: cp_bsf_extensions_menu Register Convertplug Add-ons installer menu.
+	 *
+	 * @param  array $reg_menu array parameter.
+	 * @return array           array parameter.
 	 */
-	function cp_bsf_extensions_menu() {
-		if ( is_multisite() ) {
-			$parent = 'settings.php';
-		} else {
-			$parent = CP_PLUS_SLUG;
+	function cp_bsf_extensions_menu( $reg_menu ) {
+		$reg_menu = get_site_option( 'bsf_installer_menu', $reg_menu );
+		$_dir     = CP_BASE_DIR;
+
+		if ( '' == $reg_menu ) {
+			$reg_menu = array();
 		}
 
-		add_submenu_page(
-			$parent,
-			__( 'Addons', 'smile' ),
-			__( 'Addons', 'smile' ),
-			'manage_options',
-			'bsf-extensions-14058953',
-			'cplus_extension_installer'
+		$bsf_cp_id = bsf_extract_product_id( $_dir );
+
+		$reg_menu['ConvertPlus'] = array(
+			'parent_slug' => CP_PLUS_SLUG,
+			'page_title'  => __( 'Addons', 'smile' ),
+			'menu_title'  => __( 'Addons', 'smile' ),
+			'product_id'  => $bsf_cp_id,
 		);
+
+		update_site_option( 'bsf_installer_menu', $reg_menu );
+		return $reg_menu;
 	}
 }
 
-if ( ! function_exists( 'cplus_extension_installer' ) ) {
-	function cplus_extension_installer() {
-		include_once BSF_UPDATER_PATH . '/plugin-installer/index.php';
-	}
+add_filter( 'bsf_installer_menu', 'cp_bsf_extensions_menu' );
+if ( is_multisite() ) {
+	add_action( 'admin_head', 'cp_bsf_extensions_menu' );
 }
-
-add_action( 'network_admin_menu', 'cp_bsf_extensions_menu', 9999 );
-add_action( 'admin_menu', 'cp_bsf_extensions_menu', 9999 );
 
 /**
  * Multisite Extension menue for ConvertPlus.
@@ -1630,8 +1595,10 @@ if ( ! function_exists( 'bsf_dismiss_notice' ) ) {
 	 * Function Name: bsf_dismiss_notice.
 	 */
 	function bsf_dismiss_notice() {
+
 		$notice = 'hide-bsf-core-notice';
 		$x      = bsf_update_option( $notice, true );
+
 		echo ( $x ) ? true : false;
 		die();
 	}

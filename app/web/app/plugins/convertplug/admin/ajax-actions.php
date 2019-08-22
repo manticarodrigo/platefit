@@ -40,8 +40,6 @@ $ajax_events = array(
 	'cp_delete_all_modal_action'      => false,
 	'smile_update_custom_conversions' => true,
 	'cp_dismiss_phardata_notice'      => true,
-	'cp_verify_google_recaptcha'      => true,
-	'cp_google_recaptcha'             => true,
 );
 
 foreach ( $ajax_events as $event_slug => $is_nopriv ) {
@@ -152,8 +150,6 @@ if ( ! function_exists( 'update_style_settings' ) ) {
 
 		$style_type = $settings['style_type'];
 		$option     = 'smile_' . $style_type . '_styles';
-
-		$option = $settings['option'];
 
 		$prev_styles = get_option( $option );
 
@@ -1002,10 +998,11 @@ if ( ! function_exists( 'cp_add_subscriber' ) ) {
 
 		$only_conversion = false;
 
-		$param           = array_map( 'sanitize_text_field', wp_unslash( $_POST['param'] ) );
-		$email           = isset( $_POST['param']['email'] ) ? sanitize_email( $_POST['param']['email'] ) : '';
-		$style_type      = isset( $_POST['cp_module_type'] ) ? sanitize_text_field( $_POST['cp_module_type'] ) : '';
-		$list_id         = cp_get_setting( $style_id, $style_type, 'mailer' );
+		$param      = array_map( 'sanitize_text_field', wp_unslash( $_POST['param'] ) );
+		$email      = isset( $_POST['param']['email'] ) ? sanitize_email( $_POST['param']['email'] ) : '';
+		$style_type = isset( $_POST['cp_module_type'] ) ? sanitize_text_field( $_POST['cp_module_type'] ) : '';
+		$list_id    = cp_get_setting( $style_id, $style_type, 'mailer' );
+
 		$data_option     = cp_generate_option( $list_id );
 		$only_conversion = isset( $_POST['only_conversion'] ) ? true : false;
 		$default_action  = isset( $_POST['action'] ) ? sanitize_text_field( $_POST['action'] ) : '';
@@ -1074,54 +1071,6 @@ if ( ! function_exists( 'cp_add_subscriber' ) ) {
 		$contact       = array();
 		$prev_contacts = get_option( $data_option );
 
-		$cp_verify_google_recaptcha = isset( $_POST['cp_verify_google_recaptcha'] ) ? 0 : 1;
-
-		if ( ! $cp_verify_google_recaptcha ) {
-
-			$google_recaptcha        = isset( $_POST['g-recaptcha-response'] ) && 1 ? $_POST['g-recaptcha-response'] : '';
-			$cp_recaptcha_secret_key = sanitize_text_field( get_option( 'cp_recaptcha_secret_key ' ) );
-			$status                  = '';
-
-			// calling google recaptcha api.
-			$g_url           = 'https://www.google.com/recaptcha/api/siteverify';
-			$google_response = add_query_arg(
-				array(
-					'secret'   => $cp_recaptcha_secret_key,
-					'response' => $google_recaptcha,
-					'remoteip' => $_SERVER['REMOTE_ADDR'],
-				),
-				$g_url
-			);
-			$cp_response     = wp_remote_get( $google_response );
-
-			$decode_google_response = json_decode( $cp_response['body'] );
-
-			if ( false === $decode_google_response->success ) {
-						$detailed_msg = __( 'Invalid Secret Key for Google Recaptcha', 'smile' );
-						$msg          = '';
-						$status       = 'error';
-						$email_status = false;
-						$store        = false;
-
-			}
-
-			if ( 'error' == $status ) {
-				print_r(
-					json_encode(
-						array(
-							'action'       => $action,
-							'email_status' => $email_status,
-							'status'       => $status,
-							'message'      => $msg,
-							'detailed_msg' => $detailed_msg,
-							'url'          => $url,
-						)
-					)
-				);
-
-				die();
-			}
-		}
 		// Check Email in MX records.
 		$email_status = true;
 		if ( ! $only_conversion ) {
@@ -1212,11 +1161,12 @@ if ( ! function_exists( 'cp_add_subscriber' ) ) {
 				$style_name = isset( $_POST['cp_module_name'] ) ? esc_attr( $_POST['cp_module_name'] ) : '';
 				cp_notify_sub_to_admin( $list_name, $param, $sub_email, $email_sub, $email_body, $cp_page_url, $style_name );
 			}
-
+	
 			$param['style_id']   = $style_id;
 			$param['style_name'] = $style_type;
 			cp_add_new_user_role( $param );
 		}
+
 		print_r(
 			json_encode(
 				array(
@@ -1306,54 +1256,6 @@ if ( ! function_exists( 'cp_add_subscriber_contact' ) ) {
 			$data = array_map( 'unserialize', array_unique( array_map( 'serialize', $data ) ) );
 		}
 
-				$cp_verify_google_recaptcha = isset( $_POST['cp_verify_google_recaptcha'] ) ? 0 : 1;
-
-		if ( ! $cp_verify_google_recaptcha ) {
-
-			$google_recaptcha        = isset( $_POST['g-recaptcha-response'] ) && 1 ? $_POST['g-recaptcha-response'] : '';
-			$cp_recaptcha_secret_key = sanitize_text_field( get_option( 'cp_recaptcha_secret_key ' ) );
-			$status                  = '';
-
-			// calling google recaptcha api.
-			$g_url           = 'https://www.google.com/recaptcha/api/siteverify';
-			$google_response = add_query_arg(
-				array(
-					'secret'   => $cp_recaptcha_secret_key,
-					'response' => $google_recaptcha,
-					'remoteip' => $_SERVER['REMOTE_ADDR'],
-				),
-				$g_url
-			);
-			$cp_response     = wp_remote_get( $google_response );
-
-			$decode_google_response = json_decode( $cp_response['body'] );
-
-			if ( false === $decode_google_response->success ) {
-						$detailed_msg = __( 'Invalid Secret Key for Google Recaptcha', 'smile' );
-						$msg          = '';
-						$status       = 'error';
-						$email_status = false;
-						$store        = false;
-
-			}
-
-			if ( 'error' == $status ) {
-				print_r(
-					json_encode(
-						array(
-							'action'       => $action,
-							'email_status' => $email_status,
-							'status'       => $status,
-							'message'      => $msg,
-							'detailed_msg' => $detailed_msg,
-							'url'          => $url,
-						)
-					)
-				);
-
-				die();
-			}
-		}
 		// Convert array.
 		$data1 = array();
 		$data  = array_filter( $data );
@@ -1379,8 +1281,7 @@ if ( ! function_exists( 'cp_add_subscriber_contact' ) ) {
 		$sub_email  = isset( $cp_settings['cp-sub-email'] ) ? $cp_settings['cp-sub-email'] : get_option( 'admin_email' );
 		$email_sub  = isset( $cp_settings['cp-email-sub'] ) ? $cp_settings['cp-email-sub'] : '';
 		$email_body = isset( $cp_settings['cp-email-body'] ) ? $cp_settings['cp-email-body'] : '';
-
-		$param = array_map( 'sanitize_text_field', wp_unslash( $_POST['param'] ) );
+		$param      = array_map( 'sanitize_text_field', wp_unslash( $_POST['param'] ) );
 
 		if ( $update_option && ! $only_conversion ) {
 
@@ -1390,7 +1291,7 @@ if ( ! function_exists( 'cp_add_subscriber_contact' ) ) {
 				$style_name = isset( $_POST['cp_module_name'] ) ? esc_attr( $_POST['cp_module_name'] ) : '';
 				cp_notify_sub_to_admin( $list_name, $param, $sub_email, $email_sub, $email_body, $cp_page_url, $style_name );
 			}
-
+			
 			$param['style_id']   = $style_id;
 			$param['style_name'] = $popup_style_name;
 			cp_add_new_user_role( $param );
@@ -1454,7 +1355,6 @@ if ( ! function_exists( 'cp_get_list_name_by_id' ) ) {
 		$list_option = strtolower( $provider ) . '_lists';
 		$data        = get_option( $list_option );
 		$list_name   = $data[ $list_id ];
-
 		return $list_name;
 	}
 }
@@ -2416,42 +2316,6 @@ if ( ! function_exists( 'smile_duplicate_style_name' ) ) {
 		return $new_style_name;
 	}
 }
-if ( ! function_exists( 'cp_google_recaptcha' ) ) {
-	/**
-	 * Function to accept ajax call for updating User settings.
-	 */
-	function cp_google_recaptcha() {
-
-		if ( ! current_user_can( 'access_cp' ) ) {
-			die( -1 );
-		}
-		$cp_recaptcha_site_key   = isset( $_POST['cp_recaptcha_site_key'] ) ? $_POST['cp_recaptcha_site_key'] : '';
-		$cp_recaptcha_secret_key = isset( $_POST['cp_recaptcha_secret_key'] ) ? $_POST['cp_recaptcha_secret_key'] : '';
-
-		$result = update_option( 'cp_recaptcha_site_key', sanitize_text_field( $cp_recaptcha_site_key ) );
-		$result = update_option( 'cp_recaptcha_secret_key ', sanitize_text_field( $cp_recaptcha_secret_key ) );
-
-		if ( $result ) {
-			print_r(
-				json_encode(
-					array(
-						'message' => __( 'Settings Updated!', 'smile' ),
-					)
-				)
-			);
-		} else {
-			print_r(
-				json_encode(
-					array(
-						'message' => __( 'No settings were updated. Try again!', 'smile' ),
-					)
-				)
-			);
-		}
-		die();
-	}
-}
-
 
 if ( ! function_exists( 'smile_update_settings' ) ) {
 	/**
@@ -2912,6 +2776,8 @@ function cp_before_delete_action_init( $settings, $module ) {
 	}
 
 	$analytics_data = get_option( 'smile_style_analytics' );
+
+	//
 	// Style Behavior.
 	?>
 	<a class="action-list cp-behavior-settings" data-position="left" style="margin-left: 25px;" data-settings="<?php echo $behavior_settings; ?>">
@@ -3078,7 +2944,7 @@ if ( ! function_exists( 'cp_get_posts_by_query' ) ) {
 					$title  = get_the_title();
 					$id     = get_the_id();
 					$data[] = array(
-						'id'   => 'post-' . $id . '::' . $title,
+						'id'   => 'post-' . $id,
 						'text' => $title,
 					);
 				}
@@ -3123,7 +2989,7 @@ if ( ! function_exists( 'cp_get_posts_by_query' ) ) {
 				foreach ( $terms as $term ) {
 
 					$data[] = array(
-						'id'   => 'tax-' . $term->term_id . '::' . $term->name,
+						'id'   => 'tax-' . $term->term_id,
 						'text' => $term->name,
 					);
 
@@ -3152,7 +3018,7 @@ if ( ! function_exists( 'cp_get_posts_by_query' ) ) {
 
 		foreach ( $spacial_pages as $page => $title ) {
 			$data[] = array(
-				'id'   => 'special-' . $page . '::' . $title,
+				'id'   => 'special-' . $page,
 				'text' => $title,
 			);
 		}

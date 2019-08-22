@@ -2657,7 +2657,24 @@ if ( function_exists( 'smile_update_settings' ) ) {
 			'section'      => __( 'Submission', 'smile' ),
 			'section_icon' => 'connects-icon-disc',
 		),
-
+		array(
+			'type'         => 'colorpicker',
+			'class'        => '',
+			'name'         => 'message_color',
+			'opts'         => array(
+				'title'       => __( 'Message Text Color', 'smile' ),
+				'value'       => '#000000',
+				'description' => __( 'Select the text color for success message.', 'smile' ),
+			),
+			'panel'        => __( 'Form Setup', 'smile' ),
+			'dependency'   => array(
+				'name'     => 'on_success',
+				'operator' => '==',
+				'value'    => 'message',
+			),
+			'section'      => __( 'Submission', 'smile' ),
+			'section_icon' => 'connects-icon-disc',
+		),
 		// Modal close After form submission Options.
 		array(
 			'type'         => 'dropdown',
