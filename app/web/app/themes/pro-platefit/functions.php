@@ -190,4 +190,4 @@ function trainers_post_type() {
 	register_post_type( 'trainers', $args );
 
 }
-// add_action( 'init', 'trainers_post_type', 0 );
+add_action( 'init', 'trainers_post_type', 0 );
