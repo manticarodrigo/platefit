@@ -1,4 +1,8 @@
 name: platefit
 recipe: wordpress
 config:
-  webroot: app/web
+  php: '7.2'
+  via: nginx
+  webroot: web
+  database: mariadb
+  xdebug: true
