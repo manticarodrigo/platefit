@@ -53,10 +53,10 @@
   }
 
   &--left {
-    transform: rotate(180deg);
     
     svg {
-      margin-bottom: -19px;
+      transform: rotate(180deg);
+      // margin-bottom: -19px;
     }
   }
 }
