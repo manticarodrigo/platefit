@@ -4,23 +4,25 @@ import { getIsBreakpoint } from '../globals/utility';
 const onDomReady = () => {
   const sliderNodes = document.querySelectorAll('[data-component="slider"]');
 
-  const getPeekSize = () => {
+  const getPeekSize = (size) => {
     if (getIsBreakpoint('sm')) {
       return 0;
     }
 
     if (getIsBreakpoint('lg')) {
-      return 50;
+      return size / 5;
     }
 
-    return 250;
+    return size;
   }
 
   [].forEach.call(sliderNodes, (node) => {
+    const { peekSize = 0 } = node.dataset;
+
     const slider = new Glide(node, {
       type: 'carousel',
       perView: 1,
-      peek: getPeekSize(),
+      peek: getPeekSize(parseInt(peekSize)),
     });
   
     slider.mount();

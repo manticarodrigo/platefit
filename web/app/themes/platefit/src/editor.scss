@@ -3,13 +3,7 @@
   @import 'app';
 
   font-size: 16px;
+  font-family: $font-book;
   line-height: 1.2;
   overflow: hidden;
-
-  &:hover,
-  &:focus {
-    overflow: visible;
-    z-index: 999;
-    clear: both;
-  }
 }

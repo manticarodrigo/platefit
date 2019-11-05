@@ -137,15 +137,19 @@ function add_slug_to_body_class($classes) {
 
 function register_acf_block_types() {
 
+    /**
+     * Homepage blocks
+     */
+
     // Hero
     acf_register_block_type(array(
-        'name'              => 'hero',
-        'title'             => __('Hero'),
+        'name'              => 'homepage-hero',
+        'title'             => __('Homepage Hero'),
         'description'       => __('A hero block with a parallax background, title, and link boxes.'),
-        'render_template'   => 'blocks/hero.php',
+        'render_template'   => 'blocks/homepage-hero.php',
         'category'          => 'common',
         'icon'              => 'store',
-        'keywords'          => array( 'hero', 'homepage', 'boxes' ),
+        'keywords'          => array( 'hero', 'homepage' ),
         'mode'              => 'auto',
         'align'             => 'full',
         'supports'          => array('multiple' => false),
@@ -153,13 +157,27 @@ function register_acf_block_types() {
 
     // About
     acf_register_block_type(array(
-        'name'              => 'about',
-        'title'             => __('About'),
+        'name'              => 'homepage-about',
+        'title'             => __('Homepage About'),
         'description'       => __('An about block with a title, shoutout, description and link.'),
-        'render_template'   => 'blocks/about.php',
+        'render_template'   => 'blocks/homepage-about.php',
         'category'          => 'common',
         'icon'              => 'info',
-        'keywords'          => array( 'about', 'info', 'shoutout' ),
+        'keywords'          => array( 'about', 'homepage' ),
+        'mode'              => 'auto',
+        'align'             => 'full',
+        'supports'          => array('multiple' => false),
+    ));
+
+    // Plate
+    acf_register_block_type(array(
+        'name'              => 'homepage-plate',
+        'title'             => __('Homepage Plate'),
+        'description'       => __('A plate block with video, quotes, description and image.'),
+        'render_template'   => 'blocks/homepage-plate.php',
+        'category'          => 'common',
+        'icon'              => 'info',
+        'keywords'          => array( 'plate', 'homepage' ),
         'mode'              => 'auto',
         'align'             => 'full',
         'supports'          => array('multiple' => false),
