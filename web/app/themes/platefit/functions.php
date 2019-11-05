@@ -231,6 +231,19 @@ function register_acf_block_types() {
         'align'             => 'full',
         'supports'          => array('multiple' => false),
     ));
+
+    // Community
+    acf_register_block_type(array(
+        'name'              => 'homepage-community',
+        'title'             => __('Homepage Community'),
+        'description'       => __('A community block with insta feed, title, description, and link.'),
+        'render_template'   => 'blocks/homepage-community.php',
+        'category'          => 'common',
+        'icon'              => 'store',
+        'keywords'          => array( 'community', 'homepage' ),
+        'align'             => 'full',
+        'supports'          => array('multiple' => false),
+    ));
 }
 
 if( function_exists('acf_register_block_type') ) {
