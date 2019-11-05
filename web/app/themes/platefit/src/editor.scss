@@ -7,3 +7,15 @@
   line-height: 1.2;
   overflow: hidden;
 }
+
+.editor-post-title__block .editor-post-title__input {
+  padding: 5px 14px;
+}
+
+.block-editor-block-mover {
+  display: none !important;
+}
+
+.edit-post-visual-editor .editor-post-title__block {
+  margin-left: 0;
+}

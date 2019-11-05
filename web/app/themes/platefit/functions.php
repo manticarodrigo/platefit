@@ -176,7 +176,6 @@ function register_acf_block_types() {
         'category'          => 'common',
         'icon'              => 'store',
         'keywords'          => array( 'hero', 'homepage' ),
-        'mode'              => 'auto',
         'align'             => 'full',
         'supports'          => array('multiple' => false),
     ));
@@ -190,7 +189,6 @@ function register_acf_block_types() {
         'category'          => 'common',
         'icon'              => 'info',
         'keywords'          => array( 'about', 'homepage' ),
-        'mode'              => 'auto',
         'align'             => 'full',
         'supports'          => array('multiple' => false),
     ));
@@ -204,7 +202,6 @@ function register_acf_block_types() {
         'category'          => 'common',
         'icon'              => 'info',
         'keywords'          => array( 'plate', 'homepage' ),
-        'mode'              => 'auto',
         'align'             => 'full',
         'supports'          => array('multiple' => false),
     ));
