@@ -5,6 +5,8 @@ import Router from './util/Router';
 import common from './routes/common';
 import home from './routes/home';
 
+import './scripts/app';
+
 /**
  * Populate Router instance with DOM routes
  * @type {Router} routes - An instance of our router

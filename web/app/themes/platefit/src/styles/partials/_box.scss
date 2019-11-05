@@ -1,0 +1,67 @@
+.box-row {
+  @include maxWidth($breakpoint-md) {
+    position: relative;
+    transform: translate(-50%, 10%);
+  }
+
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 100%;
+  transform: translate(-50%, 50%);
+  transition: transform $duration;
+}
+
+.pt-box-section {
+  @include minWidth($breakpoint-md + 1) {
+    padding-top: 175px;
+  }
+}
+
+.box {
+  @include maxWidth($breakpoint-sm) {
+    width: 100%;
+    height: auto;
+  }
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: $spacing;
+  height: 190px;
+  width: 190px;
+  text-align: center;
+  color: $color-dark;
+  background-color: $color-secondary;
+  box-shadow: $box-shadow;
+  transition: background-color $duration, box-shadow $duration, transform $duration;
+  cursor: pointer;
+
+  &:focus,
+  &:hover {
+    background-color: $color-white;
+    box-shadow: $box-shadow-blurred;
+    transform: translateY(-.5rem);
+  }
+
+  &--yellow {
+    background-color: $color-primary;
+  }
+
+  &__text {
+    @include maxWidth($breakpoint-sm) {
+      @include fontSize(30px);
+    }
+
+    @include fontSize(40px);
+
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  svg {
+    width: 40px;
+    height: 22px;
+  }
+}

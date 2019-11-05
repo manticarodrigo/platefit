@@ -1,0 +1,97 @@
+.footer {
+  background-color: $color-white;
+  
+  &__slogan {
+    @include fontSize(16px);
+
+    color: $color-text;
+    font-family: $font-bold;
+    line-height: 1.8;
+  }
+
+  &__logo {
+    @include maxWidth($breakpoint-md) {
+      transform: translate(0, 0);
+    }
+
+    @include maxWidth($breakpoint-xs) {
+      width: 150px;
+      height: 37.5px;
+    }
+
+    width: 200px;
+    height: 50px;
+    transform: translate(-5%, -20%);
+  }
+
+  
+  &__headline {
+    @include fontSize(18px);
+
+    color: $color-dark;
+    font-family: $font-bold;
+    font-weight: 100;
+  }
+
+  li {
+    @include fontSize(16px);
+
+    font-family: $font-book;
+    list-style: none;
+
+    a {
+      color: $color-text;
+      text-decoration: none;
+      letter-spacing: 0;
+
+      &:focus,
+      &:hover {
+        color: $color-primary-alt;
+      }
+    }
+  }
+
+  &__social-icon {
+    @include maxWidth($breakpoint-lg) {
+      margin-right: 0;
+      padding: .5em;
+    }
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center; 
+    margin-right: 15px;
+    color: $color-icon;
+    
+    &:focus,
+    &:hover {
+      color: $color-primary;
+    }
+  }
+
+  &__newsletter {
+    display: flex;
+    flex-direction: row;
+
+    input[type="email"],
+    input[type="submit"] {
+      @include fontSize(13px);
+
+      padding: 15px;
+      border: none;
+      background-color: $color-light;
+    }
+
+    input[type="email"] {
+      color: $color-text;
+      
+
+      &::placeholder { color: $color-text; }
+    }
+
+    input[type="submit"] {
+      color: $color-primary-alt;
+    }
+  }
+}

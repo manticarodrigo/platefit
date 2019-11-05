@@ -1,0 +1,132 @@
+// Typography
+//
+// Global typographic elements and classes. These can be used as HTML elements or CSS classes.\
+// **NOTE**: The paragraph html tag will _not_ inherit the .paragraph class styles
+//
+// Markup:
+// <h1 class="h1">The quick brown fox jumps over the lazy dog</h1>
+// <h2 class="h2">The quick brown fox jumps over the lazy dog</h2>
+// <h3 class="h3">The quick brown fox jumps over the lazy dog</h3>
+// <h6 class="h6">The quick brown fox jumps over the lazy dog</h6>
+// <p class="paragraph">The quick brown fox jumps over the lazy dog</p>
+// <a class="link">The quick brown fox jumps over the lazy dog</a>
+//
+// Styleguide Typography
+
+@function calculateRem($size) {
+  $remSize: $size / 16px;
+  @return #{$remSize}rem;
+}
+
+@mixin fontSize($size) {
+  font-size: $size; // px fallback
+  font-size: calculateRem($size);
+}
+
+body {
+  font-size: 16px;
+  font-family: $font-book;
+  color: $color-dark;
+  word-wrap: break-word;
+}
+
+h1,
+.h1 {
+  @include fontSize(50px);
+
+  @include maxWidth($breakpoint-sm) {
+    @include fontSize(46px);
+  }
+
+  color: $color-dark;
+  font-family: $font-knockout;
+}
+
+h2,
+.h2 {
+  @include fontSize(48px);
+
+  @include maxWidth($breakpoint-sm) {
+    @include fontSize(42px);
+  }
+
+  color: $color-headline;
+  font-family: $font-light;
+  font-weight: 100;
+
+  &-sm {
+    @include maxWidth($breakpoint-sm) {
+      @include fontSize(32px);
+    }
+
+    @include fontSize(40px);
+
+    font-family: $font-book;
+  }
+
+  &.dark {
+    color: $color-headline-dark;
+  }
+}
+
+h3,
+.h3 {
+  @include fontSize(48px);
+
+  @include maxWidth($breakpoint-sm) {
+    @include fontSize(42px);
+  }
+
+  color: $color-dark;
+  font-family: $font-knockout-light;
+  font-weight: 700;
+
+  &--bold {
+    font-family: $font-bold;
+    line-height: 1.25em;
+  }
+
+  &--sm {
+    @include fontSize(44px);
+
+    @include maxWidth($breakpoint-sm) {
+      @include fontSize(32px);
+    }
+  }
+}
+
+h6,
+.h6 {
+  @include fontSize(14px);
+
+  color: $color-dark;
+  font-family: $font-book;
+}
+
+.paragraph {
+  color: $color-text;
+  line-height: 1.8;
+}
+
+.link {
+  color: $color-primary;
+  text-decoration: none;
+
+  &.dark {
+    color: $color-dark;
+
+  }
+
+  &.underline {
+    border-bottom: 2px solid $color-primary;
+  }
+
+  &.inline-block {
+    display: inline-block;
+  }
+
+  &:focus,
+  &:hover {
+    color: $color-primary-alt;
+  }
+}

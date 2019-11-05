@@ -1,0 +1,146 @@
+.br-0 {
+  border-right: 0;
+}
+
+.hidden {
+
+  &-xl {
+    @include maxWidth($breakpoint-xl) {
+      display: none;
+    }
+  }
+}
+
+.display-none {
+  display: none;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.relative {
+  position: relative;
+}
+
+.border-box {
+  box-sizing: border-box;
+}
+
+.width-full {
+  width: 100%;
+}
+
+.max-width-full {
+  max-width: 100%;
+}
+
+.height-full {
+  height: 100%;
+}
+
+.max-height-full {
+  max-height: 100%;
+}
+
+.list-unstyled {
+  list-style: none;
+}
+
+.text-bold {
+  font-family: $font-bold;
+}
+
+.text-sm {
+  @include fontSize(12px);
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.text-underline {
+  text-decoration: underline;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
+
+  &-lg { @include maxWidth($breakpoint-lg) { text-align: left; } }
+}
+
+.text-center {
+  text-align: center;
+
+  &-xl { @include maxWidth($breakpoint-xl) { text-align: center; } }
+  &-lg { @include maxWidth($breakpoint-lg) { text-align: center; } }
+  &-md { @include maxWidth($breakpoint-md) { text-align: center; } }
+}
+
+.letter-spacing {
+  @include maxWidth($breakpoint-sm) {
+    letter-spacing: 0;
+  }
+
+  letter-spacing: .25em;
+
+  &-sm {
+    letter-spacing: .025em;
+  }
+}
+
+.color {
+
+  &-primary { color: $color-primary; }
+  &-text-dark { color: $color-text-dark; }
+  &-headline { color: $color-headline; }
+}
+
+.bg-color {
+
+  &-white { background-color: $color-white; }
+  &-primary { background-color: $color-primary; }
+  &-light { background-color: $color-light; }
+}
+
+.shadow {
+  box-shadow: $box-shadow;
+}
+
+.hover-translucent {
+  transition: opacity $duration;
+
+  &:focus,
+  &:hover {
+    opacity: 0.5;
+  }
+}
+
+.bg-cover {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.bg-plate {
+  @include maxWidth($breakpoint-lg) {
+    background-position: 50% 90%;
+    background-size: 95%;
+  }
+
+  background-image: url('../src/assets/svgs/plate-white.svg');
+  background-size: 65%;
+  background-position: 90% 50%;
+  background-repeat: no-repeat;
+}
+
+.bg-modal {
+  background-image: url('../src/assets/svgs/plates.svg');
+  background-size: 150%;
+  background-position: center center;
+  background-repeat: no-repeat;
+}

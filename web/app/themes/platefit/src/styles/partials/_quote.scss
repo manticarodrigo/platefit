@@ -1,0 +1,61 @@
+// Quote
+//
+// A quote component.
+//
+// Markup:
+// <div class="row nowrap">
+//   <img class="quote-img shadow" src="../src/assets/images/home/quote.png">
+//   <div>
+//     <p class="quote-text">
+//       Love love love PLATEFIT! This is hands down my favorite workout in LA. It's fast, challenging, and the
+//       instructors don't waste a second... you are moving the entire 30 minutes.
+//     </p>
+//     <h4 class="text-uppercase quote-author">
+//       / Jennifer P
+//     </h4>
+//   </div>
+// </div>
+//
+// Styleguide Components.quote
+
+.quote {
+
+  &-img {
+    margin: 20px 10px 0 0;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    box-shadow: $box-shadow-round;
+  }
+
+  &-text {
+    @include fontSize(17px);
+
+    display: inline-block;
+    position: relative;
+    font-family: $font-quote;
+    color: $color-quote;
+
+    &::before {
+      display: block;
+      position: absolute;
+      top: -20px;
+      right: -10px;
+      width: 80px;
+      height: 60px;
+      background-image: url('../src/assets/svgs/quote.svg');
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center center;
+      content: '';
+    }
+
+  }
+
+  &-author {
+    @include fontSize(12px);
+
+    font-family: $font-bold;
+  }
+}

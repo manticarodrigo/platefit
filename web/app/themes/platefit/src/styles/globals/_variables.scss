@@ -1,0 +1,74 @@
+// Colors
+//
+// Global brand colors used throughout the site.
+//
+// $color-primary - #fed710; Primary
+// $color-primary-alt - #f3cc4b; Primary
+// $color-secondary - #d6d6d6; Secondary
+// $color-light - #fafafa; Light
+// $color-dark - #333333; Dark
+// $color-headline - #636363; Headline
+// $color-text - #909090; Text
+// $color-overlay - rgba(255,255,255,.5); Overlay
+//
+// Styleguide Colors
+
+$color-white: #fff;
+$color-black: #000;
+$color-primary: #fed710;
+$color-primary-alt: #f3cc4b;
+$color-secondary: #d6d6d6;
+$color-light: #fafafa;
+$color-dark: #333333;
+$color-icon: #b7b7b7;
+$color-headline: #636363;
+$color-headline-dark: #363636;
+$color-text: #909090;
+$color-text-dark: #555555;
+$color-quote: #bababa;
+$color-link: #8c8c8c;
+$color-slider-btn: #9b9b9b;
+$color-overlay-white: rgba(255,255,255,.75);
+$color-overlay-white-opaque: rgba(255,255,255,.85);
+$color-overlay-white-clear: rgba(255,255,255,.25);
+$color-overlay-primary: rgba(254,215,16,.75);
+$color-overlay-black: rgba(0,0,0,.75);
+
+$spacing: 20px;
+$duration: 250ms ease-in-out;
+$delay: 150ms;
+
+$site-width: 1440px;
+$breakpoint-xl: 1280px;
+$breakpoint-lg: 950px;
+$breakpoint-md: 750px;
+$breakpoint-sm: 500px;
+$breakpoint-xs: 375px;
+
+@mixin maxWidth($breakpoint) {
+  @media (max-width: $breakpoint) { @content; }
+}
+
+@mixin minWidth($breakpoint) {
+  @media (min-width: $breakpoint) { @content; }
+}
+
+$breakpoint-map: (
+  '': '',
+  'xl': $breakpoint-xl,
+  'lg': $breakpoint-lg,
+  'md': $breakpoint-md,
+  'sm': $breakpoint-sm,
+  'xs': $breakpoint-xs,
+);
+
+$box-shadow: 0 30px 10px -20px rgba(0,0,0,.3);
+$box-shadow-blurred: 0 30px 20px -20px rgba(0,0,0,.5);
+$box-shadow-round: 0 12px 20px -10px rgba(0, 0, 0, 0.5);
+
+$font-book: 'MaisonNeue-Book', sans-serif;
+$font-light: 'MaisonNeue-Light', sans-serif;
+$font-bold: 'MaisonNeue-Bold', sans-serif;
+$font-knockout: 'Knockout-HTF49-Liteweight', sans-serif;
+$font-knockout-light: 'Knockout-HTF28-JuniorFeatherwt', sans-serif;
+$font-quote: 'MuseoSlab-300', sans-serif;

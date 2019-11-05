@@ -1,0 +1,47 @@
+$size-map: (0: 0rem, 1: 0.25rem, 2: 0.5rem, 3: 1rem, 4: 2rem, 5: 4rem, 6: 8rem);
+$type-map: ('m': 'margin', 'p': 'padding');
+$direction-map: ('': '', 't': 'top', 'r': 'right', 'b': 'bottom', 'l': 'left', 'x': ('right', 'left'), 'y': ('top', 'bottom'));
+
+@mixin styles($size-key, $type-key, $direction-key) {
+  $size: map-get($size-map, $size-key);
+  $type: map-get($type-map, $type-key);
+  $direction: map-get($direction-map, $direction-key);
+
+  @if ($direction-key == 'x') {
+    #{$type}-right: $size;
+    #{$type}-left: $size;
+  } @else if ($direction-key == 'y') {
+    #{$type}-top: $size;
+    #{$type}-bottom: $size;
+  } @else if ($direction-key != '') {
+    #{$type}-#{$direction}: $size;
+  } @else {
+    #{$type}: $size;
+  }
+}
+
+@mixin spacing() {
+  @each $breakpoint-key, $breakpoint in $breakpoint-map {
+    @each $type-key, $type in $type-map {
+      @each $size-key, $size in $size-map {
+        @each $direction-key, $direction in $direction-map {
+          $classname: #{$type-key}#{$direction-key}-#{$size-key};
+
+          @if $breakpoint-key == '' {
+            .#{$classname} {
+               @include styles($size-key, $type-key, $direction-key);
+            }
+          } @else {
+            @media (max-width: #{$breakpoint}) {
+              .#{$classname}-#{$breakpoint-key} {
+                @include styles($size-key, $type-key, $direction-key);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@include spacing();

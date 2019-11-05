@@ -1,0 +1,45 @@
+.locations-menu {
+  display: flex;
+  justify-content: center;
+
+  li {
+    margin: 1rem;
+
+    a {
+      @include fontSize(18px);
+
+      color: $color-link;
+      font-family: $font-bold;
+      border-bottom: 3px solid transparent;
+      padding-bottom: 0.25em;
+      transition: border-bottom $duration, color $duration;
+
+      &:focus,
+      &:hover {
+        color: $color-dark;
+        border-bottom-color: $color-primary;
+      }
+    }
+  }
+}
+
+.location-section {
+  @include minWidth($breakpoint-lg) {
+
+    .row {
+
+      &:nth-child(even) {
+
+        .col-2:nth-child(2) {
+          order: -1;
+        }
+      }
+    }
+  }
+}
+
+[data-component="map"] {
+  width: 100%;
+  padding-bottom: 100%;
+  background-color: $color-quote;
+}

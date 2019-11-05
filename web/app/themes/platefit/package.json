@@ -10,7 +10,11 @@
   "author": "jaredpalmer",
   "license": "MIT",
   "dependencies": {
-    "jquery": "^3.3.1"
+    "@glidejs/glide": "^3.4.1",
+    "jarallax": "^1.12.0",
+    "jquery": "^3.3.1",
+    "micromodal": "^0.4.2",
+    "smoothscroll-polyfill": "^0.4.4"
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",
