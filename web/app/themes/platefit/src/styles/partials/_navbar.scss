@@ -2,10 +2,6 @@
 
   .navbar {
     top: 32px;
-
-    & + * {
-      padding-top: 102px;
-    }
   }
 
 }
@@ -19,7 +15,7 @@
   transition: opacity $duration;
 
   & + * {
-    padding-top: 70px;
+    padding-top: 74.5px;
   }
 
   &__container {
