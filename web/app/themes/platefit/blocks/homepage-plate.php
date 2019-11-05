@@ -22,18 +22,31 @@
       <div class="glide" data-component="slider">
         <div class="glide__track" data-glide-el="track">
           <ul class="glide__slides">
-            <li class="glide__slide">
-              <div class="py-4 px-6 px-5-xl px-4-sm">
-                <p class="quote-text">It is fast paced and only 27 minutes – the movements are constantly changing so you really don&apos;t have any time to get bored with this workout! These classes incorporates bands and weights. Definitely planning on taking more classes! An overall super fun workout!</p>
-                <h4 class="text-uppercase quote-author">/ Aly H</h4>
-              </div>
-            </li>
-            <li class="glide__slide">
-              <div class="py-4 px-6 px-5-xl px-4-sm">
-                <p class="quote-text">It is fast paced and only 27 minutes – the movements are constantly changing so you really don&apos;t have any time to get bored with this workout! These classes incorporates bands and weights. Definitely planning on taking more classes! An overall super fun workout!</p>
-                <h4 class="text-uppercase quote-author">/ Aly H</h4>
-              </div>
-            </li>
+          <?php
+            $args = array(
+              'post_type' => 'testimonial',
+              'post_status' => 'publish',
+              'meta_key' => 'author_name',
+              'orderby' => 'rand',
+              'order' => 'DESC',
+              'posts_per_page' => '5',
+            );
+
+            $testimonials = new WP_Query( $args );
+            if ($testimonials->have_posts()) :
+              while($testimonials->have_posts()) : $testimonials->the_post();
+          ?>
+                <li class="glide__slide">
+                  <div class="py-4 px-6 px-5-xl px-4-sm">
+                    <p class="quote-text"><?php echo get_field('quote', get_the_ID()); ?></p>
+                    <h4 class="text-uppercase quote-author">/ <?php echo get_field('author_name', get_the_ID()); ?></h4>
+                  </div>
+                </li>
+          <?php
+              endwhile;
+              wp_reset_postdata();
+            endif;
+          ?>
           </ul>
           <div class="glide__arrows" data-glide-el="controls">
             <button class="btn-slider btn-slider--left" data-glide-dir="&lt;">
