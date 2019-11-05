@@ -2,6 +2,15 @@
 
   .navbar {
     top: 32px;
+
+    @include maxWidth($breakpoint-md) {
+      top: 46px;
+    }
+
+    @include maxWidth($breakpoint-sm) {
+      top: 0;
+      position: sticky;
+    }
   }
 
 }

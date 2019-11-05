@@ -2,7 +2,7 @@
 <div class="relative bg-color-light bg-plate" data-parallax="contain">
 
   <!-- video / quote -->
-  <section class="px-6 px-4-lg px-2-md py-4 row">
+  <section class="pl-4 pl-0-lg py-4 row">
 
     <div class="border-box col-2 col-1-lg px-2-sm">
       <div class="row center-lg">
@@ -18,18 +18,18 @@
       </div>
     </div>
 
-    <div class="border-box col-2 col-1-lg row center-lg align-center">
+    <div class="border-box col-2 col-1-lg">
       <div class="glide" data-component="slider">
         <div class="glide__track" data-glide-el="track">
           <ul class="glide__slides">
             <li class="glide__slide">
-              <div class="p-5 p-4-md">
+              <div class="py-4 px-5 px-4-md">
                 <p class="quote-text">It is fast paced and only 27 minutes – the movements are constantly changing so you really don&apos;t have any time to get bored with this workout! These classes incorporates bands and weights. Definitely planning on taking more classes! An overall super fun workout!</p>
                 <h4 class="text-uppercase quote-author">/ Aly H</h4>
               </div>
             </li>
             <li class="glide__slide">
-              <div class="p-5 p-4-md">
+              <div class="py-4 px-5 px-4-md">
                 <p class="quote-text">It is fast paced and only 27 minutes – the movements are constantly changing so you really don&apos;t have any time to get bored with this workout! These classes incorporates bands and weights. Definitely planning on taking more classes! An overall super fun workout!</p>
                 <h4 class="text-uppercase quote-author">/ Aly H</h4>
               </div>
@@ -54,7 +54,7 @@
     <div class="border-box p-4 p-2-sm col-2 col-1-lg">
       <div class="text-center-lg">
           <p class="h6"><?php the_field('subtitle'); ?></p>
-          <p class="my-0 h3"><?php the_field('title'); ?></p>
+          <p class="my-0 h3 text-uppercase"><?php the_field('title'); ?></p>
           <p class="paragraph">
             <?php the_field('description'); ?>
           </p>
