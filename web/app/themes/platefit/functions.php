@@ -244,6 +244,19 @@ function register_acf_block_types() {
         'align'             => 'full',
         'supports'          => array('multiple' => false),
     ));
+
+    // App
+    acf_register_block_type(array(
+        'name'              => 'homepage-app',
+        'title'             => __('Homepage App'),
+        'description'       => __('An app block with title, description, links and image.'),
+        'render_template'   => 'blocks/homepage-app.php',
+        'category'          => 'common',
+        'icon'              => 'store',
+        'keywords'          => array( 'app', 'homepage' ),
+        'align'             => 'full',
+        'supports'          => array('multiple' => false),
+    ));
 }
 
 if( function_exists('acf_register_block_type') ) {
