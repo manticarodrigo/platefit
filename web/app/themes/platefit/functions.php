@@ -187,7 +187,7 @@ function register_acf_block_types() {
         'description'       => __('An about block with a title, shoutout, description and link.'),
         'render_template'   => 'blocks/homepage-about.php',
         'category'          => 'common',
-        'icon'              => 'info',
+        'icon'              => 'store',
         'keywords'          => array( 'about', 'homepage' ),
         'align'             => 'full',
         'supports'          => array('multiple' => false),
@@ -200,8 +200,21 @@ function register_acf_block_types() {
         'description'       => __('A plate block with video, quotes, description and image.'),
         'render_template'   => 'blocks/homepage-plate.php',
         'category'          => 'common',
-        'icon'              => 'info',
+        'icon'              => 'store',
         'keywords'          => array( 'plate', 'homepage' ),
+        'align'             => 'full',
+        'supports'          => array('multiple' => false),
+    ));
+
+    // Press
+    acf_register_block_type(array(
+        'name'              => 'homepage-press',
+        'title'             => __('Homepage Press'),
+        'description'       => __('A press block with background, links, and images.'),
+        'render_template'   => 'blocks/homepage-press.php',
+        'category'          => 'common',
+        'icon'              => 'store',
+        'keywords'          => array( 'press', 'homepage' ),
         'align'             => 'full',
         'supports'          => array('multiple' => false),
     ));
