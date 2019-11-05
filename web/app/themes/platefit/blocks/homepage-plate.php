@@ -23,13 +23,13 @@
         <div class="glide__track" data-glide-el="track">
           <ul class="glide__slides">
             <li class="glide__slide">
-              <div class="py-4 px-5 px-4-md">
+              <div class="py-4 px-6 px-5-xl px-4-sm">
                 <p class="quote-text">It is fast paced and only 27 minutes – the movements are constantly changing so you really don&apos;t have any time to get bored with this workout! These classes incorporates bands and weights. Definitely planning on taking more classes! An overall super fun workout!</p>
                 <h4 class="text-uppercase quote-author">/ Aly H</h4>
               </div>
             </li>
             <li class="glide__slide">
-              <div class="py-4 px-5 px-4-md">
+              <div class="py-4 px-6 px-5-xl px-4-sm">
                 <p class="quote-text">It is fast paced and only 27 minutes – the movements are constantly changing so you really don&apos;t have any time to get bored with this workout! These classes incorporates bands and weights. Definitely planning on taking more classes! An overall super fun workout!</p>
                 <h4 class="text-uppercase quote-author">/ Aly H</h4>
               </div>
