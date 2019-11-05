@@ -46,10 +46,7 @@
           </a>
         </div>
         <p class="mt-0 mb-4 text-uppercase footer__headline">Subscribe</p>
-        <form class="row footer__newsletter" action="#mailchimp">
-          <input class="border-box col-2" type="email" name="email" placeholder="Your Email">
-          <input class="border-box col-2" type="submit" name="submit" value="Subscribe">
-        </form>
+        <?php render_mailchimp_form(); ?>
       </div>
     </footer>
 
@@ -68,13 +65,7 @@
             <p class="h3 h3--bold h3--sm line-height-none">
               We'll send you exclusive studio offers, upcoming events and more!
             </p>
-            <form class="row modal__form" action="#mailchimp">
-              <input class="" type="email" name="email" placeholder="Your Email">
-              <button class="modal__form__submit" type="submit" name="submit">
-                Subscribe&nbsp;
-                <svg><use href="#arrow" /></svg>
-              </button>
-            </form>
+            <?php render_mailchimp_form(true) ?>
           </main>
           <footer class="py-4 modal__footer">
             <button class="link dark underline" data-micromodal-close aria-label="Close this newsletter dialog window">

@@ -81,6 +81,14 @@
   &-md { @include maxWidth($breakpoint-md) { text-align: center; } }
 }
 
+.text-success {
+  color: $color-success;
+}
+
+.text-error {
+  color: $color-error;
+}
+
 .letter-spacing {
   @include maxWidth($breakpoint-sm) {
     letter-spacing: 0;

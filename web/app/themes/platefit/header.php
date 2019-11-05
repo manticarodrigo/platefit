@@ -14,7 +14,7 @@
 		<?php print_svgs() ?>
 
 		<!-- header -->
-		<header class="navbar" data-component="navbar">
+		<header class="navbar" data-component="navbar" id="platefit-header">
 
 			<nav class="px-4 px-3-md px-2-sm container navbar__container" data-component="navbar-container">
 
