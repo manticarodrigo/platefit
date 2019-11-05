@@ -3,12 +3,13 @@
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 const AssetsPlugin = require('assets-webpack-plugin');
-const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+// const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 const path = require('path');
 const fs = require('fs');
 
@@ -23,7 +24,9 @@ function resolveApp(relativePath) {
 const paths = {
   appSrc: resolveApp('src'),
   appBuild: resolveApp('build'),
-  appIndexJs: resolveApp('src/index.js'),
+  appJs: resolveApp('src/app.js'),
+  appEditorJs: resolveApp('src/editor.js'),
+  appSprites: resolveApp('src/sprites.js'),
   appNodeModules: resolveApp('node_modules'),
 };
 
@@ -36,10 +39,14 @@ module.exports = {
   // You can exclude the *.map files from the build during deployment.
   target: 'web',
   devtool: DEV ? 'cheap-eval-source-map' : 'source-map',
-  entry: [paths.appIndexJs],
+  entry: {
+    app: paths.appJs,
+    editor: paths.appEditorJs,
+    sprites: paths.appSprites,
+  },
   output: {
     path: paths.appBuild,
-    filename: DEV ? 'bundle.js' : 'bundle.[hash:8].js'
+    filename: DEV ? '[name].js' : '[name].[hash:8].js'
   },
   module: {
     rules: [
@@ -75,8 +82,16 @@ module.exports = {
             }
           },
           "sass-loader"
-          ],
-        }
+        ],
+      },
+      {
+        test: /assets\/svgs\/.*\.svg$/, // your icons directory
+        loader: 'svg-sprite-loader',
+        options: {
+          extract: true,
+          spriteFilename: './app.svg', // this is the destination of your sprite sheet
+        },
+      },
     ],
   },
   optimization: {
@@ -106,7 +121,10 @@ module.exports = {
   plugins: [
     !DEV && new CleanWebpackPlugin(['build']),
     new MiniCssExtractPlugin({
-      filename: DEV ? 'bundle.css' : 'bundle.[hash:8].css'
+      filename: DEV ? '[name].css' : '[name].[hash:8].css'
+    }),
+    new SpriteLoaderPlugin({
+      plainSprite: true,
     }),
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'development', // use 'development' unless process.env.NODE_ENV is defined
@@ -120,14 +138,14 @@ module.exports = {
       new FriendlyErrorsPlugin({
         clearConsole: false,
       }),
-    DEV &&
-      new BrowserSyncPlugin({
-        notify: false,
-        host: 'localhost',
-        port: 4000,
-        logLevel: 'silent',
-        files: ['./*.php'],
-        proxy: 'http://localhost:9009/',
-      }),
+    // DEV &&
+    //   new BrowserSyncPlugin({
+    //     notify: false,
+    //     host: 'localhost',
+    //     port: 4000,
+    //     logLevel: 'silent',
+    //     files: ['./*.php'],
+    //     proxy: 'http://localhost:9009/',
+    //   }),
   ].filter(Boolean),
 };

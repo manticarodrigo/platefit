@@ -17,13 +17,32 @@ remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0);
 /**
  * Theme assets
  */
-add_action('wp_enqueue_scripts', function () {
+function enqueue_assets($editor = false) {
     $manifest = json_decode(file_get_contents('build/assets.json', true));
-    $main = $manifest->main;
-    wp_enqueue_style('theme-css', get_template_directory_uri() . "/build/" . $main->css,  false, null);
-    wp_enqueue_script('theme-js', get_template_directory_uri() . "/build/" . $main->js, ['jquery'], null, true);
-}, 100);
+    $assets = $editor ? $manifest->editor : $manifest->app;
 
+    wp_enqueue_style('theme-css', get_template_directory_uri() . "/build/" . $assets->css,  false, null);
+    wp_enqueue_script('theme-js', get_template_directory_uri() . "/build/" . $assets->js, ['jquery'], null, true);
+}
+
+function enqueue_editor_assets() {
+    enqueue_assets(true);
+}
+
+add_action('wp_enqueue_scripts', 'enqueue_assets');
+add_action('enqueue_block_editor_assets', 'enqueue_editor_assets');
+
+
+/**
+ * Add svgs to admin
+ */
+
+function print_svgs() {
+    $svgs = file_get_contents(get_template_directory_uri() . "/build/app.svg");
+    echo '<span class="display-none">' . $svgs . '</span>';
+}
+
+add_action('in_admin_header', 'print_svgs');
 
 /**
  * Theme setup
@@ -111,3 +130,45 @@ function add_slug_to_body_class($classes) {
     }
     return $classes;
 }
+
+/**
+ * Register custom php gutenberg blocks
+ */
+
+function register_acf_block_types() {
+
+    // Hero
+    acf_register_block_type(array(
+        'name'              => 'hero',
+        'title'             => __('Hero'),
+        'description'       => __('A hero block with a parallax background, title, and link boxes.'),
+        'render_template'   => 'blocks/hero.php',
+        'category'          => 'common',
+        'icon'              => 'store',
+        'keywords'          => array( 'hero', 'homepage', 'boxes' ),
+        'mode'              => 'auto',
+        'align'             => 'full',
+        'supports'          => array('multiple' => false),
+    ));
+
+    // About
+    acf_register_block_type(array(
+        'name'              => 'about',
+        'title'             => __('About'),
+        'description'       => __('An about block with a title, shoutout, description and link.'),
+        'render_template'   => 'blocks/about.php',
+        'category'          => 'common',
+        'icon'              => 'info',
+        'keywords'          => array( 'about', 'info', 'shoutout' ),
+        'mode'              => 'auto',
+        'align'             => 'full',
+        'supports'          => array('multiple' => false),
+    ));
+}
+
+// Check if function exists and hook into setup.
+if( function_exists('acf_register_block_type') ) {
+    add_action('acf/init', 'register_acf_block_types');
+}
+
+add_theme_support( 'align-wide' );

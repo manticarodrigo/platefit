@@ -1,11 +1,12 @@
 import jQuery from 'jquery';
-import './style.scss';
+
+import './scripts/app';
+import './app.scss';
 
 import Router from './util/Router';
 import common from './routes/common';
 import home from './routes/home';
 
-import './scripts/app';
 
 /**
  * Populate Router instance with DOM routes

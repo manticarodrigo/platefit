@@ -1,6 +1,13 @@
-.pt-navbar {
-  /* Account for the navbar height */
-  padding-top: 70px;
+.admin-bar {
+
+  .navbar {
+    top: 32px;
+
+    & + * {
+      padding-top: 102px;
+    }
+  }
+
 }
 
 .navbar {
@@ -10,6 +17,10 @@
   left: 0;
   width: 100%;
   transition: opacity $duration;
+
+  & + * {
+    padding-top: 70px;
+  }
 
   &__container {
     position: relative;
