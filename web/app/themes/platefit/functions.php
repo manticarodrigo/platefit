@@ -218,6 +218,19 @@ function register_acf_block_types() {
         'align'             => 'full',
         'supports'          => array('multiple' => false),
     ));
+
+    // Our Story
+    acf_register_block_type(array(
+        'name'              => 'homepage-our-story',
+        'title'             => __('Homepage Our Story'),
+        'description'       => __('An our story block with two images, title, description, and link.'),
+        'render_template'   => 'blocks/homepage-our-story.php',
+        'category'          => 'common',
+        'icon'              => 'store',
+        'keywords'          => array( 'our-story', 'homepage' ),
+        'align'             => 'full',
+        'supports'          => array('multiple' => false),
+    ));
 }
 
 if( function_exists('acf_register_block_type') ) {
