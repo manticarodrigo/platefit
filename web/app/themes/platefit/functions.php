@@ -164,6 +164,23 @@ add_action('init', 'create_post_types');
 function register_acf_block_types() {
 
     /**
+     * Common blocks
+     */
+
+    // CTA
+    acf_register_block_type(array(
+        'name'              => 'cta',
+        'title'             => __('CTA'),
+        'description'       => __('A call-to-action block with a parallax background, title, and link.'),
+        'render_template'   => 'blocks/cta.php',
+        'category'          => 'common',
+        'icon'              => 'megaphone',
+        'keywords'          => array( 'cta', 'common' ),
+        'align'             => 'full',
+        'supports'          => array('multiple' => false),
+    ));
+
+    /**
      * Homepage blocks
      */
 
