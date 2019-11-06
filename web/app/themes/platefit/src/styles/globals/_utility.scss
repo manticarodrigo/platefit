@@ -35,6 +35,11 @@
   max-width: 100%;
 }
 
+.max-width {
+  margin: auto;
+  max-width: $content-max-width;
+}
+
 .height-full {
   height: 100%;
 }
@@ -53,6 +58,10 @@
 
 .text-sm {
   @include fontSize(14px);
+}
+
+.text-lg {
+  @include fontSize(20px);
 }
 
 .text-uppercase {

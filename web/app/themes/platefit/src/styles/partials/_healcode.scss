@@ -1,8 +1,4 @@
-.schedule-container {
-  margin: auto;
-  max-width: $schedule-max-width;
-}
-
+// Schedule
 .bw-widget {
   background-color: transparent !important;
 
@@ -64,5 +60,71 @@
 
   .bw-mb-powered-by-logo {
     display: none;
+  }
+}
+
+// Class List
+.healcode {
+  
+  .class_list.mindbody_classic {
+
+    & > div {
+      display: flex;
+      flex-wrap: wrap;
+
+      &.hc_footer {
+        display: none;
+      }
+    }
+
+    .class_show {
+      @include maxWidth($breakpoint-lg) {
+        width: 50%;
+      }
+
+      box-sizing: border-box;
+      position: relative;
+      padding: 140px 10px 10px;
+      padding-top: 160px;
+      width: 25%;
+
+      .class_description {
+        
+        p,
+        & > div > div {
+          @include fontSize(16px);
+  
+          color: $color-text;
+          line-height: 1.8;
+          margin-bottom: 10px;
+        }
+
+        a {
+          @include fontSize(14px);
+
+          color: $color-text-dark;
+          border-bottom: 2px solid $color-primary;
+        }
+      }
+
+      .class_offered_link {
+        display: none;
+      }
+
+      img {
+        position: absolute;
+        top: 0;
+        left: 10px;
+        width: 140px;
+        height: 140px;
+        object-fit: cover;
+      }
+
+      h1.class_name {
+        @include fontSize(24px);
+
+        text-transform: uppercase;
+      }
+    }
   }
 }

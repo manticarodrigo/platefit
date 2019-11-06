@@ -112,17 +112,16 @@ function register_acf_block_types()
     'align'             => 'full',
   ));
 
-  // Schedule
+  // Healcode Widget
   acf_register_block_type(array(
-    'name'              => 'schedule',
-    'title'             => __('Schedule'),
-    'description'       => __('A MindBody schedule block.'),
-    'render_template'   => 'blocks/schedule.php',
+    'name'              => 'healcode-widget',
+    'title'             => __('Healcode Widget'),
+    'description'       => __('A MindBody/Healcode widget block.'),
+    'render_template'   => 'blocks/healcode-widget.php',
     'category'          => 'global',
-    'icon'              => 'calendar-alt',
-    'keywords'          => array('schedule'),
+    'icon'              => 'editor-code',
+    'keywords'          => array('healcode'),
     'align'             => 'full',
-    'supports'          => array('multiple' => false),
   ));
 
   /**
