@@ -19,6 +19,7 @@ function create_post_types() {
     $trainer = array(
         'labels' => array('name' => __('Trainers'), 'singular_name' => __('Trainer')),
         'menu_icon' => 'dashicons-universal-access',
+        'rewrite' => array('slug' => 'trainers'),
     );
     register_post_type('trainer', array_merge($common, $trainer));
 

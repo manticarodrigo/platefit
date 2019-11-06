@@ -29,7 +29,7 @@
 
 		<!-- trainers -->
 
-		<section class="pb-6 px-5 px-3-md bg-color-light row center">
+		<section class="py-6 px-5 px-3-md bg-color-light row center">
 
 			<?php
 				while( $trainers->have_posts() ) : $trainers->the_post();
