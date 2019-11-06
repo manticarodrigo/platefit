@@ -1,5 +1,5 @@
 <?php
-	/* Template Name: Location */
+	/* Template Name: Locations */
 
 	get_header();
 
@@ -38,7 +38,7 @@
 
 			<?php
 				while($locations->have_posts()) : $locations->the_post();
-					include('blocks/location.php');
+					get_template_part('components/location');
 				endwhile;
 			?>
 		</section>

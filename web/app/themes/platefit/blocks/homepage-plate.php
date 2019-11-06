@@ -19,7 +19,7 @@
     </div>
 
     <div class="border-box col-2 col-1-lg">
-      <?php include('quotes.php');  ?>
+      <?php get_template_part('components/quotes');  ?>
     </div>
   </section>
 

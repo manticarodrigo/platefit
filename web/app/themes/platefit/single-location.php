@@ -3,7 +3,7 @@
   <main class="px-4 px-3-md px-2-sm overflow-hidden relative container" role="main" aria-label="Main content">
     <?php while ( have_posts() ) : the_post(); ?>
       <section class="bg-color-light">
-        <?php include('blocks/location.php'); ?>
+        <?php get_template_part('components/location'); ?>
       </section>
 
       <section id="schedule" class="p-5 p-4-md px-2-sm text-center bg-color-light">
@@ -12,7 +12,7 @@
             <?php if (get_field('schedule')): ?>
               Schedule
             <?php else: ?>
-              Coming soon
+              Schedule - Coming soon
             <?php endif; ?>
           </h2>
           <?php the_field('schedule'); ?>

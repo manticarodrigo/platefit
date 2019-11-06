@@ -74,7 +74,7 @@ function render_mailchimp_form($modal = false) {
           $response   = 'Sorry, subscription was not successful. Please try again.';
           $class      = 'error';
       }
-      $message = '<p class="text-' . $class . '">' . $response . '</p>'; 
+      $message = '<p class="color-' . $class . '">' . $response . '</p>'; 
   }
 
   // Determine form class if is modal

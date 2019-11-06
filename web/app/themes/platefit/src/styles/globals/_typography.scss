@@ -95,6 +95,30 @@ h3,
   }
 }
 
+h4,
+.h4 {
+  @include fontSize(34px);
+
+  @include maxWidth($breakpoint-sm) {
+    @include fontSize(28px);
+  }
+
+  color: $color-dark;
+  font-family: $font-knockout;
+}
+
+h5,
+.h5 {
+  @include fontSize(26px);
+
+  @include maxWidth($breakpoint-sm) {
+    @include fontSize(22px);
+  }
+
+  color: $color-dark;
+  font-family: $font-knockout;
+}
+
 h6,
 .h6 {
   @include fontSize(14px);
@@ -103,6 +127,7 @@ h6,
   font-family: $font-book;
 }
 
+p,
 .paragraph {
   color: $color-text;
   line-height: 1.8;

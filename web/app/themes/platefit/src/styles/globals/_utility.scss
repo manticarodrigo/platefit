@@ -81,14 +81,6 @@
   &-md { @include maxWidth($breakpoint-md) { text-align: center; } }
 }
 
-.text-success {
-  color: $color-success;
-}
-
-.text-error {
-  color: $color-error;
-}
-
 .letter-spacing {
   @include maxWidth($breakpoint-sm) {
     letter-spacing: 0;
@@ -106,6 +98,8 @@
   &-primary { color: $color-primary; }
   &-text-dark { color: $color-text-dark; }
   &-headline { color: $color-headline; }
+  &-success { color: $color-success; }
+  &-error { color: $color-error; }
 }
 
 .bg-color {
