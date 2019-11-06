@@ -112,6 +112,19 @@ function register_acf_block_types()
     'align'             => 'full',
   ));
 
+  // Schedule
+  acf_register_block_type(array(
+    'name'              => 'schedule',
+    'title'             => __('Schedule'),
+    'description'       => __('A MindBody schedule block.'),
+    'render_template'   => 'blocks/schedule.php',
+    'category'          => 'global',
+    'icon'              => 'calendar-alt',
+    'keywords'          => array('schedule'),
+    'align'             => 'full',
+    'supports'          => array('multiple' => false),
+  ));
+
   /**
    * Homepage blocks
    */
