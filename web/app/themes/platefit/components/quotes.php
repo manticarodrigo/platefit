@@ -10,10 +10,12 @@
 
   $testimonials = new WP_Query( $args );
 
+  $peek_size = isset($peek_size) ? $peek_size : 0;
+
   if ($testimonials->have_posts()) :
 ?>
 
-  <div class="glide" data-component="slider">
+  <div class="glide" data-component="slider" data-peek-size="<?php echo $peek_size ?>">
     <div class="glide__track" data-glide-el="track">
 
       <ul class="glide__slides">

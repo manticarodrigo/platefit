@@ -13,6 +13,10 @@ const onDomReady = () => {
       return size / 5;
     }
 
+    if (getIsBreakpoint('xl')) {
+      return size / 3;
+    }
+
     return size;
   }
 

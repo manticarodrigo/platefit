@@ -2,7 +2,7 @@
 
   <main class="px-4 px-3-md px-2-sm overflow-hidden relative container" role="main" aria-label="Main content">
     <?php
-      while ( have_posts() ) : the_post();
+      while (have_posts()) : the_post();
       $full_name = get_field('first_name') . ' ' . get_field('last_name');
     ?>
 
@@ -13,7 +13,7 @@
         <div class="border-box p-4 py-5 col-2 col-1-md text-center-lg">
           <p class="mb-5 quote-text"><?php the_field('quote'); ?></p>
           <h1 class="my-0 h3 text-uppercase"><?php echo $full_name; ?></h1>
-          <a class="link dark underline" href="<?php the_field('social_url'); ?>">
+          <a class="link dark underline" target="_blank" href="<?php the_field('social_url'); ?>">
             @<?php the_field('social_handle'); ?>
           </a>
           <div class="my-4">

@@ -38,7 +38,7 @@
 				<article class="col-4 col-3-lg col-2-md col-1-sm p-3 trainers__box">
 					<a class="trainers__img" href="<?php echo get_post_permalink(); ?>" style="background-image: url(<?php the_field('image') ?>);"></a>
 					<p class="mb-2 trainers__name letter-spacing-sm"><?php echo $full_name ?></p>
-					<a class="link dark underline" href="<?php the_field('social_url') ?>">
+					<a class="link dark underline" target="_blank" href="<?php the_field('social_url') ?>">
 						@<?php the_field('social_handle') ?>
 					</a>
 				</article>
