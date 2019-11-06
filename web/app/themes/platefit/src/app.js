@@ -8,7 +8,6 @@ import common from './routes/common';
 import home from './routes/home';
 import locations from './routes/locations';
 
-
 /**
  * Populate Router instance with DOM routes
  * @type {Router} routes - An instance of our router
@@ -18,8 +17,9 @@ const routes = new Router({
   common,
   /** Home page */
   home,
-  /** Loocations page */
+  /** Locations page */
   locations,
+  singleLocation: locations,
 });
 
 /** Load Events */

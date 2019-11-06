@@ -1,4 +1,4 @@
-<div id="location-<?php echo get_the_ID(); ?>" class="row p-4 p-3-md px-2-sm">
+<article id="location-<?php echo get_the_ID(); ?>" class="row p-4 p-3-md px-2-sm">
   <div class="border-box p-4 p-3-md px-2-sm col-2 col-1-md">
     <div data-component="map" data-lat="<?php the_field('latitude'); ?>" data-lng="<?php the_field('longitude'); ?>"></div>
   </div>
@@ -40,10 +40,10 @@
     <?php endif; ?>
 
     <?php if (get_field('schedule')): ?>
-      <a class="btn btn--arrow" href="<?php echo get_post_permalink(); ?>">
+      <a class="btn btn--arrow" href="<?php echo get_post_permalink(); ?>#schedule">
         View Classes
         <svg><use href="#arrow" /></svg>
       </a>
     <?php endif; ?>
   </div>
-</div>
+</article>
