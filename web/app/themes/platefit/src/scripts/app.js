@@ -4,7 +4,6 @@ import SmoothScroll from './partials/smooth-scroll';
 import Parallax from './partials/parallax';
 import Modals from './partials/modals';
 import Sliders from './partials/sliders';
-import './partials/maps';
 
 const onScroll = () => {
   Navbar.onScroll();

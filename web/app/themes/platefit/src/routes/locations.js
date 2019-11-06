@@ -1,3 +1,5 @@
+import jQuery from 'jquery';
+
 const styles = [
   {
     "elementType": "geometry",
@@ -159,27 +161,45 @@ const styles = [
   }
 ];
 
-window.initMap = () => {
-  const mapElements = document.querySelectorAll('[data-component="map"]');
+export default {
+  init() {
+    console.log('locations');
 
-  [].forEach.call(mapElements, (element) => {
-    const { lat = 34.050850, lng = -118.459271 } = element.dataset;
-    // the position of the location
-    const position = { lat: parseFloat(lat), lng: parseFloat(lng) };
-    // the map, centered at the position
-    const map = new google.maps.Map(element, {
-      zoom: 12,
-      center: position,
-      disableDefaultUI: true,
-      styles: styles,
-    });
-    // The marker, positioned at the center
-    const marker = new google.maps.Marker({
-      map,
-      position,
-      icon: '../src/assets/svgs/marker.svg',
-    });
+    window.initMap = function () {};
 
-    marker.setMap(map);
-  });
-}
+    function initMap() {
+      const mapElements = document.querySelectorAll('[data-component="map"]');
+    
+      [].forEach.call(mapElements, (element) => {
+        const { lat = 34.050850, lng = -118.459271 } = element.dataset;
+        // the position of the location
+        const position = { lat: parseFloat(lat), lng: parseFloat(lng) };
+        // the map, centered at the position
+        const map = new google.maps.Map(element, {
+          zoom: 12,
+          center: position,
+          disableDefaultUI: true,
+          styles: styles,
+        });
+        // The marker, positioned at the center
+        const marker = new google.maps.Marker({
+          map,
+          position,
+          icon: '/app/themes/platefit/src/assets/svgs/marker.svg',
+        });
+    
+        marker.setMap(map);
+      });
+    }
+    
+    window.initMap = initMap;
+
+    const script = document.createElement('script');
+    script.defer = true;
+    script.type = 'text/javascript';
+    script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyA_An-QvG5NkgURqwtjNsBVaQkJfMHorwE&callback=initMap';
+
+    jQuery('body').append(script);
+  },
+  finalize() {},
+};
