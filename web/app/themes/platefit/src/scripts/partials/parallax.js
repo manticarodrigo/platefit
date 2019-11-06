@@ -6,7 +6,7 @@ const onDomReady = () => {
   const containElements = document.querySelectorAll('[data-parallax="contain"]');
 
   jarallax(coverElements, { speed: 0.5 });
-  jarallax(containElements, { speed: 0.8, imgSize: getIsBreakpoint('lg') ? '90%' : '60%' });
+  jarallax(containElements, { speed: 0.8, imgSize: getIsBreakpoint('lg') ? '90%' : '50%' });
 };
 
 export default {
