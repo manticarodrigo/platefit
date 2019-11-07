@@ -3,7 +3,8 @@
 .glide {
 
   &__track {
-    &:after {
+
+    &::after {
       @include maxWidth($breakpoint-sm) {
         background-image: none;
       }
