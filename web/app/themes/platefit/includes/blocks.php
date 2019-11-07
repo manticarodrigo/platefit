@@ -35,6 +35,18 @@ function register_acf_block_types()
    * Global blocks
    */
 
+  // Flexible Content
+  acf_register_block_type(array(
+    'name'              => 'flexible-content',
+    'title'             => __('Flexible Content'),
+    'description'       => __('A flexible content block.'),
+    'render_template'   => 'blocks/flexible-content.php',
+    'category'          => 'global',
+    'icon'              => 'layout',
+    'keywords'          => array('flexible-content'),
+    'align'             => 'full',
+  ));
+
   // Hero
   acf_register_block_type(array(
     'name'              => 'hero',
@@ -98,18 +110,6 @@ function register_acf_block_types()
     'keywords'          => array('image-slider'),
     'align'             => 'full',
     'supports'          => array('multiple' => false),
-  ));
-
-  // Section Intro
-  acf_register_block_type(array(
-    'name'              => 'section-intro',
-    'title'             => __('Section Intro'),
-    'description'       => __('A section intro block.'),
-    'render_template'   => 'blocks/section-intro.php',
-    'category'          => 'global',
-    'icon'              => 'editor-paragraph',
-    'keywords'          => array('section-intro'),
-    'align'             => 'full',
   ));
 
   // Healcode Widget
