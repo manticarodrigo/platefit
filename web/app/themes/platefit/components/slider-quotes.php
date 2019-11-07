@@ -7,12 +7,12 @@
     'posts_per_page' => '5',
   );
 
-  $testimonials = new WP_Query( $args );
+  $query = new WP_Query( $args );
 
   $peek_size = isset($peek_size) ? $peek_size : 0;
   $padding = $peek_size > 100 ? 'py-4 px-5 px-4-xl px-3-lg' : 'py-4 px-6 px-5-xl px-4-lg px-3-md';
 
-  if ($testimonials->have_posts()) :
+  if ($query->have_posts()) :
 ?>
 
   <div class="glide" data-component="slider" data-peek-size="<?php echo $peek_size ?>">
@@ -20,7 +20,7 @@
       <ul class="glide__slides">
 
         <?php
-          while($testimonials->have_posts()) : $testimonials->the_post();
+          while($query->have_posts()) : $query->the_post();
           $text = get_field('quote', get_the_ID());
           $maxPos = 400;
           if (strlen($text) > $maxPos)

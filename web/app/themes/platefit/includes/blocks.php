@@ -125,6 +125,19 @@ function register_acf_block_types()
     'supports'          => array('multiple' => false),
   ));
 
+  // Trainers
+  acf_register_block_type(array(
+    'name'              => 'trainers',
+    'title'             => __('Trainers'),
+    'description'       => __('A trainers block.'),
+    'render_template'   => 'blocks/trainers.php',
+    'category'          => 'global',
+    'icon'              => 'universal-access',
+    'keywords'          => array('trainers'),
+    'align'             => 'full',
+    'supports'          => array('multiple' => false),
+  ));
+
   // Healcode Widget
   acf_register_block_type(array(
     'name'              => 'healcode-widget',
