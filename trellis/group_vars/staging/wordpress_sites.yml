@@ -4,7 +4,7 @@
 # Define accompanying passwords/secrets in group_vars/staging/vault.yml
 
 wordpress_sites:
-  dev.platefit.co:
+  staging.platefit.co:
     site_hosts:
       - canonical: staging.platefit.co
     local_path: ../ # path targeting local Bedrock site directory (relative to Ansible root)
