@@ -24,7 +24,7 @@
             <a href="#schedule" class="mr-2 mr-0-lg mb-2 btn btn--arrow btn--full-lg">
               View Classes <svg><use href="#arrow" /></svg>
             </a>
-            <a href="mailto:info@platefit.co" class="mb-2 btn btn--arrow btn--full-lg">
+            <a class="mb-2 btn btn--arrow btn--full-lg" target="_blank" href="mailto:info@platefit.co">
               Book a Private <svg><use href="#arrow" /></svg>
             </a>
           </div>
