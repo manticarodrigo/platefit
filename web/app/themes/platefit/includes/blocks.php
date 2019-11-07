@@ -73,19 +73,6 @@ function register_acf_block_types()
     'supports'          => array('multiple' => false),
   ));
 
-  // Testimonials
-  acf_register_block_type(array(
-    'name'              => 'testimonials',
-    'title'             => __('Testimonials'),
-    'description'       => __('A testimonials block.'),
-    'render_template'   => 'blocks/testimonials.php',
-    'category'          => 'global',
-    'icon'              => 'format-quote',
-    'keywords'          => array('testimonials'),
-    'align'             => 'full',
-    'supports'          => array('multiple' => false),
-  ));
-
   // Insta Feed
   acf_register_block_type(array(
     'name'              => 'insta-feed',
@@ -93,7 +80,7 @@ function register_acf_block_types()
     'description'       => __('An insta-feed block.'),
     'render_template'   => 'blocks/insta-feed.php',
     'category'          => 'global',
-    'icon'              => 'screen-options',
+    'icon'              => 'screenoptions',
     'keywords'          => array('insta-feed'),
     'align'             => 'full',
     'supports'          => array('multiple' => false),
@@ -108,6 +95,32 @@ function register_acf_block_types()
     'category'          => 'global',
     'icon'              => 'images-alt',
     'keywords'          => array('image-slider'),
+    'align'             => 'full',
+    'supports'          => array('multiple' => false),
+  ));
+
+  // Testimonials
+  acf_register_block_type(array(
+    'name'              => 'testimonials',
+    'title'             => __('Testimonials'),
+    'description'       => __('A testimonials block.'),
+    'render_template'   => 'blocks/testimonials.php',
+    'category'          => 'global',
+    'icon'              => 'format-quote',
+    'keywords'          => array('testimonials'),
+    'align'             => 'full',
+    'supports'          => array('multiple' => false),
+  ));
+
+  // Press
+  acf_register_block_type(array(
+    'name'              => 'press',
+    'title'             => __('Press'),
+    'description'       => __('A press block.'),
+    'render_template'   => 'blocks/press.php',
+    'category'          => 'global',
+    'icon'              => 'media-document',
+    'keywords'          => array('press'),
     'align'             => 'full',
     'supports'          => array('multiple' => false),
   ));

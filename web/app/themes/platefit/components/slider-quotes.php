@@ -2,7 +2,6 @@
   $args = array(
     'post_type' => 'testimonial',
     'post_status' => 'publish',
-    'meta_key' => 'author_name',
     'orderby' => 'rand',
     'order' => 'DESC',
     'posts_per_page' => '5',
