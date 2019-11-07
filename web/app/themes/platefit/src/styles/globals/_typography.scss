@@ -155,3 +155,55 @@ p,
     color: $color-primary-alt;
   }
 }
+
+b,
+strong,
+.text-bold {
+  font-family: $font-bold;
+}
+
+.text-sm {
+  @include fontSize(14px);
+}
+
+.text-lg {
+  @include fontSize(20px);
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.text-underline {
+  text-decoration: underline;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
+
+  &-lg { @include maxWidth($breakpoint-lg) { text-align: left; } }
+}
+
+.text-center {
+  text-align: center;
+
+  &-xl { @include maxWidth($breakpoint-xl) { text-align: center; } }
+  &-lg { @include maxWidth($breakpoint-lg) { text-align: center; } }
+  &-md { @include maxWidth($breakpoint-md) { text-align: center; } }
+}
+
+.letter-spacing {
+  @include maxWidth($breakpoint-sm) {
+    letter-spacing: 0;
+  }
+
+  letter-spacing: .25em;
+
+  &-sm {
+    letter-spacing: .025em;
+  }
+}
