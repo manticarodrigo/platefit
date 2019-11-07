@@ -40,7 +40,8 @@
     "roots/wordpress": "5.2.2",
     "roots/wp-config": "1.0.0",
     "roots/wp-password-bcrypt": "1.0.0",
-    "wpackagist-plugin/instagram-feed": "^2.1"
+    "wpackagist-plugin/instagram-feed": "^2.1",
+    "wpackagist-plugin/google-site-kit": "^1.0"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "^3.4.2",
