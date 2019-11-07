@@ -7,12 +7,24 @@
         <div class="max-width">
           <h1 class="h2 text-center text-uppercase letter-spacing dark"><?php the_sub_field('title'); ?></h1>
           <?php if (get_sub_field('description')): ?>
-            <p class="text-lg text-center paragraph"><?php the_sub_field('description'); ?></strong></p>
+            <p class="text-lg text-center paragraph"><?php the_sub_field('description'); ?></p>
           <?php endif; ?>
         </div>
       </section>
     
-    
+    <?php elseif (get_row_layout() == 'spacer'): ?>
+
+      <section class="p-<?php the_sub_field('spacing'); ?> bg-color-<?php the_sub_field('bg_color'); ?>"></section>
+
+    <?php elseif (get_row_layout() == 'full_width_text'): ?>
+
+      <section class="p-4 px-2-md bg-color-light">
+        <div class="max-width">
+          <h3 class="my-2 text-uppercase letter-spacing-sm"><?php the_sub_field('title'); ?></h3>
+          <?php the_sub_field('description'); ?>
+        </div>
+      </section>
+
     <?php elseif (get_row_layout() == 'testimonials'): ?>
 
       <section class="p-6 px-4-lg px-2-md bg-color-light row center">

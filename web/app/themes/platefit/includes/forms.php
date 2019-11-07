@@ -61,7 +61,7 @@ add_action( 'admin_post_platefit_newsletter_subscription', 'platefit_process_new
 function render_mailchimp_form($modal = false) {
   global $post;
   $container_ID = $modal ? '#platefit-modal-newsletter-wrap' : '#platefit-newsletter-wrap';
-  $redirect_to = get_permalink( $post->ID ) . $container_ID;
+  $redirect_to = $post ? get_permalink( $post->ID ) . $container_ID : '/';
   // Display possible messages to the visitor.
   $message = '';
   if ( isset( $_GET['platefit_signup'] ) ) {

@@ -24,9 +24,10 @@
 }
 
 body {
-  font-size: 16px;
+  @include fontSize(18px);
+
   font-family: $font-book;
-  color: $color-dark;
+  color: $color-text;
   word-wrap: break-word;
 }
 
@@ -128,6 +129,7 @@ h6,
 }
 
 p,
+li,
 .paragraph {
   color: $color-text;
   line-height: 1.8;

@@ -114,10 +114,10 @@
         &.btn {
 
           @include minWidth($breakpoint-lg + 1) {
-            color: inherit;
+            color: $color-dark;
 
             &:focus,
-            &:hover { color: inherit; }
+            &:hover { color: $color-dark; }
           }
 
           @include maxWidth($breakpoint-lg) {

@@ -8,17 +8,19 @@ add_theme_support('align-wide');
 
 function filter_block_categories($categories)
 {
-  return array(
+  return array_merge(
     array(
-      'slug' => 'global',
-      'title' => __('Global', 'platefit'),
-      'icon'  => 'admin-site',
-    ),
-    array(
-      'slug' => 'homepage',
-      'title' => __('Homepage', 'platefit'),
-      'icon'  => 'store',
-    ),
+      array(
+        'slug' => 'global',
+        'title' => __('Global', 'platefit'),
+        'icon'  => 'admin-site',
+      ),
+      array(
+        'slug' => 'homepage',
+        'title' => __('Homepage', 'platefit'),
+        'icon'  => 'store',
+      ),
+    )
   );
 }
 
