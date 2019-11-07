@@ -9,7 +9,6 @@ wordpress_sites:
       - canonical: staging.platefit.co
     local_path: ../ # path targeting local Bedrock site directory (relative to Ansible root)
     repo: git@github.com:manticarodrigo/platefit.git # replace with your Git repo URL
-    repo_subtree_path: . # relative path to your Bedrock/WP directory in your repo
     branch: staging
     multisite:
       enabled: false
