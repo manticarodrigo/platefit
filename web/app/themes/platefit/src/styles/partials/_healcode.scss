@@ -66,9 +66,11 @@
 // Class List
 .healcode {
   
+  .class_list.list_view,
   .class_list.mindbody_classic {
 
-    & > div {
+    & > div,
+    & > ol {
       display: flex;
       flex-wrap: wrap;
 
@@ -82,14 +84,24 @@
         width: 50%;
       }
 
+      @include maxWidth($breakpoint-sm) {
+        width: 100%;
+        margin-right: 0;
+        padding-top: 200px;
+        margin-left: 0;
+        padding-right: 0;
+        padding-left: 0;
+        text-align: center;
+      }
+
       box-sizing: border-box;
       position: relative;
+      border-top: 0;
       padding: 140px 10px 10px;
       padding-top: 160px;
       width: 25%;
 
       .class_description {
-        
         p,
         & > div > div {
           @include fontSize(16px);
@@ -112,11 +124,16 @@
       }
 
       img {
+        @include maxWidth($breakpoint-sm) {
+          left: 50%;
+          transform: translateX(-50%);
+        }
+
         position: absolute;
         top: 0;
         left: 10px;
-        width: 140px;
-        height: 140px;
+        width: 200px !important;
+        height: 150px !important;
         object-fit: cover;
       }
 
