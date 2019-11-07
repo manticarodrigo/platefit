@@ -124,6 +124,18 @@ function register_acf_block_types()
     'align'             => 'full',
   ));
 
+  // Pricing
+  acf_register_block_type(array(
+    'name'              => 'pricing',
+    'title'             => __('Pricing'),
+    'description'       => __('A pricing block.'),
+    'render_template'   => 'blocks/pricing.php',
+    'category'          => 'global',
+    'icon'              => 'tickets-alt',
+    'keywords'          => array('pricing'),
+    'align'             => 'full',
+  ));
+
   /**
    * Homepage blocks
    */

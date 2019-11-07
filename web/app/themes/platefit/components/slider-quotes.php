@@ -11,6 +11,7 @@
   $testimonials = new WP_Query( $args );
 
   $peek_size = isset($peek_size) ? $peek_size : 0;
+  $padding = $peek_size > 100 ? 'py-4 px-5 px-4-xl px-3-lg' : 'py-4 px-6 px-5-xl px-4-lg px-3-md';
 
   if ($testimonials->have_posts()) :
 ?>
@@ -30,9 +31,9 @@
           }
         ?>
           <li class="glide__slide">
-            <div class="py-4 px-5 px-4-xl px-3-lg">
+            <div class="<?php echo $padding ?>">
               <p class="quote-text"><?php echo $text; ?></p>
-              <h4 class="text-uppercase quote-author">/ <?php echo get_field('author_name', get_the_ID()); ?></h4>
+              <h4 class="text-uppercase underline quote-author">/ <?php echo get_field('author_name', get_the_ID()); ?></h4>
             </div>
           </li>
         <?php endwhile; wp_reset_postdata(); ?>

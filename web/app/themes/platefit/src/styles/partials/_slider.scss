@@ -36,16 +36,21 @@
 }
 
 .btn-slider {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
   border: none;
   background: transparent;
-  padding: 10px;
+  border: 2px solid $color-overlay-primary;
+  padding: 2px 10px;
   color: $color-slider-btn;
-  transition: color $duration;
+  transition: color $duration, border $duration;
   cursor: pointer;
 
   &:focus,
   &:hover {
-    color: $color-primary;
+    border-color: $color-primary;
+    color: $color-dark;
   }
 
   svg {
@@ -54,10 +59,9 @@
   }
 
   &--left {
-    
+
     svg {
       transform: rotate(180deg);
-      // margin-bottom: -19px;
     }
   }
 }
