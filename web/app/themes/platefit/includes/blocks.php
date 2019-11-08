@@ -182,19 +182,6 @@ function register_acf_block_types()
     'supports'          => array('multiple' => false),
   ));
 
-  // Press
-  acf_register_block_type(array(
-    'name'              => 'homepage-press',
-    'title'             => __('Homepage Press'),
-    'description'       => __('A press block with background, links, and images.'),
-    'render_template'   => 'blocks/homepage-press.php',
-    'category'          => 'homepage',
-    'icon'              => 'store',
-    'keywords'          => array('press', 'homepage'),
-    'align'             => 'full',
-    'supports'          => array('multiple' => false),
-  ));
-
   // Our Story
   acf_register_block_type(array(
     'name'              => 'homepage-our-story',

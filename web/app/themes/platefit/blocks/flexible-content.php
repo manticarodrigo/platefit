@@ -1,7 +1,11 @@
 <?php if (have_rows('content')): ?>
   <?php while (have_rows('content')) : the_row(); ?>
 
-    <?php if (get_row_layout() == 'section_intro'): ?>
+    <?php if (get_row_layout() == 'spacer'): ?>
+
+      <section class="p-<?php the_sub_field('spacing'); ?> bg-color-<?php the_sub_field('bg_color'); ?>"></section>
+
+    <?php elseif (get_row_layout() == 'section_intro'): ?>
 
       <section class="py-5 px-4 bg-color-light">
         <div class="max-width">
@@ -9,6 +13,16 @@
           <?php if (get_sub_field('description')): ?>
             <p class="text-lg text-center paragraph"><?php the_sub_field('description'); ?></p>
           <?php endif; ?>
+        </div>
+      </section>
+
+    
+    <?php elseif (get_row_layout() == 'full_width_text'): ?>
+
+      <section class="p-4 px-2-md bg-color-light">
+        <div class="max-width">
+          <h3 class="my-2 text-uppercase letter-spacing-sm"><?php the_sub_field('title'); ?></h3>
+          <?php the_sub_field('description'); ?>
         </div>
       </section>
 
@@ -36,38 +50,6 @@
         </div>
 
       </section>
-    
-    <?php elseif (get_row_layout() == 'spacer'): ?>
-
-      <section class="p-<?php the_sub_field('spacing'); ?> bg-color-<?php the_sub_field('bg_color'); ?>"></section>
-
-    <?php elseif (get_row_layout() == 'full_width_text'): ?>
-
-      <section class="p-4 px-2-md bg-color-light">
-        <div class="max-width">
-          <h3 class="my-2 text-uppercase letter-spacing-sm"><?php the_sub_field('title'); ?></h3>
-          <?php the_sub_field('description'); ?>
-        </div>
-      </section>
-
-    <?php elseif (get_row_layout() == 'testimonials'): ?>
-
-      <section class="p-6 px-4-lg px-2-md bg-color-light row center">
-        <?php
-          $peek_size = 350;
-          include(locate_template( 'components/slider-quotes.php', false, false));
-        ?>
-      </section>
-    
-    
-    <?php elseif (get_row_layout() == 'image_slider'): ?>
-
-        <section class="bg-color-light row center">
-          <?php
-            $peek_size = 250;
-            include(locate_template('components/slider-images.php', false, false));
-          ?>
-        </section>
 
     <?php elseif (get_row_layout() == 'left_text_right_image'): ?>
 
@@ -121,6 +103,18 @@
           </div>
 
         </article>
+      </section>
+
+    <?php elseif (get_row_layout() == 'image_link_banner'): ?>
+
+      <section class="bg-cover banner banner--opaque" style="background-image: url(<?php the_sub_field('background') ?>);" data-parallax="cover">
+        <div class="p-6 px-4-lg row around">
+          <?php if (have_rows('links')): ?>
+            <?php while (have_rows('links')) : the_row(); ?>
+              <a class="col-6 col-3-lg col-1-md mb-4-md row center align-center hover-translucent" target="_blank" href="<?php the_sub_field('url'); ?><?php the_sub_field('file'); ?>"><img class="press-img" src="<?php the_sub_field('image'); ?>" /></a>
+            <?php endwhile; ?>
+          <?php endif; ?>
+        </div>
       </section>
 
     <?php endif; ?>
