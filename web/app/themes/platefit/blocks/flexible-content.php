@@ -11,6 +11,31 @@
           <?php endif; ?>
         </div>
       </section>
+
+    <?php elseif (get_row_layout() == 'title_shoutout_text'): ?>
+
+      <section class="px-6 px-4-lg px-2-md py-4 pt-box-section bg-color-light">
+        <h3 class="mb-0-md h2 text-center text-uppercase letter-spacing"><?php the_sub_field('title'); ?></h3>
+
+        <div class="row">
+          <div class="border-box p-4 p-2-sm col-2 col-1-md">
+            <p class="my-0-md h2 h2-sm text-center-lg"><?php the_sub_field('shoutout'); ?></p>
+          </div>
+
+          <div class="border-box p-4 p-2-sm col-2 col-1-md">
+            <div class="text-right text-center-lg">
+              <p class="paragraph">
+                <?php the_sub_field('description'); ?>
+              </p>
+              <a class="btn btn--arrow" href="<?php the_sub_field('link'); ?>">
+                <?php the_sub_field('link_text'); ?>
+                <svg><use href="#arrow" /></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </section>
     
     <?php elseif (get_row_layout() == 'spacer'): ?>
 

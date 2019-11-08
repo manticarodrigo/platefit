@@ -19,8 +19,9 @@ function filter_block_categories($categories)
         'slug' => 'homepage',
         'title' => __('Homepage', 'platefit'),
         'icon'  => 'store',
-      ),
-    )
+      )
+    ),
+    $categories
   );
 }
 
@@ -167,19 +168,6 @@ function register_acf_block_types()
   /**
    * Homepage blocks
    */
-
-  // About
-  acf_register_block_type(array(
-    'name'              => 'homepage-about',
-    'title'             => __('Homepage About'),
-    'description'       => __('An about block with a title, shoutout, description and link.'),
-    'render_template'   => 'blocks/homepage-about.php',
-    'category'          => 'homepage',
-    'icon'              => 'store',
-    'keywords'          => array('about', 'homepage'),
-    'align'             => 'full',
-    'supports'          => array('multiple' => false),
-  ));
 
   // Plate
   acf_register_block_type(array(
