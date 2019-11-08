@@ -182,19 +182,6 @@ function register_acf_block_types()
     'supports'          => array('multiple' => false),
   ));
 
-  // Community
-  acf_register_block_type(array(
-    'name'              => 'homepage-community',
-    'title'             => __('Homepage Community'),
-    'description'       => __('A community block with insta feed, title, description, and link.'),
-    'render_template'   => 'blocks/homepage-community.php',
-    'category'          => 'homepage',
-    'icon'              => 'store',
-    'keywords'          => array('community', 'homepage'),
-    'align'             => 'full',
-    'supports'          => array('multiple' => false),
-  ));
-
   // App
   acf_register_block_type(array(
     'name'              => 'homepage-app',
