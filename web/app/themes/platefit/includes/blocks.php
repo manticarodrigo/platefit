@@ -165,6 +165,19 @@ function register_acf_block_types()
     'align'             => 'full',
   ));
 
+  // Mobile App
+  acf_register_block_type(array(
+    'name'              => 'mobile-app',
+    'title'             => __('Mobile App'),
+    'description'       => __('A mobile app block with title, description, links and image.'),
+    'render_template'   => 'blocks/mobile-app.php',
+    'category'          => 'global',
+    'icon'              => 'smartphone',
+    'keywords'          => array('mobile-app'),
+    'align'             => 'full',
+    'supports'          => array('multiple' => false),
+  ));
+
   /**
    * Homepage blocks
    */
@@ -182,18 +195,6 @@ function register_acf_block_types()
     'supports'          => array('multiple' => false),
   ));
 
-  // App
-  acf_register_block_type(array(
-    'name'              => 'homepage-app',
-    'title'             => __('Homepage App'),
-    'description'       => __('An app block with title, description, links and image.'),
-    'render_template'   => 'blocks/homepage-app.php',
-    'category'          => 'homepage',
-    'icon'              => 'store',
-    'keywords'          => array('app', 'homepage'),
-    'align'             => 'full',
-    'supports'          => array('multiple' => false),
-  ));
 }
 
 if (function_exists('acf_register_block_type')) {
