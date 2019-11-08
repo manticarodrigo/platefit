@@ -1,5 +1,13 @@
+<?php
+  $link = get_field('link');
+  $title_tag = $link ? 'a' : 'h2';
+  $extra_attrs = $link ? 'href=' . $link : '';
+?>
 <section class="px-6 px-4-lg px-2-md center bg-cover hero" style="background-image: url(<?php the_field('background'); ?>);" data-parallax="cover">
-  <h2 class="my-0 h1 text-center text-uppercase letter-spacing-sm hero__title"><?php the_field('title'); ?></h2>
+  <<?php echo $title_tag; ?> class="my-0 h1 text-center text-uppercase letter-spacing-sm hero__title" <?php echo $extra_attrs ?>>
+      <?php the_field('title'); ?>
+      
+  </<?php echo $title_tag; ?>>
 
   <?php if (get_field('left_box_description') && get_field('right_box_description')): ?>
     <div class="row box-row">

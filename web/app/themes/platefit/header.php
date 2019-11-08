@@ -10,7 +10,7 @@
 
 	<body <?php body_class(); ?>>
 
-		<!-- svg sprite sheet -->
+		<!-- svg spritesheet -->
 		<?php print_svgs() ?>
 
 		<!-- header -->

@@ -1,6 +1,18 @@
 <?php if (have_rows('sections')): ?>
   <script src="https://widgets.healcode.com/javascripts/healcode.js" type="text/javascript"></script>
 
+  <span class="display-none" data-component="first-time-container">
+    <healcode-widget
+      data-version="0.2"
+      data-link-class="healcode-pricing-option-text-link"
+      data-site-id="16612"
+      data-mb-site-id="311100"
+      data-type="pricing-link"
+      data-inner-html="Buy Now"
+      data-service-id="10301"
+    />
+  </span>
+
   <section class="py-5 px-4 bg-color-light">
 
     <?php while (have_rows('sections')) : the_row(); ?>
