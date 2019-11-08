@@ -14,11 +14,6 @@ function filter_block_categories($categories)
         'slug' => 'global',
         'title' => __('Global', 'platefit'),
         'icon'  => 'admin-site',
-      ),
-      array(
-        'slug' => 'homepage',
-        'title' => __('Homepage', 'platefit'),
-        'icon'  => 'store',
       )
     ),
     $categories
@@ -165,6 +160,19 @@ function register_acf_block_types()
     'align'             => 'full',
   ));
 
+  // Plate
+  acf_register_block_type(array(
+    'name'              => 'the-plate',
+    'title'             => __('The Plate'),
+    'description'       => __('A plate block with video, quotes, description and image.'),
+    'render_template'   => 'blocks/the-plate.php',
+    'category'          => 'global',
+    'icon'              => 'groups',
+    'keywords'          => array('plate'),
+    'align'             => 'full',
+    'supports'          => array('multiple' => false),
+  ));
+
   // Mobile App
   acf_register_block_type(array(
     'name'              => 'mobile-app',
@@ -177,24 +185,6 @@ function register_acf_block_types()
     'align'             => 'full',
     'supports'          => array('multiple' => false),
   ));
-
-  /**
-   * Homepage blocks
-   */
-
-  // Plate
-  acf_register_block_type(array(
-    'name'              => 'homepage-plate',
-    'title'             => __('Homepage Plate'),
-    'description'       => __('A plate block with video, quotes, description and image.'),
-    'render_template'   => 'blocks/homepage-plate.php',
-    'category'          => 'homepage',
-    'icon'              => 'store',
-    'keywords'          => array('plate', 'homepage'),
-    'align'             => 'full',
-    'supports'          => array('multiple' => false),
-  ));
-
 }
 
 if (function_exists('acf_register_block_type')) {
