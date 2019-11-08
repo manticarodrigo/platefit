@@ -118,6 +118,8 @@
 
             &:focus,
             &:hover { color: $color-dark; }
+
+            &:active { color: $color-white; }
           }
 
           @include maxWidth($breakpoint-lg) {
