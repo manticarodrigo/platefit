@@ -16,7 +16,7 @@
 ?>
 
   <div class="glide" data-component="slider" data-peek-size="<?php echo $peek_size ?>">
-    <div class="glide__track" data-glide-el="track">
+    <div class="glide__track glide__track--faded" data-glide-el="track">
       <ul class="glide__slides">
 
         <?php

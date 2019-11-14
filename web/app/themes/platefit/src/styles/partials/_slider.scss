@@ -4,21 +4,25 @@
 
   &__track {
 
-    &::after {
-      @include maxWidth($breakpoint-sm) {
-        background-image: none;
+    &--faded {
+
+      &::after {
+        @include maxWidth($breakpoint-sm) {
+          background-image: none;
+        }
+  
+        content: '';
+        position: absolute;
+        left: 0; right: 0;
+        top: 0; bottom: 0;
+        background-image:
+          linear-gradient(to right, rgba(250,250,250,1), rgba(250,250,250,0) 100px),
+          linear-gradient(to left , rgba(250,250,250,1), rgba(250,250,250,0) 100px);
+  
+        pointer-events: none;
       }
-
-      content: '';
-      position: absolute;
-      left: 0; right: 0;
-      top: 0; bottom: 0;
-      background-image:
-        linear-gradient(to right, rgba(250,250,250,1), rgba(250,250,250,0) 100px),
-        linear-gradient(to left , rgba(250,250,250,1), rgba(250,250,250,0) 100px);
-
-      pointer-events: none;
     }
+
   }
 
   &__slide {

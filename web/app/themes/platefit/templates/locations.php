@@ -5,7 +5,8 @@
 
 	$args = array(
     'post_type' => 'location',
-    'post_status' => 'publish',
+		'post_status' => 'publish',
+		'posts_per_page' => -1,
     'meta_key' => 'title',
     'orderby' => 'publish_date',
     'order' => 'ASC',

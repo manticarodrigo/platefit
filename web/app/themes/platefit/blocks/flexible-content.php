@@ -79,6 +79,7 @@
           <div class="border-box p-4 p-2-sm col-2 col-1-lg row center">
             <?php
               $peek_size = 100;
+              $faded = true;
               include(locate_template( 'components/slider-images.php', false, false));
             ?>
           </div>

@@ -2,6 +2,7 @@
 	$args = array(
 		'post_type'   => 'trainer',
 		'post_status' => 'publish',
+		'posts_per_page' => -1,
 		'meta_key' => 'last_name',
 		'orderby' => 'meta_value',
 		'order'   => 'ASC',
