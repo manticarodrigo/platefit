@@ -79,10 +79,11 @@ function render_mailchimp_form($modal = false) {
 
   // Determine form class if is modal
   $form_class = $modal ? 'modal__form' : 'footer__newsletter';
+  $form_id = $modal ? 'platefit-modal-subscribe-form' : 'platefit-footer-subscribe-form';
   ?>
 
   <div id="<?php echo $container_ID ?>">
-      <form class="row <?php echo $form_class ?>" action="<?php echo esc_url( admin_url('admin-post.php') ); ?>" method="post" id="platefit-modal-subscribe-form" name="modal-subscribe-form">
+      <form class="row <?php echo $form_class ?>" action="<?php echo esc_url( admin_url('admin-post.php') ); ?>" method="post" id="<?php echo $form_id ?>" name="modal-subscribe-form">
           <?php if ($modal): ?>
               <input type="email" value="" name="EMAIL" id="modal-email" placeholder="Your Email">
               <button class="modal__form__submit" type="submit" name="subscribe" id="modal-subscribe">Subscribe&nbsp;<svg><use href="#arrow" /></svg></button>
