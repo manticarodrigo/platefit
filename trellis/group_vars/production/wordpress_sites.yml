@@ -6,8 +6,8 @@ wordpress_sites:
   platefit.co:
     site_hosts:
       - canonical: platefit.co
-    redirects:
-      - www.platefit.co
+        redirects:
+          - www.platefit.co
     local_path: ../ # path targeting local Bedrock site directory (relative to Ansible root)
     repo: git@github.com:manticarodrigo/platefit.git # replace with your Git repo URL
     branch: master
