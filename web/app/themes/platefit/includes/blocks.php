@@ -149,6 +149,19 @@ function register_acf_block_types()
     'supports'          => array('multiple' => false),
   ));
 
+  // Locations
+  acf_register_block_type(array(
+    'name'              => 'locations',
+    'title'             => __('Locations'),
+    'description'       => __('A locations block.'),
+    'render_template'   => 'blocks/locations.php',
+    'category'          => 'platefit',
+    'icon'              => 'location-alt',
+    'keywords'          => array('locations'),
+    'align'             => 'full',
+    'supports'          => array('multiple' => false),
+  ));
+
   // Healcode Widget
   acf_register_block_type(array(
     'name'              => 'healcode-widget',
