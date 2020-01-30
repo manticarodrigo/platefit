@@ -24,6 +24,16 @@ function create_post_types() {
     register_post_type('trainer', array_merge($common, $trainer));
 
     /**
+     * Workouts
+     */
+    $workout = array(
+        'labels' => array('name' => __('Workouts'), 'singular_name' => __('Workout')),
+        'menu_icon' => 'dashicons-performance',
+        'rewrite' => array('slug' => 'workouts'),
+    );
+    register_post_type('workout', array_merge($common, $workout));
+
+    /**
      * Location
      */
     $location = array(

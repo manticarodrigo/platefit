@@ -136,6 +136,19 @@ function register_acf_block_types()
     'supports'          => array('multiple' => false),
   ));
 
+  // Workouts
+  acf_register_block_type(array(
+    'name'              => 'workouts',
+    'title'             => __('Workouts'),
+    'description'       => __('A workouts block.'),
+    'render_template'   => 'blocks/workouts.php',
+    'category'          => 'platefit',
+    'icon'              => 'performance',
+    'keywords'          => array('workouts'),
+    'align'             => 'full',
+    'supports'          => array('multiple' => false),
+  ));
+
   // Healcode Widget
   acf_register_block_type(array(
     'name'              => 'healcode-widget',

@@ -6,6 +6,7 @@ import './app.scss';
 import Router from './util/Router';
 import common from './routes/common';
 import home from './routes/home';
+import about from './routes/about';
 import pricing from './routes/pricing';
 import locations from './routes/locations';
 
@@ -18,6 +19,8 @@ const routes = new Router({
   common,
   /** Home page */
   home,
+  /** About page */
+  about,
   /** Pricing page */
   pricing,
   /** Locations page */
