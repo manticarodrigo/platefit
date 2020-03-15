@@ -144,18 +144,18 @@ li,
 
   }
 
-  &.underline {
-    border-bottom: 2px solid $color-primary;
-  }
-
-  &.inline-block {
-    display: inline-block;
-  }
-
   &:focus,
   &:hover {
     color: $color-primary-alt;
   }
+}
+
+.underline {
+  border-bottom: 2px solid $color-primary;
+}
+
+.inline-block {
+  display: inline-block;
 }
 
 b,

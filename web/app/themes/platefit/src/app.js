@@ -9,6 +9,7 @@ import home from './routes/home';
 import about from './routes/about';
 import pricing from './routes/pricing';
 import locations from './routes/locations';
+import shop from './routes/shop';
 
 /**
  * Populate Router instance with DOM routes
@@ -26,6 +27,8 @@ const routes = new Router({
   /** Locations page */
   locations,
   singleLocation: locations,
+  /** Shop page */
+  shop
 });
 
 /** Load Events */
