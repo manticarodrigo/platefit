@@ -31,9 +31,5 @@ certs/
 # Logs
 logs/
 
-# Vagrant
-bin
-.vagrant
-
 # Custom
 .DS_Store

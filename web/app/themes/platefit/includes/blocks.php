@@ -211,6 +211,18 @@ function register_acf_block_types()
     'align'             => 'full',
     'supports'          => array('multiple' => false),
   ));
+
+  // Products
+  acf_register_block_type(array(
+    'name'              => 'products',
+    'title'             => __('Products'),
+    'description'       => __('A shopify collection block.'),
+    'render_template'   => 'blocks/products.php',
+    'category'          => 'platefit',
+    'icon'              => 'cart',
+    'keywords'          => array('products'),
+    'align'             => 'full',
+  ));
 }
 
 if (function_exists('acf_register_block_type')) {
