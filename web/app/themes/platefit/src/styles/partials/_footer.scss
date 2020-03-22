@@ -84,6 +84,7 @@
     }
 
     input[type="email"] {
+      flex: 1;
       color: $color-text;
       
 
@@ -91,7 +92,11 @@
     }
 
     input[type="submit"] {
-      color: $color-primary-alt;
+      flex: 0;
+      cursor: pointer;
+      background-color: $color-primary;
+      color: $color-dark;
+      font-family: $font-bold;
     }
   }
 }
