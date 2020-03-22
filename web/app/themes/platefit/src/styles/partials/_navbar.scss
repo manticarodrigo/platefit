@@ -1,5 +1,4 @@
 .admin-bar {
-
   .navbar {
     top: 32px;
 
@@ -11,7 +10,22 @@
       top: 0;
     }
   }
+}
 
+.navbar-announcement {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 40px;
+  background-color: $color-primary;
+
+  & + .navbar {
+    margin-top: 40px;
+  }
+
+  a {
+    text-decoration: underline;
+  }
 }
 
 .navbar {
@@ -60,7 +74,7 @@
   }
 
   &__menu {
-    @include fontSize(13px);
+    @include fontSize(14px);
 
     @include maxWidth($breakpoint-lg) {
       position: absolute;
@@ -90,9 +104,10 @@
 
       a {
         @include minWidth($breakpoint-lg + 1) {
-
           &:focus,
-          &:hover { color: $color-primary-alt; }
+          &:hover {
+            color: $color-primary-alt;
+          }
         }
 
         @include maxWidth($breakpoint-lg) {
@@ -101,7 +116,9 @@
           color: $color-dark;
 
           &:focus,
-          &:hover { color: $color-white; }
+          &:hover {
+            color: $color-white;
+          }
         }
 
         position: relative;
@@ -109,17 +126,20 @@
         color: $color-text;
         font-weight: bold;
         text-decoration: none;
-        letter-spacing: .02em;
+        letter-spacing: 0.02em;
 
         &.btn {
-
           @include minWidth($breakpoint-lg + 1) {
             color: $color-dark;
 
             &:focus,
-            &:hover { color: $color-dark; }
+            &:hover {
+              color: $color-dark;
+            }
 
-            &:active { color: $color-white; }
+            &:active {
+              color: $color-white;
+            }
           }
 
           @include maxWidth($breakpoint-lg) {
@@ -134,7 +154,9 @@
   }
 
   input {
-    @include maxWidth($breakpoint-lg) { display: block; }
+    @include maxWidth($breakpoint-lg) {
+      display: block;
+    }
 
     display: none;
     position: absolute;
@@ -208,7 +230,9 @@
   }
 
   &__mobile-icon {
-    @include maxWidth($breakpoint-lg) { display: block; }
+    @include maxWidth($breakpoint-lg) {
+      display: block;
+    }
 
     display: none;
     box-sizing: border-box;
@@ -217,7 +241,9 @@
     padding: 10px;
 
     span {
-      @include maxWidth($breakpoint-lg) { display: block; }
+      @include maxWidth($breakpoint-lg) {
+        display: block;
+      }
 
       display: none;
       width: 20px;
@@ -226,9 +252,8 @@
       background: $color-dark;
       z-index: 1;
       transform-origin: 4px 0px;
-      transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
-                  background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
-                  opacity 0.55s ease;
+      transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
+        background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
 
       &:first-child {
         transform-origin: 0% 0%;

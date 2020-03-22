@@ -1,19 +1,32 @@
 import { getIsScrolled } from '../globals/utility';
 
 let navbar;
+let navbarAnnouncements;
 let navbarBackdrop;
 let navbarToggle;
 
 const onDomReady = () => {
   navbar = document.querySelector('[data-component="navbar"]');
+  navbarAnnouncements = document.querySelector('[data-component="navbar-announcements"]');
   navbarBackdrop = document.querySelector('[data-component="navbar-backdrop"]');
   navbarToggle = document.querySelector('[data-component="navbar-toggle"]');
 
   _watchNavbarHover();
   _watchNavbarBackdropClick();
+
+  onScroll() // set initial values if already scrolled
 };
 
-const onScroll = () => _setNavbarOpacity(getIsScrolled());
+const onScroll = () => {
+  _setNavbarTopMargin();
+  _setNavbarOpacity(getIsScrolled());
+}
+
+const _setNavbarTopMargin = () => {
+  if (!navbar || !navbarAnnouncements) return;
+
+  navbar.style.marginTop = `${Math.max(40 - window.pageYOffset, 0)}px`
+}
 
 const _setNavbarOpacity = (isSeeThrough) => {
   if (!navbar) return;

@@ -2,6 +2,26 @@
   border-right: 0;
 }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+
+  &--focusable:focus {
+    clip: initial;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+  }
+}
+
 .hidden {
 
   &-xl {
@@ -17,6 +37,10 @@
 
 .overflow-hidden {
   overflow: hidden;
+}
+
+.overflow-auto {
+  overflow: auto;
 }
 
 .relative {
@@ -60,6 +84,7 @@
 .color {
 
   &-primary { color: $color-primary; }
+  &-dark { color: $color-dark; }
   &-text-dark { color: $color-text-dark; }
   &-headline { color: $color-headline; }
   &-success { color: $color-success; }
