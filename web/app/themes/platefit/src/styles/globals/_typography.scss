@@ -168,6 +168,10 @@ strong,
   @include fontSize(14px);
 }
 
+.text-md {
+  @include fontSize(16px);
+}
+
 .text-lg {
   @include fontSize(20px);
 }

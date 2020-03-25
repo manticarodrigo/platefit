@@ -29,13 +29,10 @@ const onScroll = () => {
 const _setNavbarTopMargin = () => {
   if (!navbar) return;
 
-  const announcementHeight = navbarAnnouncements ? 40 : 0;
+  const announcementHeight = navbarAnnouncements ? 60 : 0;
   const adminBarHeight = bodyAdminBar && getIsBreakpoint("md") ? 46 : 0;
 
   const offset = announcementHeight + adminBarHeight;
-
-  console.log(offset);
-  
 
   navbar.style.marginTop = `${Math.max(offset - window.pageYOffset, 0)}px`;
 };
