@@ -15,7 +15,7 @@
       <div class="col-2 col-1-sm">
         <div class="p-2 p-0-sm mb-4-sm row end">
           <a href="<?php the_field('left_box_link'); ?>" class="box box--yellow">
-            <p class="color-text-dark text-bold text-sm"><?php the_field('left_box_title'); ?></p>
+            <p class="color-dark text-bold text-sm"><?php the_field('left_box_title'); ?></p>
             <h3 class="my-0 box__text"><?php the_field('left_box_description'); ?></h3>
             <svg><use href="#arrow" /></svg>
           </a>
@@ -25,7 +25,7 @@
       <div class="col-2 col-1-sm">
         <div class="p-2 p-0-sm row">
           <a href="<?php the_field('right_box_link'); ?>" class="box">
-            <p class="color-text-dark text-bold text-sm"><?php the_field('right_box_title'); ?></p>
+            <p class="color-dark text-bold text-sm"><?php the_field('right_box_title'); ?></p>
             <h3 class="my-0 box__text"><?php the_field('right_box_description'); ?></h3>
             <svg><use href="#arrow" /></svg>
           </a>
