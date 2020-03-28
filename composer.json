@@ -35,7 +35,7 @@
       "type": "package",
       "package": {
         "name": "advanced-custom-fields/advanced-custom-fields-pro",
-        "version": "5.8.8",
+        "version": "5.8.9",
         "type": "wordpress-plugin",
         "dist": {
           "type": "zip",
@@ -56,9 +56,9 @@
     "roots/wordpress": "5.3.2",
     "roots/wp-config": "1.0.0",
     "roots/wp-password-bcrypt": "1.0.0",
-    "advanced-custom-fields/advanced-custom-fields-pro": "^5.8.8",
-    "wpackagist-plugin/instagram-feed": "^2.1",
-    "wpackagist-plugin/google-site-kit": "^1.0",
+    "advanced-custom-fields/advanced-custom-fields-pro": "^5.8.9",
+    "wpackagist-plugin/instagram-feed": "^2.3",
+    "wpackagist-plugin/google-site-kit": "^1.6.0",
     "wpackagist-plugin/wordpress-seo": "^13.2"
   },
   "require-dev": {
