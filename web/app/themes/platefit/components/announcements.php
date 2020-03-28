@@ -13,7 +13,7 @@ if ($query->have_posts()) :
 ?>
 
   <aside data-component="navbar-announcements" class="border-box navbar-announcement">
-    <div class="px-4 px-3-md px-2-sm container width-full color-dark text-bold text-center-lg overflow-auto">
+    <div class="px-4 px-3-md px-2-sm container width-full color-dark text-bold text-center text-left-lg overflow-auto">
       <svg width="40px" height="22px" style="margin-bottom:-5px;margin-right:5px;">
         <use href="#arrow"></use>
       </svg>
