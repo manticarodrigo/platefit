@@ -188,18 +188,18 @@ strong,
   text-align: right;
 }
 
-.text-left {
-  text-align: left;
-
-  &-lg { @include maxWidth($breakpoint-lg) { text-align: left; } }
-}
-
 .text-center {
   text-align: center;
 
   &-xl { @include maxWidth($breakpoint-xl) { text-align: center; } }
   &-lg { @include maxWidth($breakpoint-lg) { text-align: center; } }
   &-md { @include maxWidth($breakpoint-md) { text-align: center; } }
+}
+
+.text-left {
+  text-align: left;
+
+  &-lg { @include maxWidth($breakpoint-lg) { text-align: left; } }
 }
 
 .letter-spacing {
