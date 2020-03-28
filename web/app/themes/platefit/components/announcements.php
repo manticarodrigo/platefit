@@ -12,17 +12,15 @@ $query = new WP_Query($args);
 if ($query->have_posts()) :
 ?>
 
-  <aside data-component="navbar-announcements" class="border-box navbar-announcement">
-    <div class="px-4 px-3-md px-2-sm container width-full color-dark text-bold text-center text-left-lg overflow-auto">
-      <svg width="40px" height="22px" style="margin-bottom:-5px;margin-right:5px;">
+  <aside data-component="navbar-announcements" class="navbar-announcement border-box row center align-center">
+    <a href="<?php the_field('url'); ?>" class="px-4 px-3-md px-2-sm container color-dark text-bold overflow-auto">
+      <?php while ($query->have_posts()) : $query->the_post(); ?>
+        <?php the_field('content'); ?>
+      <?php endwhile; wp_reset_postdata(); ?>
+      <svg width="40px" height="22px" style="margin-bottom:-5px;">
         <use href="#arrow"></use>
       </svg>
-
-      <?php while ($query->have_posts()) : $query->the_post(); ?>
-        <?php the_field('content') ?>
-      <?php endwhile;
-      wp_reset_postdata(); ?>
-    </div>
+    </a>
   </aside>
 
 <?php endif; ?>

@@ -27,7 +27,13 @@
   }
 
   a {
-    text-decoration: underline;
+    opacity: 1;
+    transition: opacity $duration;
+
+    &:focus,
+    &:hover {
+      opacity: 0.5;
+    }
   }
 }
 

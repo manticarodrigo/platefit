@@ -24,8 +24,12 @@
   justify-content: space-around;
 }
 
-.end {
-  justify-content: flex-end;
+.start {
+  justify-content: flex-start;
+
+  &-xl { @include maxWidth($breakpoint-xl) { justify-content: flex-start; } }
+  &-lg { @include maxWidth($breakpoint-lg) { justify-content: flex-start; } }
+  &-md { @include maxWidth($breakpoint-md) { justify-content: flex-start; } }
 }
 
 .center {
@@ -34,6 +38,10 @@
   &-xl { @include maxWidth($breakpoint-xl) { justify-content: center; } }
   &-lg { @include maxWidth($breakpoint-lg) { justify-content: center; } }
   &-md { @include maxWidth($breakpoint-md) { justify-content: center; } }
+}
+
+.end {
+  justify-content: flex-end;
 }
 
 .align-center {
