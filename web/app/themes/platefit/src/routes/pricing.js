@@ -5,8 +5,8 @@ export default {
 
       if (!params) return;
 
-      const firstTime = params.get('first_time');  
-      const linkContainer = document.querySelector('[data-component="first-time-container"]');
+      const firstTime = params.get('mb_link');  
+      const linkContainer = document.querySelector('[data-component="mindbody-modal"]');
 
       if (!firstTime || !linkContainer) return;
 
