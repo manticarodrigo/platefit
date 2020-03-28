@@ -7,7 +7,7 @@ export const getIsBreakpoint = (breakpoint) => {
     case 'lg':
       return window.innerWidth <= 950;
     case 'md':
-      return window.innerWidth <= 750;
+      return window.innerWidth <= 728;
     case 'sm':
       return window.innerWidth <= 500;
     case 'xs':

@@ -14,7 +14,7 @@ function create_post_types() {
     );
 
     /**
-     * Trainer
+     * Trainers
      */
     $trainer = array(
         'labels' => array('name' => __('Trainers'), 'singular_name' => __('Trainer')),
@@ -34,7 +34,7 @@ function create_post_types() {
     register_post_type('workout', array_merge($common, $workout));
 
     /**
-     * Location
+     * Locations
      */
     $location = array(
         'labels' => array('name' => __('Locations'), 'singular_name' => __('Location')),
@@ -44,7 +44,7 @@ function create_post_types() {
     register_post_type('location', array_merge($common, $location));
 
     /**
-     * Testimonial
+     * Testimonials
      */
     $testimonial = array(
         'labels' => array('name' => __('Testimonials'), 'singular_name' => __('Testimonial')),
@@ -61,6 +61,21 @@ function create_post_types() {
     );
     register_post_type('press', array_merge($common, $press));
 
+    /**
+     * Announcements
+     */
+    $announcement = array(
+        'labels' => array('name' => __('Announcements'), 'singular_name' => __('Announcement')),
+        'menu_icon' => 'dashicons-megaphone',
+    );
+    register_post_type('announcement', array_merge($common, $announcement));
+
 }
 
 add_action('init', 'create_post_types');
+
+function remove_wp_seo_meta_box() {
+	remove_meta_box('wpseo_meta', 'announcement', 'normal');
+}
+
+add_action('add_meta_boxes', 'remove_wp_seo_meta_box', 100);
