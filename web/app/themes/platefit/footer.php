@@ -96,7 +96,7 @@
           Due to COVID-19, our studios are temporarily closed. Feel the vibration at home with our virtual full body workouts. No equipment necessary.
         </p>
         <p>
-          Please provide your information below and we&apos;ll send you more information on how to sync up with the PLATEFIT community from your own home.
+          Please provide your information below and to pre-register for our upcoming, on-demand subscription.
         </p>
         <?php render_covid_form() ?>
       </main>
