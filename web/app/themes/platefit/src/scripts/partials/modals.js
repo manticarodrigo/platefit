@@ -21,24 +21,27 @@ function getCookie(name) {
   return null;
 }
 
-const statusCookieName = 'newsletter-seen';
-const statusCookieValue = 'seen';
-
-
-const config = {
+const createConfig = modalName => ({
   awaitOpenAnimation: true,
   awaitCloseAnimation: true,
-  onClose: () => setCookie(statusCookieName, statusCookieValue, 90),
-};
+  onClose: () => setCookie(modalName, 1, 90),
+});
 
 const onDomReady = () => {
   // check if the modal has already been shown
-  const hasSeenModal = getCookie(statusCookieName) === statusCookieValue;
+  const hasSeenModal = modalName => parseInt(getCookie(modalName)) === 1;
 
-  if (!hasSeenModal && document.querySelector('#newsletter-modal')) {
-    MicroModal.init(config);
-    MicroModal.show('newsletter-modal', config);
-  }
+  const modals = ['covid-modal', 'newsletter-modal'];
+
+  modals.some(name => {
+    if (!hasSeenModal(name) && document.querySelector(`#${name}`)) {
+      const config = createConfig(name);
+      MicroModal.init(config);
+      MicroModal.show(name, config);
+      return true;
+    }
+    return false;
+  });
 };
 
 export default {

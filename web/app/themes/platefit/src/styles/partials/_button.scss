@@ -7,6 +7,10 @@
 //
 // Styleguide Components.button
 
+button {
+  cursor: pointer;
+}
+
 .btn {
   border: 2px solid $color-primary;
   padding: 14px 12px 12px;
