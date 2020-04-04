@@ -156,7 +156,9 @@
         <div class="text-center-xl row">
 
           <div class="border-box p-4 col-2 col-1-xl">
-            <p class="h6"><?php the_sub_field('subtitle') ?></p>
+            <?php if (get_sub_field('subtitle')) : ?>
+              <p class="h6"><?php the_sub_field('subtitle') ?></p>
+            <?php endif; ?>
             <p class="my-0 h3 text-uppercase"><?php the_sub_field('title') ?></p>
             <p class="paragraph"><?php the_sub_field('description') ?></p>
             <a class="btn btn--arrow" href="<?php the_sub_field('button_url') ?>">
