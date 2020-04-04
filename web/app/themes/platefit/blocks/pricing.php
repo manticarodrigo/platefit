@@ -15,7 +15,7 @@
     </span>
   <?php endif; ?>
 
-  <section class="py-5 px-4 bg-color-light">
+  <section class="py-4 px-4 bg-color-light">
 
     <?php while (have_rows('sections')) : the_row(); ?>
 
