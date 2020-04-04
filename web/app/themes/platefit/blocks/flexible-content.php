@@ -19,7 +19,7 @@
 
     <?php elseif (get_row_layout() == 'full_width_text') : ?>
 
-      <section class="p-4 px-2-md bg-color-light">
+      <section class="p-4 p-2-md bg-color-light">
         <div class="max-width">
           <h3 class="my-2 text-uppercase letter-spacing-sm"><?php the_sub_field('title'); ?></h3>
           <?php the_sub_field('description'); ?>
