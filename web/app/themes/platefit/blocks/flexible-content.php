@@ -28,7 +28,7 @@
 
     <?php elseif (get_row_layout() == 'title_shoutout_text'): ?>
 
-      <section class="px-6 px-4-lg px-2-md py-4 pt-box-section bg-color-light">
+      <section class="px-6 px-4-lg px-2-md py-4 bg-color-light">
         <h3 class="mb-0-md h2 text-center text-uppercase letter-spacing"><?php the_sub_field('title'); ?></h3>
 
         <div class="row">

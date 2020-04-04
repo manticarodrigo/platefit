@@ -12,12 +12,6 @@
   transition: transform $duration;
 }
 
-.pt-box-section {
-  @include minWidth($breakpoint-md + 1) {
-    padding-top: 175px;
-  }
-}
-
 .box {
   @include maxWidth($breakpoint-sm) {
     width: 100%;

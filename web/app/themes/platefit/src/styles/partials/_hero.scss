@@ -22,6 +22,14 @@
     content: '';
   }
 
+  &--with-boxes {
+    & + * {
+      @include minWidth($breakpoint-md + 1) {
+        padding-top: 175px;
+      }
+    }
+  }
+
   &__title {
     @include maxWidth($breakpoint-lg) {
       @include fontSize(93px);
