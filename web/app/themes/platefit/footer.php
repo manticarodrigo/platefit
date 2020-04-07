@@ -84,7 +84,7 @@
 
 <aside class="modal modal-slide" id="covid-modal" aria-hidden="true">
   <div class="modal__overlay" tabindex="-1" data-micromodal-close>
-    <div class="px-4 py-4-sm modal__container bg-plate bg-modal" role="dialog" aria-modal="true" aria-labelledby="covid-modal-title">
+    <div class="px-4 py-5-sm modal__container bg-plate bg-modal" role="dialog" aria-modal="true" aria-labelledby="covid-modal-title">
       <header class="py-4 modal__header">
         <button class="modal__close" aria-label="Close dialog" data-micromodal-close></button>
       </header>
