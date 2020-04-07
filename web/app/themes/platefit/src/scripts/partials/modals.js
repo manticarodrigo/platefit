@@ -21,10 +21,20 @@ function getCookie(name) {
   return null;
 }
 
+const setScrollLock = locked => {
+  document.body.style.overflow = locked ? 'hidden' : 'auto';
+}
+
 const createConfig = modalName => ({
   awaitOpenAnimation: true,
   awaitCloseAnimation: true,
-  onClose: () => setCookie(modalName, 1, 90),
+  onShow: () => {
+    setScrollLock(true);
+  },
+  onClose: () => {
+    setScrollLock(false);
+    setCookie(modalName, 1, 90);
+  }
 });
 
 const onDomReady = () => {
