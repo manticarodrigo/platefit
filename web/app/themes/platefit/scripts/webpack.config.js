@@ -18,15 +18,9 @@ function resolveApp(relativePath) {
   return path.resolve(appDirectory, relativePath);
 }
 
-function resolveTheme(folder) {
-  const theme = path.basename(path.resolve('.'));
-  return `/wp/wp-content/themes/${theme}/${folder}`;
-}
-
 const paths = {
   appSrc: resolveApp('src'),
   appBuild: resolveApp('build'),
-  appPublic: resolveTheme('build'),
   appJs: resolveApp('src/app.js'),
   appEditorJs: resolveApp('src/editor.js'),
   appSprites: resolveApp('src/sprites.js'),
