@@ -51,19 +51,13 @@ function handleWebpackErrors(err, stats) {
     process.exit(1);
   }
 
-  if (stats.compilation.errors && stats.compilation.errors.length) {
-    printErrors('Failed to compile.', stats.compilation.errors);
-    process.exit(1);
+  const info = stats.toJson();
+
+  if (stats.hasErrors()) {
+    printErrors('Failed to compile.', info.errors);
   }
-  if (
-    process.env.CI &&
-    stats.compilation.warnings &&
-    stats.compilation.warnings.length
-  ) {
-    printErrors(
-      'Failed to compile. When process.env.CI = true, warnings are treated as failures. Most CI servers set this automatically.',
-      stats.compilation.warnings
-    );
-    process.exit(1);
+
+  if (stats.hasWarnings()) {
+    printErrors('Compilation warning!', info.warnings);
   }
 }

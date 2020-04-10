@@ -3,27 +3,30 @@
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 const AssetsPlugin = require('assets-webpack-plugin');
-// const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 const path = require('path');
 const fs = require('fs');
 
-// Make sure any symlinks in the project folder are resolved:
-// https://github.com/facebookincubator/create-react-app/issues/637
 const appDirectory = fs.realpathSync(process.cwd());
 
 function resolveApp(relativePath) {
   return path.resolve(appDirectory, relativePath);
 }
 
+function resolveTheme(folder) {
+  const theme = path.basename(path.resolve('.'));
+  return `/wp/wp-content/themes/${theme}/${folder}`;
+}
+
 const paths = {
   appSrc: resolveApp('src'),
   appBuild: resolveApp('build'),
+  appPublic: resolveTheme('build'),
   appJs: resolveApp('src/app.js'),
   appEditorJs: resolveApp('src/editor.js'),
   appSprites: resolveApp('src/sprites.js'),
@@ -32,120 +35,139 @@ const paths = {
 
 const DEV = process.env.NODE_ENV === 'development';
 
-module.exports = {
-  bail: !DEV,
-  mode: DEV ? 'development' : 'production',
-  // We generate sourcemaps in production. This is slow but gives good results.
-  // You can exclude the *.map files from the build during deployment.
-  target: 'web',
-  devtool: DEV ? 'cheap-eval-source-map' : 'source-map',
-  entry: {
-    app: paths.appJs,
-    editor: paths.appEditorJs,
-    sprites: paths.appSprites,
-  },
-  output: {
-    path: paths.appBuild,
-    filename: DEV ? '[name].js' : '[name].[hash:8].js'
-  },
-  module: {
-    rules: [
-      // Disable require.ensure as it's not a standard language feature.
-      { parser: { requireEnsure: false } },
-      // Transform ES6 with Babel
-      {
-        test: /\.js?$/,
-        loader: 'babel-loader',
-        include: paths.appSrc,
-      },
-      {
-        test: /.scss$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          {
-            loader: "css-loader?url=false",
-          },
-          {
-            loader: "postcss-loader",
-            options: {
-              ident: "postcss", // https://webpack.js.org/guides/migrating/#complex-options
-              plugins: () => [
-                autoprefixer({
-                  browsers: [
-                    ">1%",
-                    "last 4 versions",
-                    "Firefox ESR",
-                    "not ie < 9" // React doesn't support IE8 anyway
-                  ]
-                })
-              ]
-            }
-          },
-          "sass-loader"
-        ],
-      },
-      {
-        test: /assets\/svgs\/.*\.svg$/, // your icons directory
-        loader: 'svg-sprite-loader',
-        options: {
-          extract: true,
-          spriteFilename: './app.svg', // this is the destination of your sprite sheet
-        },
-      },
-    ],
-  },
-  optimization: {
-    minimize: !DEV,
-    minimizer: [
-      new OptimizeCSSAssetsPlugin({
-        cssProcessorOptions: {
-          map: {
-            inline: false,
-            annotation: true,
-          }
-        }
-      }),
-      new TerserPlugin({
-        terserOptions: {
-          compress: {
-            warnings: false
-          },
-          output: {
-            comments: false
-          }
-        },
-        sourceMap: true
-      })
-    ]
-  },
-  plugins: [
-    !DEV && new CleanWebpackPlugin(['build']),
-    new MiniCssExtractPlugin({
-      filename: DEV ? '[name].css' : '[name].[hash:8].css'
-    }),
-    new SpriteLoaderPlugin({
-      plainSprite: true,
-    }),
-    new webpack.EnvironmentPlugin({
-      NODE_ENV: 'development', // use 'development' unless process.env.NODE_ENV is defined
-      DEBUG: false,
-    }),
-    new AssetsPlugin({
+module.exports = [
+  {
+    name: 'web',
+    bail: !DEV,
+    mode: DEV ? 'development' : 'production',
+    devtool: DEV ? 'cheap-eval-source-map' : 'source-map',
+    entry: {
+      app: paths.appJs,
+      editor: paths.appEditorJs,
+    },
+    output: {
       path: paths.appBuild,
-      filename: 'assets.json',
-    }),
-    DEV &&
-      new FriendlyErrorsPlugin({
-        clearConsole: false,
+      filename: DEV ? '[name].js' : '[name].[hash:8].js',
+    },
+    module: {
+      rules: [
+        { parser: { requireEnsure: false } },
+        {
+          test: /\.js?$/,
+          loader: 'babel-loader',
+          include: paths.appSrc,
+        },
+        {
+          test: /\.(css|sass|scss)$/,
+          use: [
+            MiniCssExtractPlugin.loader,
+            'css-loader',
+            {
+              loader: 'postcss-loader',
+              options: {
+                ident: 'postcss',
+                plugins: () => [autoprefixer({})],
+              },
+            },
+            'sass-loader',
+          ],
+        },
+        {
+          test: /\.(ttf|otf|eot|woff2?|png|jpe?g|gif|svg|ico|mp4|webm)$/,
+          loader: 'url-loader',
+          options: {
+            name: `assets/[name]${DEV ? '' : '.[hash:8]'}.[ext]`,
+            limit: 8192,
+          },
+        },
+      ],
+    },
+    optimization: {
+      minimize: !DEV,
+      minimizer: [
+        new OptimizeCSSAssetsPlugin({
+          cssProcessorOptions: {
+            map: {
+              inline: false,
+              annotation: true,
+            },
+          },
+        }),
+        new TerserPlugin({
+          terserOptions: {
+            compress: {
+              warnings: false,
+            },
+            output: {
+              comments: false,
+            },
+          },
+          sourceMap: true,
+        }),
+      ],
+    },
+    plugins: [
+      !DEV && new CleanWebpackPlugin(['build']),
+      new MiniCssExtractPlugin({
+        filename: DEV ? '[name].css' : '[name].[hash:8].css',
       }),
-    // DEV &&
-    //   new BrowserSyncPlugin({
-    //     notify: false,
-    //     host: 'localhost',
-    //     port: 4000,
-    //     logLevel: 'silent',
-    //     files: ['./*.php'],
-    //     proxy: 'http://localhost:9009/',
-    //   }),
-  ].filter(Boolean),
-};
+      new webpack.EnvironmentPlugin({
+        NODE_ENV: 'development', // use 'development' unless process.env.NODE_ENV is defined
+        DEBUG: false,
+      }),
+      new AssetsPlugin({
+        path: paths.appBuild,
+        filename: 'assets.json',
+        entrypoints: true,
+      }),
+      DEV &&
+        new FriendlyErrorsPlugin({
+          clearConsole: false,
+        }),
+    ].filter(Boolean),
+  },
+  {
+    name: 'sprite',
+    bail: !DEV,
+    mode: DEV ? 'development' : 'production',
+    entry: {
+      sprites: paths.appSprites,
+    },
+    output: {
+      path: paths.appBuild,
+      filename: DEV ? '[name].js' : '[name].[hash:8].js',
+    },
+    module: {
+      rules: [
+        { parser: { requireEnsure: false } },
+        {
+          test: /\.js?$/,
+          loader: 'babel-loader',
+          include: paths.appSrc,
+        },
+        {
+          test: /\.svg$/,
+          loader: 'svg-sprite-loader',
+          options: {
+            extract: true,
+            spriteFilename: 'sprites.svg',
+          },
+        },
+      ],
+    },
+    plugins: [
+      !DEV && new CleanWebpackPlugin(['build']),
+      new SpriteLoaderPlugin({
+        plainSprite: true,
+      }),
+      new webpack.EnvironmentPlugin({
+        NODE_ENV: 'development', // use 'development' unless process.env.NODE_ENV is defined
+        DEBUG: false,
+      }),
+      DEV &&
+        new FriendlyErrorsPlugin({
+          clearConsole: false,
+        }),
+    ].filter(Boolean),
+  },
+];

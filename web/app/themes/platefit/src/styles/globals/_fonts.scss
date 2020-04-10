@@ -1,47 +1,64 @@
 @font-face {
 	font-family: Knockout-HTF49-Liteweight;
-	src: url('../src/assets/fonts/Knockout-HTF49-Liteweight.otf');
+	src: url('assets/fonts/knockout-htf49-liteweight-webfont.woff2') format('woff2'),
+			 url('assets/fonts/knockout-htf49-liteweight-webfont.woff') format('woff');
 	font-weight: normal;
+	font-style: normal;
 }
 
 @font-face {
 	font-family: Knockout-HTF28-JuniorFeatherwt;
-	src: url('../src/assets/fonts/Knockout-HTF28-JuniorFeatherwt.otf');
+	src: url('assets/fonts/knockout-htf28-juniorfeatherwt-webfont.woff2') format('woff2'),
+			 url('assets/fonts/knockout-htf28-juniorfeatherwt-webfont.woff') format('woff');
 	font-weight: normal;
+	font-style: normal;
 }
 
 @font-face {
 	font-family: MaisonNeue-Bold;
-	src: url('../src/assets/fonts/MaisonNeue-Bold.ttf');
+	src: url('assets/fonts/maisonneue-bold-webfont.woff2') format('woff2'),
+			 url('assets/fonts/maisonneue-bold-webfont.woff') format('woff');
 	font-weight: normal;
+	font-style: normal;
 }
 
 @font-face {
 	font-family: MaisonNeue-Book;
-	src: url('../src/assets/fonts/MaisonNeue-Book.ttf');
+	src: url('assets/fonts/maisonneue-book-webfont.woff2') format('woff2'),
+			 url('assets/fonts/maisonneue-book-webfont.woff') format('woff');
 	font-weight: normal;
+	font-style: normal;
 }
 
 @font-face {
 	font-family: MaisonNeue-Light;
-	src: url('../src/assets/fonts/MaisonNeue-Light.ttf');
+	src: url('assets/fonts/maisonneue-light-webfont.woff2') format('woff2'),
+			 url('assets/fonts/maisonneue-light-webfont.woff') format('woff');
 	font-weight: normal;
+	font-style: normal;
 }
 
 @font-face {
 	font-family: MuseoSlab-300;
-	src: url('../src/assets/fonts/MuseoSlab-300.otf');
+	src: url('assets/fonts/museoslab-300-webfont.woff2') format('woff2'),
+			 url('assets/fonts/museoslab-300-webfont.woff') format('woff');
 	font-weight: normal;
+	font-style: normal;
 }
 
 @font-face {
 	font-family: MuseoSlab-500;
-	src: url('../src/assets/fonts/MuseoSlab-500.ttf');
+	src: url('assets/fonts/museoslab-500-webfont.woff2') format('woff2'),
+			 url('assets/fonts/museoslab-500-webfont.woff') format('woff');
 	font-weight: normal;
+	font-style: normal;
+
 }
 
 @font-face {
 	font-family: NimbusSanTConBold;
-	src: url('../src/assets/fonts/NimbusSanTConBold.ttf');
+	src: url('assets/fonts/nimbussantconbold-webfont.woff2') format('woff2'),
+			 url('assets/fonts/nimbussantconbold-webfont.woff') format('woff');
 	font-weight: normal;
+	font-style: normal;
 }
