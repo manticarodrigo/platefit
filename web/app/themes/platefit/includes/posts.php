@@ -70,12 +70,21 @@ function create_post_types() {
     );
     register_post_type('announcement', array_merge($common, $announcement));
 
+    /**
+     * Modals
+     */
+    $modal = array(
+        'labels' => array('name' => __('Modals'), 'singular_name' => __('Modal')),
+        'menu_icon' => 'dashicons-format-status',
+    );
+    register_post_type('modal', array_merge($common, $modal));
 }
 
 add_action('init', 'create_post_types');
 
 function remove_wp_seo_meta_box() {
 	remove_meta_box('wpseo_meta', 'announcement', 'normal');
+	remove_meta_box('wpseo_meta', 'modal', 'normal');
 }
 
 add_action('add_meta_boxes', 'remove_wp_seo_meta_box', 100);

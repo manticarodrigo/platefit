@@ -106,9 +106,9 @@ function render_newsletter_form($modal = false)
 }
 
 /**
- * Process the MailChimp covid form and subscribe user to list.
+ * Process the MailChimp contact form and subscribe user to list.
  */
-function platefit_process_covid_subscription()
+function platefit_process_contact_subscription()
 {
     // Block spam bots
     if (!empty($_POST['pooh_hundred_acre_wood_field'])) {
@@ -163,17 +163,17 @@ function platefit_process_covid_subscription()
     exit;
 }
 
-add_action('admin_post_nopriv_platefit_covid_subscription', 'platefit_process_covid_subscription');
-add_action('admin_post_platefit_covid_subscription', 'platefit_process_covid_subscription');
+add_action('admin_post_nopriv_platefit_contact_subscription', 'platefit_process_contact_subscription');
+add_action('admin_post_platefit_contact_subscription', 'platefit_process_contact_subscription');
 
 /**
- * Render covid MailChimp form
+ * Render contact MailChimp form
  */
 
-function render_covid_form()
+function render_contact_form()
 {
     global $post;
-    $container_ID = '#platefit-modal-covid-subscribe-form-wrap';
+    $container_ID = '#platefit-modal-contact-subscribe-form-wrap';
     $redirect_to = $post ? get_permalink($post->ID) . $container_ID : '/';
     // Display possible messages to the visitor.
     $message = '';
@@ -190,37 +190,37 @@ function render_covid_form()
         $message = '<p class="color-' . $class . '">' . $response . '</p>';
     }
 
-    $form_id = 'platefit-modal-covid-subscribe-form';
+    $form_id = 'platefit-modal-contact-subscribe-form';
 ?>
 
     <div id="<?php echo $container_ID ?>">
-        <form class="row wrap" action="<?php echo esc_url(admin_url('admin-post.php')); ?>" method="post" id="<?php echo $form_id ?>" name="modal-covid-subscribe-form">
+        <form class="row wrap" action="<?php echo esc_url(admin_url('admin-post.php')); ?>" method="post" id="<?php echo $form_id ?>" name="modal-contact-subscribe-form">
             <div class="border-box p-2 col-2 col-1-sm column text-left">
-                <label for="covid-first-name">First Name</label>
-                <input required type="text" value="" name="FNAME" id="covid-first-name">
+                <label for="contact-first-name">First Name</label>
+                <input required type="text" value="" name="FNAME" id="contact-first-name">
             </div>
             <div class="border-box p-2 col-2 col-1-sm column text-left">
-                <label for="covid-last-name">Last Name</label>
-                <input required type="text" value="" name="LNAME" id="covid-last-name">
+                <label for="contact-last-name">Last Name</label>
+                <input required type="text" value="" name="LNAME" id="contact-last-name">
             </div>
             <div class="border-box p-2 col-2 col-1-sm column text-left">
-                <label for="covid-email">Email Address</label>
-                <input required type="email" value="" name="EMAIL" id="covid-email">
+                <label for="contact-email">Email Address</label>
+                <input required type="email" value="" name="EMAIL" id="contact-email">
             </div>
             <div class="border-box p-2 col-2 col-1-sm column text-left">
-                <label for="covid-phone-number">Phone Number</label>
-                <input required type="tel" value="" name="PHONE" id="covid-phone-number">
+                <label for="contact-phone-number">Phone Number</label>
+                <input required type="tel" value="" name="PHONE" id="contact-phone-number">
             </div>
             <div class="border-box p-2 col-1 column text-left">
-                <label for="covid-address">Address</label>
-                <input required type="text" value="" name="ADDRESS" id="covid-address">
+                <label for="contact-address">Address</label>
+                <input required type="text" value="" name="ADDRESS" id="contact-address">
             </div>
             <div class="px-2 py-3 width-full row center">
-                <button class="btn btn--arrow" type="submit" name="subscribe" id="covid-subscribe">Subscribe&nbsp;<svg>
+                <button class="btn btn--arrow" type="submit" name="subscribe" id="contact-subscribe">Subscribe&nbsp;<svg>
                         <use href="#arrow" /></svg></button>
             </div>
             <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="pooh_hundred_acre_wood_field" tabindex="-1" value=""></div>
-            <input type="hidden" name="action" value="platefit_covid_subscription">
+            <input type="hidden" name="action" value="platefit_contact_subscription">
             <input type="hidden" name="redirect_to" value="<?php echo $redirect_to; ?>">
         </form>
         <?php echo $message; ?>

@@ -54,60 +54,10 @@
   </div>
 </footer>
 
-<!-- newsletter modal -->
 
-<aside class="modal modal-slide" id="newsletter-modal" aria-hidden="true">
-  <div class="modal__overlay" tabindex="-1" data-micromodal-close>
-    <div class="px-4 px-2-sm modal__container bg-plate bg-modal" role="dialog" aria-modal="true" aria-labelledby="newsletter-modal-title">
-      <header class="py-4 modal__header">
-        <button class="modal__close" aria-label="Close dialog" data-micromodal-close></button>
-      </header>
-      <main class="modal__content" id="modal-1-content">
-        <h2 class="mt-0 text-uppercase letter-spacing" id="newsletter-modal-title">
-          Join the Community
-        </h2>
-        <p class="h3 h3--bold h3--sm line-height-none">
-          We'll send you exclusive studio offers, upcoming events and more!
-        </p>
-        <?php render_newsletter_form(true) ?>
-      </main>
-      <footer class="py-4 modal__footer">
-        <button class="link dark underline" data-micromodal-close aria-label="Close this newsletter dialog window">
-          No thanks.
-        </button>
-      </footer>
-    </div>
-  </div>
-</aside>
+<!-- modals -->
 
-<!-- covid modal -->
-
-<aside class="modal modal-slide" id="covid-modal" aria-hidden="true">
-  <div class="modal__overlay" tabindex="-1" data-micromodal-close>
-    <div class="px-4 py-5-sm modal__container bg-plate bg-modal" role="dialog" aria-modal="true" aria-labelledby="covid-modal-title">
-      <header class="py-4 modal__header">
-        <button class="modal__close" aria-label="Close dialog" data-micromodal-close></button>
-      </header>
-      <main class="modal__content pb-4" id="modal-1-content">
-        <h2 class="my-0 text-uppercase letter-spacing" id="covid-modal-title">
-          Join us online
-        </h2>
-        <p>
-          Due to COVID-19, our studios are temporarily closed. Feel the vibration at home with our virtual full body workouts. No equipment necessary.
-        </p>
-        <p>
-          Please provide your information below and to pre-register for our upcoming, on-demand subscription.
-        </p>
-        <?php render_covid_form() ?>
-      </main>
-      <footer class="py-4 modal__footer">
-        <button class="link dark underline" data-micromodal-close aria-label="Close this newsletter dialog window">
-          No thanks.
-        </button>
-      </footer>
-    </div>
-  </div>
-</aside>
+<?php get_template_part('components/modals');  ?>
 
 <!-- scroll to top -->
 
