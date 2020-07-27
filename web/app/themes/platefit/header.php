@@ -18,7 +18,7 @@
 	<meta name="theme-color" content="#fed710">
 
 	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
-	<style>.ipstudio{display: none;}</style>
+
 	<?php wp_head(); ?>
 </head>
 
