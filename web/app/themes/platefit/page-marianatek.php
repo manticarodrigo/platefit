@@ -1,5 +1,5 @@
 <?php
-/* Template Name */
+/* Template Name: Mariana Tek */
 get_header();
 ?>
 
