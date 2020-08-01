@@ -112,3 +112,22 @@ function add_slug_to_body_class($classes) {
     }
     return $classes;
 }
+
+/* Equeue Custom Style & Script */
+
+
+function ipstudio_enqueue() { 
+    
+    
+    wp_enqueue_style( 'ips-custom-style', get_template_directory_uri() . '/build/assets/custom-style.css' ); 
+
+
+    wp_enqueue_script( 'ips-custom-script', get_stylesheet_directory_uri() . '/build/assets//custom.js',
+
+        array( 'jquery' )
+
+    );
+}
+
+
+add_action( 'wp_enqueue_scripts', 'ipstudio_enqueue' );
