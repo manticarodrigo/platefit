@@ -97,6 +97,19 @@ function register_acf_block_types()
     'supports'          => array('multiple' => false),
   ));
 
+  // Image Slider
+  acf_register_block_type(array(
+    'name'              => 'video-slider',
+    'title'             => __('Video Slider'),
+    'description'       => __('Video Slider by IPSTUDIO.'),
+    'render_template'   => 'blocks/video-slider.php',
+    'category'          => 'platefit',
+    'icon'              => 'images-alt',
+    'keywords'          => array('video-slider', 'ipstudio'),
+    'align'             => 'full',
+    'supports'          => array('multiple' => false),
+  ));
+
   // Testimonials
   acf_register_block_type(array(
     'name'              => 'testimonials',
