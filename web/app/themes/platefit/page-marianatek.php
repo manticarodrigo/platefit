@@ -29,7 +29,7 @@ get_header();
 <script>
 (function() {
 // Set tenant name here
-var TENANT_NAME = 'platefit.sandbox';
+var TENANT_NAME = 'platefit';
 var d = document;
 var sA = ['polyfills', 'js'];
 for (var i = 0; i < sA.length; i++) { var s = d.createElement('script');
